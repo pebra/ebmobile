@@ -39,6 +39,7 @@ App.SearchRoute = Ember.Route.extend({
   actions: {
     search: function(){
       var self = this;
+      this.get('controller').set('jobsResults','');
       var jobs = Ember.A();
       var q = this.get('controller').get('query');
       Ember.$.ajax({
@@ -49,7 +50,7 @@ App.SearchRoute = Ember.Route.extend({
           san.forEach(function(data) {
             jobs.pushObject(self.store.createRecord('job', data));
           });
-          self.get('controller').set('jobsResults', self.store.findAll('job'));
+          self.get('controller').set('jobsResults', jobs);
           return jobs;
         }
       });
