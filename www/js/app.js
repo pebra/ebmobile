@@ -1,12 +1,13 @@
 App = Ember.Application.create();
+
 App.ApplicationAdapter = DS.LSAdapter.extend({
-  namespace: 'ebmobile'
+  namespace: 'ebund'
 });
 
-App.Store = DS.Store.extend({
-  revision: 12,
-  adapter: 'DS.LSAdapter'
-});
+//App.Store = DS.Store.extend({
+//  revision: 12,
+//  adapter: 'App.ApplicationAdapter'
+//});
 
 App.Search = DS.Model.extend({
   query: DS.attr()
@@ -18,10 +19,13 @@ App.Job = DS.Model.extend({
   firm: DS.attr(),
   location: DS.attr(),
   title: DS.attr(),
+  link: DS.attr(),
   mobile_logo_url: DS.attr()
 });
 
 App.Router.map(function() {
+  this.resource('jobs', function() {
+    this.route('job', { path: ':job_id' }) });
   this.resource('search', function() {
     this.route('jobs');
   });
@@ -30,6 +34,24 @@ App.Router.map(function() {
 App.IndexRoute = Ember.Route.extend({
   beforeModel: function() {
     this.transitionTo('search');
+  }
+});
+
+App.JobsJobRoute = Ember.Route.extend({
+  model: function(params) {
+    var store = this.store;
+    //http://www.empfehlungsbund.de/api/job.jsonp?callback=json_callback&id
+    var id = params.job_id;
+    return Ember.$.ajax({
+      url: "http://www.empfehlungsbund.de/api/job.jsonp?callback=json_callback&id=" +id,
+      dataType: 'jsonp',
+      success: function(job) {
+        console.log(job);
+        job.job_id = job.id;
+        job.mobile_log_url = "http://" + job.mobile_logo_url;
+        return job
+      }
+    });
   }
 });
 
@@ -64,3 +86,4 @@ App.SearchJobsRoute = Ember.Route.extend({
       return this.store.findAll('job');
     }
 });
+

@@ -41,6 +41,7 @@
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/bootstrap.min.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/ember-1.1.2.js \
+/Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/ember-data.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/ember-data.min.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/handlebars-1.0.0.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/libs/jquery-1.9.1.js \
