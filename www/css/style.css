@@ -1,4 +1,11 @@
 /* Put your CSS here */
 html, body {
-    margin: 20px;
+  padding-bottom: 60px;
+}
+/* Wrapper for page content to push down footer */
+/* Set the fixed height of the footer here */
+
+ul.list-inline a {
+  font-size: 1.5em;
+  font-weight: bold;
 }
