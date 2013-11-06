@@ -44,7 +44,7 @@
         {{title}}
       </h1>
       </a>
-      <button {{action 'addToFavorites' this.job_id}} {{bindAttr disabled="onList"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
+      <button {{action 'addToFavorites' model}} {{bindAttr disabled="onList"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
 
       {{{ description}}}
     </div>
@@ -79,7 +79,7 @@
             <div class="list-group-item">
             <div class="row">
               <div class="col-sm-4">
-                {{#link-to "jobs.job" this.job_id}}
+                {{#link-to "jobs.job" this}}
                 <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
                 {{/link-to}}
                 <div class="col-sm-12">
@@ -119,6 +119,7 @@
         <script src="js/libs/ember-1.1.2.js"></script>
         <script src="js/libs/ember-data.js"></script>
         <script src="js/libs/localstorage_adapter.js"></script>
+
         <script src="js/app.js"></script>
         
         <!-- initialize cordova app -->
