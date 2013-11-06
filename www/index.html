@@ -46,7 +46,7 @@
       </a>
       <button {{action 'addToFavorites' model}} {{bindAttr disabled="onList"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
 
-      {{{ description}}}
+      {{{description}}}
     </div>
 
 
@@ -57,7 +57,7 @@
       <h2>Favorites</h2>
       {{#each model}}
       {{id}}
-        {{#link-to "jobs.job" job_id}}
+        {{#link-to "jobs.job"}}
         <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
         {{/link-to}}
         {{else}}
