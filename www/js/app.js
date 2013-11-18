@@ -80,9 +80,10 @@ App.JobsJobRoute = Ember.Route.extend({
   onList: false,
   notification: '',
   model: function(params) {
-    var store = this.store;
-    return store.find('job', params.job_id).then(function(res) {
-      return Ember.$.ajax({
+    console.log("model hook triggered");
+    var self = this;
+    return self.store.find('job', params.job_id).then(function(res) {
+      Ember.$.ajax({
         url: App.get_api_url("job") + "&id=" + params.job_id,
         dataType: 'jsonp',
         success: function(job) {
