@@ -31,6 +31,10 @@ App.Favorite = DS.Model.extend({
   job_id: DS.attr()
 });
 
+App.get_api_url = function(api_type) {
+  return "http://www.empfehlungsbund.de/api/"+api_type+".jsonp?callback=json_callback"
+}
+
 
 App.Router.map(function() {
   this.resource('jobs', function() {
@@ -51,26 +55,23 @@ App.FavoritesRoute = Ember.Route.extend({
     var self = this;
     var blub = Ember.A();
     var found_favs = [];
-    this.store.find('job', {'favorite': 'true'}).then(function(favs) { 
+    return this.store.find('job', {'favorite': 'true'}).then(function(favs) { 
       favs.forEach(function(fav) { 
         found_favs.push(fav.id);
       });
-
-    var url = "http://www.empfehlungsbund.de/api/joblist.jsonp?callback=json_callback&ids=" + found_favs.toString();
-
-    return Ember.$.ajax({
-      url: url,
-      dataType: 'jsonp',
-      success: function(jobs) {
-        jobs.map(function(job) {
-          self.store.find('job', job.id).then(function(result) {
-            var logo_url = "http://" + result.get('mobile_logo_url');
-            result.set('mobile_logo_url', logo_url); 
-            result.save();
+      var url = App.get_api_url("joblist") + "&ids="+found_favs.toString();
+      return Ember.$.ajax({
+        url: url,
+        dataType: 'jsonp',
+        success: function(jobs) {
+          jobs.map(function(job) {
+            self.store.find('job', job.id).then(function(result) {
+              result.set('mobile_logo_url', logo_url); 
+              result.save();
+            });
           });
-        });
-      }
-    });
+        }
+      });
     });
   }
 });
@@ -82,7 +83,7 @@ App.JobsJobRoute = Ember.Route.extend({
     var store = this.store;
     return store.find('job', params.job_id).then(function(res) {
       return Ember.$.ajax({
-        url: "http://www.empfehlungsbund.de/api/job.jsonp?callback=json_callback&id=" + params.job_id,
+        url: App.get_api_url("job") + "&id=" + params.job_id,
         dataType: 'jsonp',
         success: function(job) {
           res.set('description', job.description);
@@ -114,12 +115,12 @@ App.SearchRoute = Ember.Route.extend({
       this.get('controller').set('jobsResults','');
       var jobs = Ember.A();
       var q = this.get('controller').get('query');
+      var url = App.get_api_url("search")+"&radius=100&fid[5]=5&fid[4]=4&q="+q
       Ember.$.ajax({
-        url: "http://www.empfehlungsbund.de/api/search.jsonp?callback=json_callback&o=&radius=100&fid[5]=5&fid[4]=4&q=" +q,
+        url: url,
         dataType: 'jsonp',
         success: function(jobsResults) {
-          var san = jobsResults.map(function(set) { set.job_id = set.id; set.mobile_logo_url = "http://" + set.mobile_logo_url; return set; });
-          san.forEach(function(data) {
+          jobsResults.forEach(function(data) {
             var job = self.store.createRecord('job', data);
             job.save();
             jobs.pushObject(job);

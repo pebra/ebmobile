@@ -54,15 +54,26 @@
 
   <script type="text/x-handlebars" data-template-name="favorites">
     <div class="col-lg-12">
-      <h2>Favorites</h2>
-      {{#each model}}
-      {{id}}
-        {{#link-to "jobs.job"}}
-        <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-        {{/link-to}}
-        {{else}}
-        Nothing on your list
-      {{/each}}
+      <h2>Merkliste</h2>
+      <div class="list-group">
+        {{#each model}}
+          <div class="list-group-item">
+            <div class="row">
+            <div class="col-sm-4">
+              {{log id}}
+              {{id}}
+              {{#link-to 'jobs.job' this}}
+                <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+              {{/link-to}}
+            </div>
+            <div class="col-sm-8">
+              <h3>{{title}}</h3>
+            </div>
+          </div>
+          </div>
+          {{else}}
+            Nothing on your list
+        {{/each}}
     </div>
   </script>
 

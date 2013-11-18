@@ -1,3 +1,4 @@
 *.sw?
 .cordova
 work
+.DS_Store
