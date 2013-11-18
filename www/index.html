@@ -44,7 +44,7 @@
         {{title}}
       </h1>
       </a>
-      <button {{action 'addToFavorites' model}} {{bindAttr disabled="onList"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
+      <button {{action 'addToFavorites' model}} {{bindAttr disabled="this.favorite"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
 
       {{{description}}}
     </div>
@@ -60,9 +60,9 @@
           <div class="list-group-item">
             <div class="row">
             <div class="col-sm-4">
-              {{log id}}
               {{id}}
-              {{#link-to 'jobs.job' this}}
+              {{log description}}
+              {{#link-to 'jobs.job' id}}
                 <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
               {{/link-to}}
             </div>
@@ -90,7 +90,7 @@
             <div class="list-group-item">
             <div class="row">
               <div class="col-sm-4">
-                {{#link-to "jobs.job" this}}
+                {{#link-to "jobs.job" id}}
                 <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
                 {{/link-to}}
                 <div class="col-sm-12">
