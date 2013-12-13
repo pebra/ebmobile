@@ -5,8 +5,7 @@ require 'capybara/rspec'
 #Capybara.default_wait_time = 0
 Capybara.register_driver :poltergeist do |app|
   options = {
-    debug: true,
-
+    debug: false,
     :phantomjs_options => [
       "--web-security=no",
       "--local-to-remote-url-access=yes",

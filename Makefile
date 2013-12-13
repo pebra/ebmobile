@@ -12,3 +12,9 @@ server:
 
 test:
 	cd ebapp/ && bundle exec rspec
+
+fulltest:
+	cd ebapp/source && middleman server -p 3506 &
+	sleep 8
+	cd ebapp/ && bundle exec rspec
+	pgrep -f middleman | xargs kill
