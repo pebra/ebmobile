@@ -22,7 +22,7 @@
         %nav(class="navbar navbar-default navbar-fixed-bottom" role="navigation")
           .container
             %ul.list-inline
-              %li {{#linkTo 'index'}}Search{{/linkTo}}
+              %li {{#linkTo 'index'}}Suche{{/linkTo}}
               %li {{#linkTo 'favorites'}}Merkliste{{/linkTo}}
 
     %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
@@ -37,68 +37,53 @@
         {{{description}}}
 
     %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}
-      <div class="col-lg-12">
-      <h2>Merkliste</h2>
-      <div class="list-group">
-      {{#each model}}
-      <div class="list-group-item">
-      <div class="row">
-      <div class="col-sm-4">
-      {{id}}
-      {{log description}}
-      {{#link-to 'jobs.job' id}}
-      <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-      {{/link-to}}
-      </div>
-      <div class="col-sm-8">
-      <h3>{{title}}</h3>
-      </div>
-      </div>
-      </div>
-      {{else}}
-      Nothing on your list
-      {{/each}}
-      </div>
+      .col-lg-12
+        %h2 Merkliste
+        .list-group
+          {{#each model}}
+          .list-group-item
+            .row
+              .col-sm-4
+                {{id}}
+                {{log description}}
+                {{#link-to 'jobs.job' id}}
+                <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+                {{/link-to}}
+              .col-sm-8
+                %h3 {{title}}
+          {{else}}
+          Keine Einträge in der Liste
+          {{/each}}
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
-      <div class="col-lg-12">
-      <div class="form-group">
-      {{input type="text" placeholder="search something" value=query insert-newline="search" class="form-control input-lg" name='search' }}
-      </div>
+      .col-lg-12
+        .form-group
+          {{input type="text" placeholder="Suchbegriff" value=query insert-newline="search" class="form-control input-lg" name='search' }}
+        .list-group
+          {{#each jobsResults}}
+          .list-group-item
+            .row
+              .col-sm-4
+                {{#link-to "jobs.job" id}}
+                <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+                {{/link-to}}
+                .col-sm-12
+                  {{firm}} - {{location}} - {{job_id}}
+              .col-sm-8
+                %h3 {{title}}
+          {{/each}}
 
-
-      <div class="list-group">
-      {{#each jobsResults}}
-      <div class="list-group-item">
-      <div class="row">
-      <div class="col-sm-4">
-      {{#link-to "jobs.job" id}}
-      <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-      {{/link-to}}
-      <div class="col-sm-12">
-      {{firm}} - {{location}} - {{job_id}}
-      </div>
-      </div>
-      <div class="col-sm-8">
-      <h3>{{title}}</h3>
-      </div>
-      </div>
-      </div>
-      {{/each}}
-      </div>
-      </div>
     %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"}
-      <h2>Hello</h2>
-
-      {{#each model}}
-      <li>
-      {{job_id}}
-      {{firm}}
-      </li>
-      {{else}}
-      No Results
-      {{/each}}
-      </ul>
+      %h2 Suche
+      %ul
+        {{#each model}}
+        %li
+          {{job_id}}
+          {{firm}}
+        {{else}}
+        Keine Ergebnisse
+        {{/each}}
     %script{:src => "cordova.js", :type => "text/javascript"}
+
     = javascript_include_tag  "all"
     / initialize cordova app
     :javascript
