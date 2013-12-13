@@ -58,6 +58,7 @@
       .col-lg-12
         .form-group
           {{input type="text" placeholder="Suchbegriff" value=query insert-newline="search" class="form-control input-lg" name='search' }}
+          <button {{action 'search' model}} class="btn btn-primary btn-md">Suchen</button>
         .list-group
           {{#each jobsResults}}
           .list-group-item

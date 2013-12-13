@@ -15,6 +15,6 @@ test:
 
 fulltest:
 	cd ebapp/source && middleman server -p 3506 &
-	sleep 8
+	sleep 4
 	cd ebapp/ && bundle exec rspec
 	pgrep -f middleman | xargs kill
