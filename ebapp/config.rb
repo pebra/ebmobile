@@ -75,3 +75,7 @@ configure :build do
   # Or use a different image path
   # set :http_path, "/Content/images/"
 end
+
+ready do
+  sprockets.append_path '_lib/'
+end
