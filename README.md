@@ -2,16 +2,29 @@
 
 ## Development
 
-ehis App uses [Apache Cordova](http://cordova.apache.org/).
+Developing on the webapp:
+
+```bash
+cd ebapp/
+bundle
+bundle exec middleman server -p$PORT
+
+```
+
+This App uses [Apache Cordova](http://cordova.apache.org/).
 See the [Cordova Documentation](http://cordova.apache.org/docs/en/3.1.0/) for information about the usage.
 You have to install their software to build the app.
 
 In order to deploy the app to your android phone run
 
+
 ```
+bundle exec middleman build
 cordova build
 cordova run android
 ```
+
+
 
 ### TODOS
 
