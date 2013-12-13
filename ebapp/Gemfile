@@ -4,4 +4,7 @@ source 'http://rubygems.org'
 
 gem "middleman", "~>3.0.14"
 gem 'rb-inotify', '~> 0.9', require:  RUBY_PLATFORM.include?('linux') ? 'rb-inotify' : false
+gem 'poltergeist'
+gem 'capybara'
+gem 'rspec'
 gem 'pry'

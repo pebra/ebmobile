@@ -78,4 +78,5 @@ end
 
 ready do
   sprockets.append_path '_lib/'
+  sprockets.append_path 'spec/'
 end
