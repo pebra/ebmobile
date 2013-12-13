@@ -8,3 +8,4 @@ www/js/
 www/spec.html
 www/spec/
 ebapp/source/ignore/
+.bundle
