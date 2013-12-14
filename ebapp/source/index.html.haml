@@ -27,13 +27,14 @@
 
     %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
       .col-lg-12
-        {{#if notification}}
-        %div(class="alert alert-success") {{notification}}
-        {{/if}}
         <a {{bindAttr href="job_link"}} target="_blank">
         %h1 {{title}}
         </a>
-        <button {{action 'addToFavorites' model}} {{bindAttr disabled="this.favorite"}}  class="btn btn-primary btn-md">Auf die Merkliste</button>
+        {{#if this.favorite}}
+        <button {{action 'removeFromFavorites' model}} class="btn btn-danger btn-md"><i class="icon-close"></i> Von Merkliste entfernen</button>
+        {{else}}
+        <button {{action 'addToFavorites' model}} class="btn btn-primary btn-md"><i class='icon-plus'></i> Auf die Merkliste</button>
+        {{/if}}
         {{{description}}}
 
     %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}
@@ -54,6 +55,8 @@
           {{else}}
           Keine Einträge in der Liste
           {{/each}}
+
+
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
       .col-lg-12
         .form-group
