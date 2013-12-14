@@ -18,21 +18,36 @@ You have to install their software to build the app.
 In order to deploy the app to your android phone run
 
 
-```
+```bash
 bundle exec middleman build
 cordova build
 cordova run android
 ```
 
+## Debug
+
+weinre let you debug your in mobile chrome
+
+```bash
+npm install -g weinre
+```
+
+```bash
+weinre --boundHost 192.168.2.102
+# uncomment script tag weinre in index.html.haml
+make build
+cordova run android
+# navigate to 192.168.2.102:8080
+```
+
+adjust IP of course! 
 
 
 ### TODOS
 
 ### Milestone Store
-+ Disable "Auf die Merkliste" Button, when Job is already on the Favorites list
-* Uebersetzung, Stylings,
+* Stylings, -> @pebra
 * Autocompletion
-* Remove from Merkliste
-* Merkliste als E-Mail(??) schicken
-* "Teilen" action ausloesbar? also Job durch das Android Share schiken
-* 2x nach demselben Suchen cleart Merkliste
+* "Teilen" action ausloesbar? also Job durch das Android Share schiken @pebra
+  * Merkliste als E-Mail(??) schicken
+* Buildskript: Pfade!!! /js -> js @zealot128
