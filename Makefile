@@ -23,3 +23,4 @@ build:
 	cd ebapp/ && middleman build
 	rm -rf www/ignore/
 	rm -rf www/spec/
+	cordova build
