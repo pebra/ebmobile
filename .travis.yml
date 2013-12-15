@@ -3,7 +3,4 @@ rvm: [2.0.0]
 branches:
   only: [master]
 
-before_script:
-  - "cd ebapp && bundle"
-
 script: make fulltest
