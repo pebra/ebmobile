@@ -8,23 +8,23 @@
     %link{:href => "css/normalize.css", :rel => "stylesheet"}/
     %link{:href => "css/bootstrap.min.css", :rel => "stylesheet"}/
     %link{:href => "css/style.css", :rel => "stylesheet"}/
-    <script src="http://192.168.2.102:8080/target/target-script-min.js"></script>
+    <!--<script src="http://192.168.2.102:8080/target/target-script-min.js"></script>-->
     %title Empfehlungsbund-App
     = stylesheet_link_tag "all"
   %body
     %script{:type => "text/x-handlebars"}
-      #wrap
-        .container
-          .page-header
-            %h2 Empfehlungsbund
-            .row
-              {{outlet}}
-      #footer
-        %nav(class="navbar navbar-default navbar-fixed-bottom" role="navigation")
-          .container
-            %ul.list-inline
-              %li {{#linkTo 'index'}}Suche{{/linkTo}}
-              %li {{#linkTo 'favorites'}}Merkliste{{/linkTo}}
+      .page
+        %header.action-bar.fixed-top
+          %h1.title Empfehlungsbund
+        .content
+          .inset
+            {{outlet}}
+            #footer
+              %nav(class="navbar navbar-default navbar-fixed-bottom" role="navigation")
+                .container
+                  %ul.list-inline
+                    %li {{#linkTo 'index'}}Suche{{/linkTo}}
+                    %li {{#linkTo 'favorites'}}Merkliste{{/linkTo}}
 
     %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
       .col-lg-12
@@ -59,22 +59,24 @@
 
 
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
-      .col-lg-12
-        .form-group
-          {{input type="text" placeholder="Suchbegriff" value=query insert-newline="search" class="form-control input-lg" name='search' }}
-          <button {{action 'search' model}} class="btn btn-primary btn-md">Suchen</button>
-        .list-group
+      %form.form-flex
+        %label.block-label Suchbegriff
+        .flex-group
+          %span.flex1.input-pretty
+            {{input type="text" placeholder="Suchbegriff" value=query insert-newline="search" class="input-text" name='search' placeholder="z.B. Java Developer" }}
+          %span.flex1
+            .form-actions.center-me
+              <button {{action 'search' model}} type="button" class="btn">Suchen</button>
+
+        %ul.list
+          %li.list-divider Ergebnisse
           {{#each jobsResults}}
-          .list-group-item
-            .row
-              .col-sm-4
-                {{#link-to "jobs.job" id}}
-                <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-                {{/link-to}}
-                .col-sm-12
-                  {{firm}} - {{location}} - {{job_id}}
-              .col-sm-8
-                %h3 {{title}}
+          %li.list-item-multi-line.selectable
+            {{#link-to "jobs.job" id}}
+            %h3 {{title}}
+            {{/link-to}}
+            %p
+              {{firm}} - {{location}}
           {{/each}}
 
     %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"}
