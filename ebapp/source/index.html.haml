@@ -20,42 +20,41 @@
           %h1.title 
             Empfehlungsbund
           %ul.actions.pull-right
+            %li
+              {{#linkTo 'favorites' class="action"}}<i class="icon-star-full"></i>{{/linkTo}}
             %li 
-              {{#linkTo 'index' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
+              {{#linkTo 'index' class="action"}}<i class="icon-search"></i>{{/linkTo}}
         .content
           .inset
             {{outlet}}
 
     %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
-      .col-lg-12
-        <a {{bindAttr href="job_link"}} target="_blank">
-        %h1 {{title}}
-        </a>
-        {{#if this.favorite}}
-        <button {{action 'removeFromFavorites' model}} class="btn btn-danger btn-md"><i class="icon-close"></i> Von Merkliste entfernen</button>
-        {{else}}
-        <button {{action 'addToFavorites' model}} class="btn btn-primary btn-md"><i class='icon-plus'></i> Auf die Merkliste</button>
-        {{/if}}
-        {{{description}}}
+      <a {{bindAttr href="job_link"}} target="_blank">
+      %h2 {{title}}
+      </a>
+      %ul.list.inset
+        %li.list-item-multi-line
+          {{#if this.favorite}}
+          <button {{action 'removeFromFavorites' model}} class="btn btn-small"><i class="icon-close"></i> Von Merkliste entfernen</button>
+          {{else}}
+          <button {{action 'addToFavorites' model}} class="btn btn-small"><i class='icon-plus'></i> Auf die Merkliste</button>
+          {{/if}}
+        %li.list-item-multi-line
+          {{{description}}}
 
     %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}
-      .col-lg-12
-        %h2 Merkliste
-        .list-group
-          {{#each model}}
-          .list-group-item
-            .row
-              .col-sm-4
-                {{id}}
-                {{log description}}
-                {{#link-to 'jobs.job' id}}
-                <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-                {{/link-to}}
-              .col-sm-8
-                %h3 {{title}}
-          {{else}}
-          Keine Einträge in der Liste
-          {{/each}}
+      %ul.list
+        %li.list-divider Merkliste
+        {{#each model}}
+        %li.list-item-multi-line
+          %h3 {{title}}
+          %p
+            {{#link-to 'jobs.job' id}}
+            <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+            {{/link-to}}
+        {{else}}
+        Keine Einträge in der Liste
+        {{/each}}
 
 
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
@@ -65,16 +64,17 @@
         .form-actions
           <button {{action 'search' model}} type="button" class="btn btn-block">Suchen</button>
 
-        %ul.list
-          %li.list-divider Ergebnisse
-          {{#each jobsResults}}
-          %li.list-item-multi-line.selectable
-            {{#link-to "jobs.job" id}}
-            %h3 {{truncate title 30}}
-            {{/link-to}}
-            %p
-              {{firm}} - {{location}}
-          {{/each}}
+      %ul.list
+        %li.list-divider 
+          Ergebnisse
+        {{#each jobsResults}}
+        %li.list-item-multi-line.selectable
+          {{#link-to "jobs.job" id}}
+          %h3 {{truncate title 30}}
+          {{/link-to}}
+          %p
+            {{firm}} - {{location}}
+        {{/each}}
 
     %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"}
       %h2 Suche
