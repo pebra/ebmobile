@@ -17,6 +17,12 @@ App.Job = DS.Model.extend(
   favorite:         DS.attr()
   description:      DS.attr()
 )
+App.SearchSettings = DS.Model.extend(
+  radius: DS.attr()
+  city: DS.attr()
+  internships: DS.attr()
+  jobs: DS.attr()
+)
 App.Favorite = DS.Model.extend(job_id: DS.attr())
 App.get_api_url = (api_type) ->
   "http://www.empfehlungsbund.de/api/" + api_type + ".jsonp?callback=json_callback"
@@ -115,6 +121,12 @@ App.SearchJobsRoute = Ember.Route.extend(
   query: ""
   model: ->
     @store.findAll "job"
+)
+
+App.SearchField = Ember.TextField.extend(
+  classNames: ["input-text"]
+  insertNewline: (query) ->
+    this.triggerAction()
 )
 
 Ember.Handlebars.helper 'truncate', (str, len) ->

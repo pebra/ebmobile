@@ -60,7 +60,7 @@
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
       %form.form-flex
         %label.block-label Suchbegriff
-        {{input type="text" placeholder="Suchbegriff" value=query insert-newline="search" class="input-text" name='search' placeholder="z.B. Java Developer" }}
+        {{view App.SearchField placeholder="z.B. Java Developer" value=query target="App.SearchRoute" action="search"}}
         .form-actions
           <button {{action 'search' model}} type="button" class="btn btn-block">Suchen</button>
 
