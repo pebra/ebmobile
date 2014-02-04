@@ -42,6 +42,8 @@ cordova run android
 
 adjust IP of course! 
 
+### Known bug:
+When running middleman build the built index.html contains wrong links to all.css and all.js. The leading "/" hast to be removed. "/css/all.css" => "/css/all.css"
 
 ### TODOS
 

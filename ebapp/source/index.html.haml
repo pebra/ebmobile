@@ -20,10 +20,10 @@
           %h1.title 
             Empfehlungsbund
           %ul.actions.pull-right
-            %li
-              {{#linkTo 'favorites' class="action"}}<i class="icon-star-full"></i>{{/linkTo}}
             %li 
               {{#linkTo 'index' class="action"}}<i class="icon-search"></i>{{/linkTo}}
+            %li
+              {{#linkTo 'favorites' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
         .content
           .inset
             {{outlet}}
