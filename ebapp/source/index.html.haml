@@ -17,13 +17,12 @@
           {{#linkTo 'index' class="app-icon action"}}
           <i class="icon-fries"></i>
           {{/linkTo}}
-          %h1.title 
-            Empfehlungsbund
+          %h1.title Empfehlungsbund
           %ul.actions.pull-right
-            %li 
+            %li
               {{#linkTo 'index' class="action"}}<i class="icon-search"></i>{{/linkTo}}
             %li
-              {{#linkTo 'favorites' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
+              {{#linkTo 'settings' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
         .content
           .inset
             {{outlet}}
@@ -65,7 +64,7 @@
           <button {{action 'search' model}} type="button" class="btn btn-block">Suchen</button>
 
       %ul.list
-        %li.list-divider 
+        %li.list-divider
           Ergebnisse
         {{#each jobsResults}}
         %li.list-item-multi-line.selectable
@@ -75,6 +74,14 @@
           %p
             {{firm}} - {{location}}
         {{/each}}
+
+    %script{"data-template-name" => "settings", :type => "text/x-handlebars"}
+      %form.form-flex
+        %label.block-label Suchradius und Ort
+        .flex-group
+          {{input class="input-text flex1" type="text" placeholder="Ort" value=city }}
+          {{input class="input-text flex1" type="number" placeholder="Suchradius um den Ort in km" value=radius }}
+        <button {{action 'submitSettings' model}} class="btn btn-block">Speichern</button>
 
     %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"}
       %h2 Suche

@@ -17,7 +17,7 @@ App.Job = DS.Model.extend(
   favorite:         DS.attr()
   description:      DS.attr()
 )
-App.SearchSettings = DS.Model.extend(
+App.Settings = DS.Model.extend(
   radius: DS.attr()
   city: DS.attr()
   internships: DS.attr()
@@ -29,9 +29,8 @@ App.get_api_url = (api_type) ->
 
 App.Router.map ->
   @resource "jobs", ->
-    @route "job",
-      path: ":job_id"
-
+    @route "job", path: ":job_id"
+  @resource "settings", ->
   @resource "search", ->
 
   @route "favorites"
@@ -39,10 +38,18 @@ App.Router.map ->
 App.IndexRoute = Ember.Route.extend(redirect: ->
   @transitionTo "search"
 )
+
+App.SettingsRoute = Ember.Route.extend(
+  model: ->
+    @store.find("settings")
+  actions:
+    submitSettings: (model) ->
+      console.log(model.get("radius"))
+)
+
 App.FavoritesRoute = Ember.Route.extend(
   model: ->
     self = this
-    blub = Ember.A()
     found_favs = []
     @store.find("job",
       favorite: true
