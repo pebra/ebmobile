@@ -8,5 +8,3 @@ gem 'poltergeist', '~> 1.5.0'
 gem 'capybara'
 gem 'rspec'
 gem 'pry'
-
-gem 'rspec'
