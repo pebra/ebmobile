@@ -47,6 +47,9 @@
         %li.list-item-multi-line.job-description
           {{{description}}}
           <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+          {{#if company}}
+          <h3>Mehr Informationen zur {{company.name}}</h3>
+          {{/if}}
 
     -# Favorites#index
     %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}

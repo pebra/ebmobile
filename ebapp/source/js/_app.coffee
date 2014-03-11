@@ -17,6 +17,22 @@ App.Job = DS.Model.extend(
   favorite:         DS.attr()
   description:      DS.attr()
   firm_id:          DS.attr()
+
+  getCompany: (callback)->
+    maybe_company = this.store.getById('company', this.get('firm_id'))
+    if maybe_company?
+      callback maybe_company
+    else
+      Ember.$.ajax
+        url: App.get_api_url("firm")
+        data:
+          id: this.get('firm_id')
+        dataType: "jsonp"
+        success: (data)=>
+          company = this.store.createRecord("company", data)
+          company.save()
+          callback company
+
 )
 
 App.Company = DS.Model.extend(
@@ -84,6 +100,7 @@ App.FavoritesRoute = Ember.Route.extend(
 )
 App.JobsJobRoute = Ember.Route.extend
   onList: false
+  company: null
   model: (params) ->
     console.log "model hook triggered"
     self = this
@@ -98,7 +115,9 @@ App.JobsJobRoute = Ember.Route.extend
             res.set "description", job.description
             res.set "firm_id", job.firm_id
             res.save()
-      if !res
+      res.getCompany (company)->
+        self.get('controller').set('company', company)
+        console.log company
       res
   actions:
     addToFavorites: (job) ->
@@ -137,7 +156,7 @@ App.SearchRoute = Ember.Route.extend
               jobs.pushObject job
             else
               console.log "Neuer Job gefunden: #{data.id}"
-              job = self.store.createRecord("job", data)
+              job = self.store.creaeRecord("job", data)
               job.save()
               jobs.pushObject job
 
