@@ -16,7 +16,20 @@ App.Job = DS.Model.extend(
   mobile_logo_url:  DS.attr()
   favorite:         DS.attr()
   description:      DS.attr()
+  firm_id:          DS.attr()
 )
+
+App.Company = DS.Model.extend(
+  company_id:         DS.attr()
+  name:               DS.attr()
+  username:           DS.attr()
+  'firm-logo-url':    DS.attr()
+  description:        DS.attr()
+  statement:          DS.attr()
+  contact:            DS.attr()
+  contact_image_url:  DS.attr()
+)
+
 App.Settings = DS.Model.extend(
   radius: DS.attr()
   city: DS.attr()
@@ -25,7 +38,7 @@ App.Settings = DS.Model.extend(
 )
 App.Favorite = DS.Model.extend(job_id: DS.attr())
 App.get_api_url = (api_type) ->
-  "http://www.empfehlungsbund.de/api/" + api_type + ".jsonp?callback=json_callback"
+  "https://www.empfehlungsbund.de/api/" + api_type + ".jsonp?callback=json_callback"
 
 App.Router.map ->
   @resource "jobs", ->
@@ -58,10 +71,12 @@ App.FavoritesRoute = Ember.Route.extend(
         found_favs.push fav.id
 
       url = App.get_api_url("joblist") + "&ids=" + found_favs.toString()
+      spinnerplugin.show()
       Ember.$.ajax
         url: url
         dataType: "jsonp"
         success: (jobs) ->
+          spinnerplugin.hide()
           jobs.map (job) ->
             self.store.find("job", job.id).then (result) ->
               result.set "mobile_logo_url", logo_url
@@ -73,12 +88,17 @@ App.JobsJobRoute = Ember.Route.extend
     console.log "model hook triggered"
     self = this
     self.store.find("job", params.job_id).then (res) ->
-      Ember.$.ajax
-        url: App.get_api_url("job") + "&id=" + params.job_id
-        dataType: "jsonp"
-        success: (job) ->
-          res.set "description", job.description
-          res.save()
+      if !res.get('description')?
+        spinnerplugin.show()
+        Ember.$.ajax
+          url: App.get_api_url("job") + "&id=" + params.job_id
+          dataType: "jsonp"
+          success: (job) ->
+            spinnerplugin.hide()
+            res.set "description", job.description
+            res.set "firm_id", job.firm_id
+            res.save()
+      if !res
       res
   actions:
     addToFavorites: (job) ->

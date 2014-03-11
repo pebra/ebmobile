@@ -40,7 +40,7 @@ cordova run android
 # navigate to 192.168.2.102:8080
 ```
 
-adjust IP of course! 
+adjust IP of course!
 
 ### Known bug:
 When running middleman build the built index.html contains wrong links to all.css and all.js. The leading "/" hast to be removed. "/css/all.css" => "/css/all.css"
@@ -48,8 +48,14 @@ When running middleman build the built index.html contains wrong links to all.cs
 ### TODOS
 
 ### Milestone Store
-* Stylings, -> @pebra
+
 * Autocompletion
 * "Teilen" action ausloesbar? also Job durch das Android Share schiken @pebra
   * Merkliste als E-Mail(??) schicken
 * Buildskript: Pfade!!! /js -> js @zealot128
+* Lade-Indikator
+* Notification/ gemerkt etc
+* Geolocation
+
+
+
