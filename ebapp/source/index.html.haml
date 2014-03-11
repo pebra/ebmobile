@@ -11,6 +11,8 @@
     -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
     %title Empfehlungsbund-App
   %body
+
+    -# Application Template
     %script{:type => "text/x-handlebars"}
       .page
         %header.action-bar.fixed-top
@@ -27,6 +29,8 @@
           .inset
             {{outlet}}
 
+
+    -# Jobs#show
     %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
       <a {{bindAttr href="job_link"}} target="_blank">
       %h2 {{title}}
@@ -41,6 +45,7 @@
         %li.list-item-multi-line
           {{{description}}}
 
+    -# Favorites#index
     %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}
       %ul.list
         %li.list-divider Merkliste
@@ -55,14 +60,13 @@
         Keine Einträge in der Liste
         {{/each}}
 
-
+    -# index page -> search
     %script{"data-template-name" => "search", :type => "text/x-handlebars"}
       %form.form-flex
         %label.block-label Suchbegriff
         {{view App.SearchField placeholder="z.B. Java Developer" value=query target="App.SearchRoute" action="search"}}
         .form-actions
           <button {{action 'search' model}} type="button" class="btn btn-block">Suchen</button>
-
       %ul.list
         %li.list-divider
           Ergebnisse
@@ -75,6 +79,7 @@
             {{firm}} - {{location}}
         {{/each}}
 
+    -# Settings#show
     %script{"data-template-name" => "settings", :type => "text/x-handlebars"}
       %form.form-flex
         %label.block-label Suchradius und Ort
