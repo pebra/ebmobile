@@ -24,6 +24,8 @@
             %li
               {{#linkTo 'index' class="action"}}<i class="icon-search"></i>{{/linkTo}}
             %li
+              {{#linkTo 'favorites' class="action"}}<i class="icon-star-full"></i>{{/linkTo}}
+            %li
               {{#linkTo 'settings' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
         .content
           .inset
@@ -42,7 +44,7 @@
           {{else}}
           <button {{action 'addToFavorites' model}} class="btn btn-small"><i class='icon-plus'></i> Auf die Merkliste</button>
           {{/if}}
-        %li.list-item-multi-line
+        %li.list-item-multi-line.job-description
           {{{description}}}
 
     -# Favorites#index
@@ -73,7 +75,7 @@
         {{#each jobsResults}}
         %li.list-item-multi-line.selectable
           {{#link-to "jobs.job" id}}
-          %h3 {{truncate title 30}}
+          %h3.truncated {{title}}
           {{/link-to}}
           %p
             {{firm}} - {{location}}
