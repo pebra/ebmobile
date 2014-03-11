@@ -1,5 +1,4 @@
 *.sw?
-.cordova
 work
 .DS_Store
 www/css/
