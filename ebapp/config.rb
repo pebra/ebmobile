@@ -77,6 +77,5 @@ configure :build do
 end
 
 ready do
-  sprockets.append_path '_lib/'
-  sprockets.append_path 'spec/'
+  sprockets.append_path File.join(root, 'bower_components')
 end
