@@ -1,3 +1,6 @@
+window.spinnerplugin =
+  show: ->
+  hide: ->
 window.App = Ember.Application.create()
 App.LSAdapter = DS.LSAdapter.extend(namespace: "ebund")
 App.ApplicationAdapter = App.LSAdapter
@@ -102,7 +105,6 @@ App.JobsJobRoute = Ember.Route.extend
   onList: false
   company: null
   model: (params) ->
-    console.log "model hook triggered"
     self = this
     self.store.find("job", params.job_id).then (res) ->
       if !res.get('description')?
@@ -115,9 +117,8 @@ App.JobsJobRoute = Ember.Route.extend
             res.set "description", job.description
             res.set "firm_id", job.firm_id
             res.save()
-      res.getCompany (company)->
-        self.get('controller').set('company', company)
-        console.log company
+            res.getCompany (company)-> self.get('controller').set('company', company)
+      res.getCompany (company)-> self.get('controller').set('company', company)
       res
   actions:
     addToFavorites: (job) ->
@@ -125,7 +126,6 @@ App.JobsJobRoute = Ember.Route.extend
         job_hit.set "favorite", true
         job_hit.save()
     removeFromFavorites: (job) ->
-      console.log job
       job.set "favorite", false
       job.save()
 
@@ -156,7 +156,7 @@ App.SearchRoute = Ember.Route.extend
               jobs.pushObject job
             else
               console.log "Neuer Job gefunden: #{data.id}"
-              job = self.store.creaeRecord("job", data)
+              job = self.store.createRecord("job", data)
               job.save()
               jobs.pushObject job
 

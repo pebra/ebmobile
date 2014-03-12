@@ -46,9 +46,13 @@
           {{/if}}
         %li.list-item-multi-line.job-description
           {{{description}}}
-          <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
           {{#if company}}
           <h3>Mehr Informationen zur {{company.name}}</h3>
+          <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
+          .company-description
+            <p> {{{company.description}}} </p>
+            <h4>Statement</h4>
+            <p> {{{company.statement}}} </p>
           {{/if}}
 
     -# Favorites#index
