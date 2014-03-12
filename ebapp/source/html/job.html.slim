@@ -2,9 +2,9 @@ div ng-if='job != undefined'
   h2 {{job.title}}
   ul.list.inset
     li.list-item-multi-line
-      button class="btn btn-small" ng-if='on_merkliste' ng-click='unmerk(job)'
+      button class="btn btn-small" ng-if='on_merkliste' ng-click='unmerk()'
         i.icon-close Von Merkliste entfernen
-      button class="btn btn-small" ng-if='!on_merkliste' ng-click='merk(job)'
+      button class="btn btn-small" ng-if='!on_merkliste' ng-click='merk()'
         i.icon-plus Auf die Merkliste
 
     li.list-item-multi-line.job-description ng-bind-html='html_safe(job.description)'
@@ -26,16 +26,16 @@ div ng-if='job != undefined'
         h3 Arbeitgeberauszeichnungen
 
         div.reward ng-repeat='reward in company.rewards'
-          a href='{{reward.link}}'
+          a ng-href='{{reward.link}}'
             img(ng-src="{{reward.badge}}" style='width: 50px; background: white')
             = ' '
             span {{reward.name}}
 
       ul.list
         li
-          a href='{{company.url_firma}}'
+          a ng-href='{{company.url_firma}}'
             | Internetseite
-          a href='{{company.facebook}}' ng-if='company.facebook'
+          a ng-href='{{company.facebook}}' ng-if='company.facebook'
             | Facebook-Fanpage
-          a href='{{company.twitter}}' ng-if='company.twitter'
+          a ng-href='{{company.twitter}}' ng-if='company.twitter'
             | Twitter

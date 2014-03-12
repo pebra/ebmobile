@@ -28,7 +28,8 @@ App.controller 'SearchController', ['$scope','Job', ($scope, Job)->
 ]
 
 App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste',($scope, Job, $routeParams, $sce, Company, merkliste)->
-
+  $scope.job = null
+  $scope.company = null
   Job.get { id: $routeParams.jobId }, (r)->
     $scope.job = r
     Company.get { id: r.company_id, domain_name: r.domain_name }, (r) ->
@@ -43,17 +44,26 @@ App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Compan
   $scope.unmerk = (job)->
     merkliste.unmerk($scope.job)
     $scope.on_merkliste = false
+]
 
+App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Job, merkliste)->
+  $scope.jobs = merkliste.all()
 ]
 
 App.factory 'merkliste', ->
-  liste = {}
+  localStorage.merkliste = {} unless localStorage.liste
   isMerked: (id)->
-    !!liste[id]
+    !!localStorage["merkliste-#{id}"]
   merk: (job)->
-    liste[job.id] = job
+    localStorage["merkliste-#{job.id}"] = JSON.stringify(job)
   unmerk: (job) ->
-    delete liste[job.id]
+    delete localStorage["merkliste-#{job.id}"]
+  all: ->
+    result = []
+    $.each(localStorage, (a,b)->
+      result.push(JSON.parse(b)) if /^merkliste-/.test(a))
+    result
+
 
 
 
@@ -65,6 +75,9 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
      .when '/job/:jobId',
        templateUrl: '/html/job.html'
        controller: 'JobController'
+     .when '/merkliste',
+       templateUrl: '/html/merkliste.html'
+       controller: 'MerklisteController'
      .otherwise( redirectTo: '/')
 ]
 

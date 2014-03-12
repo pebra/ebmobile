@@ -12,7 +12,7 @@ div ng-if='result.query != undefined'
       ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
 
     li ng-repeat='job in result.jobs'
-      a href="#/job/{{job.id}}"
+      a ng-href="#/job/{{job.id}}"
         h3.truncated
           | {{job.title}}
       p {{job.company_name}} - {{job.location}}
