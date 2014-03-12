@@ -1,13 +1,18 @@
-form.form-flex ng-submit='search()' ng-controller="SearchController"
+form.form-flex ng-submit='search()'
   label.block-label Suchbegriff
   input.input-text type='text' placeholder='z.B. Java' ng-model='query'
   .form-actions
     input.btn.btn-block type='submit' value='Suchen'
-ul.list
-  li.list-divider
-    Ergebnisse
-  /* li ng-repeat='' */
-    a href=''
-      h3.truncated
-      | {{title}}
-    p {{company-name}} - {{location}}
+
+div ng-if='result.query != undefined'
+  ul.list
+    li.list-divider
+      | Suche nach "{{result.query}}" lieferte
+
+      ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
+
+    li ng-repeat='job in result.jobs'
+      a href="#/job/{{job.id}}"
+        h3.truncated
+          | {{job.title}}
+      p {{job.company_name}} - {{job.location}}
