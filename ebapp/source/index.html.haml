@@ -5,9 +5,6 @@
     %meta{:content => "telephone=no", :name => "format-detection"}/
     %meta{:content => "user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height", :name => "viewport"}/
     = stylesheet_link_tag "all"
-    -#<link rel="stylesheet" type="text/css" href="css/index.css" />
-    -#%link{:href => "css/normalize.css", :rel => "stylesheet"}/
-    -#%link{:href => "css/style.css", :rel => "stylesheet"}/
     -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
     %title Empfehlungsbund-App
   %body
@@ -111,6 +108,7 @@
     %script{:src => "cordova.js", :type => "text/javascript"}
 
     = javascript_include_tag  "all"
+
     / initialize cordova app
     :javascript
       app.initialize();
