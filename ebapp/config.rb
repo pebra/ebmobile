@@ -19,7 +19,12 @@
 #
 # With no layout
 page "index.html", :layout => false
-page "spec.html", :layout => false
+
+Slim::Engine.set_default_options :pretty => true
+
+# Set template languages
+set :slim, :layout_engine => :slim
+
 #
 # With alternative layout
 # page "/path/to/file.html", :layout => :otherlayout

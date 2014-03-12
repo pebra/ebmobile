@@ -1,36 +1,32 @@
-!!!
-%html
-  %head
-    %meta{:charset => "utf-8"}/
-    %meta{:content => "telephone=no", :name => "format-detection"}/
-    %meta{:content => "user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height", :name => "viewport"}/
-    = stylesheet_link_tag "all"
+html
+  head
+    meta charset="utf-8"
+    meta content="telephone=no" name="format-detection"
+    meta content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" name="viewport"
+    == stylesheet_link_tag "all"
     -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
-    %title Empfehlungsbund-App
-  %body
-
-    -# Application Template
-    %script{:type => "text/x-handlebars"}
-      .page
-        %header.action-bar.fixed-top
-          {{#linkTo 'index' class="app-icon action"}}
-          <i class="icon-fries"></i>
-          {{/linkTo}}
-          %h1.title Empfehlungsbund
-          %ul.actions.pull-right
-            %li
-              {{#linkTo 'index' class="action"}}<i class="icon-search"></i>{{/linkTo}}
-            %li
-              {{#linkTo 'favorites' class="action"}}<i class="icon-star-full"></i>{{/linkTo}}
-            %li
-              {{#linkTo 'settings' class="action"}}<i class="icon-settings"></i>{{/linkTo}}
-        .content
-          .inset
-            {{outlet}}
-
+    title Empfehlungsbund-App
+  body ng-app='ebmobile'
+    .page
+      header.action-bar.fixed-top
+        a.action.app-icon href='#/'
+          i.icon-fries
+        h1.title Empfehlungsbund
+        ul.actions.pull-right
+          li
+            a.action(href='#/search')
+              i.icon-search
+          li
+            a.action href='#/favorites'
+              i.icon-star-full
+          li
+            a href='#/settings' class='action'
+              i.icon-settings
+      .content
+        .inset[ng-view]
 
     -# Jobs#show
-    %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"}
+    /* %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"} */
       <a {{bindAttr href="job_link"}} target="_blank">
       %h2 {{title}}
       </a>
@@ -53,7 +49,7 @@
           {{/if}}
 
     -# Favorites#index
-    %script{"data-template-name" => "favorites", :type => "text/x-handlebars"}
+    /* %script{"data-template-name" => "favorites", :type => "text/x-handlebars"} */
       %ul.list
         %li.list-divider Merkliste
         {{#each model}}
@@ -68,7 +64,7 @@
         {{/each}}
 
     -# index page -> search
-    %script{"data-template-name" => "search", :type => "text/x-handlebars"}
+    /* %script{"data-template-name" => "search", :type => "text/x-handlebars"} */
       %form.form-flex
         %label.block-label Suchbegriff
         {{view App.SearchField placeholder="z.B. Java Developer" value=query target="App.SearchRoute" action="search"}}
@@ -87,7 +83,7 @@
         {{/each}}
 
     -# Settings#show
-    %script{"data-template-name" => "settings", :type => "text/x-handlebars"}
+    /* %script{"data-template-name" => "settings", :type => "text/x-handlebars"} */
       %form.form-flex
         %label.block-label Suchradius und Ort
         .flex-group
@@ -95,7 +91,7 @@
           {{input class="input-text flex1" type="number" placeholder="Suchradius um den Ort in km" value=radius }}
         <button {{action 'submitSettings' model}} class="btn btn-block">Speichern</button>
 
-    %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"}
+    /* %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"} */
       %h2 Suche
       %ul
         {{#each model}}
@@ -105,11 +101,11 @@
         {{else}}
         Keine Ergebnisse
         {{/each}}
-    %script{:src => "cordova.js", :type => "text/javascript"}
+    /* %script{:src => "cordova.js", :type => "text/javascript"} */
 
-    = javascript_include_tag  "all"
+    == javascript_include_tag  "all"
 
     / initialize cordova app
-    :javascript
-      app.initialize();
+    script type='application/javascript'
+      | app.initialize();
 
