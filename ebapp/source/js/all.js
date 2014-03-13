@@ -4,4 +4,7 @@
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
+//= require angular-cookies/angular-cookies
+//= require angularjs-geolocation/dist/angularjs-geolocation.min.js
+//= require angularLocalStorage/src/angularLocalStorage
 //= require _app

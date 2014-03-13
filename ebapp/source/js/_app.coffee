@@ -1,4 +1,4 @@
-window.App = angular.module('ebmobile', ['ngRoute','ngResource'])
+window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalStorage','ngCookies', 'geolocation'])
 
 
 App.controller 'SearchController', ['$scope','Job', ($scope, Job)->
@@ -50,6 +50,21 @@ App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Jo
   $scope.jobs = merkliste.all()
 ]
 
+App.controller 'SettingsController', ['$scope', 'storage', 'geolocation', '$sce', ($scope, storage, geolocation, $sce)->
+  storage.bind($scope,'radius', defaultValue: 50)
+  storage.bind($scope,'coordinates')
+
+  $scope.google_maps_url = ->
+    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d20066.224925335442!2d13.7874678!3d#{$scope.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f#{$scope.coordinates.lng}!3m2!1m1!1s0x0%3A0x0!5e0!3m2!1sde!2sde!4v1394668848740"
+
+
+  $scope.url_safe = (string)-> $sce.trustAsUrl(string)
+  $scope.geolocate = ->
+    geolocation.getLocation().then (data)->
+      $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
+
+]
+
 App.factory 'merkliste', ->
   localStorage.merkliste = {} unless localStorage.liste
   isMerked: (id)->
@@ -65,8 +80,6 @@ App.factory 'merkliste', ->
     result
 
 
-
-
 App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
    $routeProvider
      .when '/',
@@ -78,6 +91,9 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
      .when '/merkliste',
        templateUrl: '/html/merkliste.html'
        controller: 'MerklisteController'
+     .when '/settings',
+       templateUrl: '/html/settings.html'
+       controller: 'SettingsController'
      .otherwise( redirectTo: '/')
 ]
 
