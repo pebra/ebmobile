@@ -1,0 +1,15 @@
+{
+  "name": "ubilabs-geocomplete",
+  "homepage": "https://github.com/ubilabs/geocomplete",
+  "version": "1.5.1",
+  "_release": "1.5.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.5.1",
+    "commit": "1faadcfca6d38dde531fc2641b0e22ea128445df"
+  },
+  "_source": "git://github.com/ubilabs/geocomplete.git",
+  "_target": "~1.5.1",
+  "_originalSource": "ubilabs-geocomplete",
+  "_direct": true
+}

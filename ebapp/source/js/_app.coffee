@@ -1,7 +1,11 @@
 window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalStorage','ngCookies', 'geolocation'])
 
 
-App.controller 'SearchController', ['$scope','Job', ($scope, Job)->
+App.controller 'SearchController', ['$scope','Job', 'storage', ($scope, Job, storage)->
+  storage.bind($scope,'radius', defaultValue: 50)
+  storage.bind($scope,'coordinates')
+  storage.bind($scope,'lastQuery')
+
   $scope.result_pluralize =
     '0': 'kein Suchergebnis'
     '1': 'ein Suchergebnis'
@@ -12,13 +16,17 @@ App.controller 'SearchController', ['$scope','Job', ($scope, Job)->
     $scope.query = $scope.lastQuery
 
   $scope.search = ->
-    lastQuery = $scope.query
+    $scope.lastQuery = $scope.query
     params =
       q: $scope.query
+    if $scope.coordinates
+      params.lat = $scope.coordinates.lat
+      params.lon = $scope.coordinates.lng
+      params.radius = $scope.radius
 
     Job.search params, (r)->
       $scope.result =
-        query: lastQuery
+        query: $scope.lastQuery
         current_page: r.current_page
         jobs: r.jobs
         length: r.length
@@ -50,19 +58,53 @@ App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Jo
   $scope.jobs = merkliste.all()
 ]
 
-App.controller 'SettingsController', ['$scope', 'storage', 'geolocation', '$sce', ($scope, storage, geolocation, $sce)->
+App.controller 'SettingsController', ['$scope', 'storage', 'geolocation', '$http', '$rootScope', ($scope, storage, geolocation, $http)->
+  api_key = '31b5f3bb8c82493ca2445018f20a3d59'
   storage.bind($scope,'radius', defaultValue: 50)
   storage.bind($scope,'coordinates')
 
-  $scope.google_maps_url = ->
-    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d20066.224925335442!2d13.7874678!3d#{$scope.coordinates.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f#{$scope.coordinates.lng}!3m2!1m1!1s0x0%3A0x0!5e0!3m2!1sde!2sde!4v1394668848740"
-
-
-  $scope.url_safe = (string)-> $sce.trustAsUrl(string)
   $scope.geolocate = ->
     geolocation.getLocation().then (data)->
       $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
 
+  $scope.search = (term)->
+    $http.jsonp('https://www.empfehlungsbund.de/api/v2/utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK'}})
+      .success (data)->
+        $scope.search_result = data
+        $scope.coordinates = { lat: data.lat, lng: data.lng}
+      .error (data)->
+        console.log data
+  $scope.updateMap = ->
+    if $scope.coordinates?.lat?
+      if !$scope.map
+        osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        osm = new L.TileLayer(osmUrl, { attribution: 'Map data © OpenStreetMap contributors' })
+        map = L.map('map')
+        $scope.radiusCircle = L.circle([$scope.coordinates.lat,$scope.coordinates.lng], 10000, {
+          color: 'blue',
+          fillColor: '#22e',
+          fillOpacity: 0.4
+        }).addTo(map)
+        map.addLayer(osm)
+        $scope.map = map
+      radius = parseInt($scope.radius) * 1000
+      zoom = switch
+        when radius < 10 then 10
+        when radius < 50000 then 9
+        when radius < 100000 then 8
+        when radius < 200000 then 7
+        when radius < 500000 then 6
+        when radius >= 500000 then 4
+      $scope.map.setView([$scope.coordinates.lat, $scope.coordinates.lng], zoom)
+
+      if radius > 0
+        $scope.radiusCircle.setRadius radius
+      $scope.radiusCircle.setLatLng([$scope.coordinates.lat, $scope.coordinates.lng])
+
+
+  $scope.updateMap()
+  $scope.$watch('radius', $scope.updateMap)
+  $scope.$watch('coordinates', $scope.updateMap)
 ]
 
 App.factory 'merkliste', ->
@@ -109,7 +151,6 @@ App.factory 'Job', ['$resource' , ($resource) ->
         id: 'search'
         callback: 'JSON_CALLBACK'
 ]
-
 
 App.factory 'Company', ['$resource' , ($resource) ->
   $resource 'https://www.empfehlungsbund.de/api/v2/companies/:id.jsonp', null,

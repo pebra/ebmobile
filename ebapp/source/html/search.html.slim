@@ -1,8 +1,8 @@
 form.form-flex ng-submit='search()'
-  label.block-label Suchbegriff
-  input.input-text type='text' placeholder='z.B. Java' ng-model='query'
-  .form-actions
-    input.btn.btn-block type='submit' value='Suchen'
+  .flex-group
+    label.block-label Suchbegriff
+    input.input-text.flex1 type='text' placeholder='z.B. Java' ng-model='query'
+  input.btn.btn-block type='submit' value='Suchen'
 
 div ng-if='result.query != undefined'
   ul.list
@@ -10,6 +10,9 @@ div ng-if='result.query != undefined'
       | Suche nach "{{result.query}}" lieferte
 
       ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
+
+      span[ng-if='coordinates']
+        | <a href='#/settings'> im {{radius}}km Umkreis um den Standort</a>
 
     li ng-repeat='job in result.jobs'
       a ng-href="#/job/{{job.id}}"

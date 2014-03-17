@@ -4,10 +4,22 @@ form.form-flex
     input.input-text.flex1 type='number' ng-model='radius' name='radius'
   .flex-group
 
-button.btn ng-click='geolocate()' Positions ermitteln
+button.btn ng-click='geolocate()' Positions automatisch ermitteln
 
-div ng-if='coordinates.lat'
-  p
-    | {{coordinates.lat}} {{coordinates.lng}}
-  iframe ng-src='{{url_safe(google_maps_url())}}' width='600' height='450' frameborder='0' style='border:0'
+form.form-flex[ng-submit='search(search_query)']
+  .flex-group
+    label.block-label for='geosearch' Alternativ: Ortssuche
+    input.input-text.flex1[type='text' ng-model='search_query']
+    button.btn Suchen
+
+
+div ng-if='search_result'
+  .glex-group
+  div
+    | Suchergebnis: {{search_result.name}}
+
+#map style='height: 400px; max-width: 600px'
+
+
+
 
