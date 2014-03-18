@@ -28,6 +28,7 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location', ($s
 
   if $location.search().q?
     $scope.query = $location.search().q
+    $scope.lastQuery = $scope.query
     $scope.executeSearch()
   else if $scope.lastQuery
     $scope.query = $scope.lastQuery
