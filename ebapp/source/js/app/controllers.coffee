@@ -1,4 +1,4 @@
-App.controller 'SearchController', ['$scope','Job', 'settings', '$location', ($scope, Job, settings, $location)->
+App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tags', ($scope, Job, settings, $location, tags)->
   settings.bind($scope)
 
   $scope.result_pluralize =
@@ -32,14 +32,15 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location', ($s
     $scope.executeSearch()
   else if $scope.lastQuery
     $scope.query = $scope.lastQuery
+
+    tags.get (data)->
+      $scope.tags = data
 ]
 App.controller 'IndexController', ($scope, settings, $location)->
   settings.bind($scope)
-
-  $scope.search = ->
-    $scope.lastQuery = $scope.query
-    $location.path("/search").search('q', $scope.query)
-
+  $scope.autocomplete_result = ['Ruby','Java']
+  $scope.autocomplete = (q)->
+    # $scope.autocomplete_result = ['Ruby', 'Java']
 
 App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste', ($scope, Job, $routeParams, $sce, Company, merkliste)->
   $scope.job = null
