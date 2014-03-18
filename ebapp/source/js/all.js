@@ -10,3 +10,4 @@
 //= require leaflet/dist/leaflet-src.js
 //= require ubilabs-geocomplete/jquery.geocomplete.js
 //= require _app
+//= require_tree ./app/
