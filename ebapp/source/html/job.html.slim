@@ -1,11 +1,16 @@
 div ng-if='job != undefined'
   h2 {{job.title}}
   ul.list.inset
-    li.list-item-multi-line
-      button class="btn btn-small" ng-if='on_merkliste' ng-click='unmerk()'
-        i.icon-close Von Merkliste entfernen
-      button class="btn btn-small" ng-if='!on_merkliste' ng-click='merk()'
-        i.icon-plus Auf die Merkliste
+    li.list-item-multi-line.job-actions
+      button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
+        i.icon-remove
+        span  Von Merkliste entfernen
+      button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
+        i.icon-accept
+        span Auf die Merkliste
+      button.btn.btn-small onclick="window.plugins.socialsharing.share('Great Job!')"
+        i.icon-share
+        span Teilen
 
     li.list-item-multi-line.job-description ng-bind-html='html_safe(job.description)'
 
