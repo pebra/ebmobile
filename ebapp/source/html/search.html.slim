@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 == partial 'search_form'
 div.content-padded ng-if='result.query != undefined'
   | Suche nach "{{result.query}}" lieferte
-=======
-search-form
-div ng-if='result.query != undefined'
-  ul.list
-    li.list-divider
-      | Suche nach "{{result.query}}" lieferte
->>>>>>> a7f23278b5fb447a55083180fdf53ccabb7de15a
 
   ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
 

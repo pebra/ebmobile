@@ -1,0 +1,31 @@
+{
+  "name": "ratchet2",
+  "version": "2.0.1",
+  "homepage": "https://github.com/nbsp/ratchet2",
+  "authors": [
+    "kxy <kyrwastaken@gmail.com>"
+  ],
+  "description": "easy app prototyping",
+  "main": "css/ratchet.css",
+  "keywords": [
+    "ratchet",
+    "twbs",
+    "v2",
+    "html",
+    "javascript",
+    "js",
+    "css",
+    "app",
+    "prototype",
+    "phonegap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bwr",
+    "test",
+    "tests"
+  ]
+}

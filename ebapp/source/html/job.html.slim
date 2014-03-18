@@ -6,7 +6,7 @@ div.content-padded ng-if='job != undefined'
   button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
     i.icon-accept
     span Auf die Merkliste
-  button.btn.btn-small onclick="window.plugins.socialsharing.share('Great Job!')"
+  button.btn.btn-small ng-click="cordova.plugins.SocialShare.share(null, null, { dialogTitle : 'Share', url: 'http://google.com', text: 'wow much amaze'} )"
     i.icon-share
     span Teilen
 

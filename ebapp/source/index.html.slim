@@ -8,10 +8,9 @@ html
     -#meta content="telephone=no" name="format-detection"
     -#meta content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" name="viewport"
     == stylesheet_link_tag "all"
-    -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
+    script src="http://192.168.6.211:8080/target/target-script-min.js"
     title Empfehlungsbund-App
   body ng-app='ebmobile'
-<<<<<<< HEAD
     header.bar.bar-tab
       a.tab-item href='#/' title="Search"
         span.icon.icon-search
@@ -24,7 +23,15 @@ html
         span.tab-label Einstellungen
     .content
       .inset[ng-view]
+      #deviceready.blink
+        p.event.listening Connecting to Device
+        p.event.received Device is Ready
+    == javascript_include_tag  "all"
 
+    script type="text/javascript" src="cordova.js"
+    / initialize cordova app
+    script type='application/javascript'
+      | window.cordova_app.initialize();
     -# Jobs#show
     /* %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"} */
       <a {{bindAttr href="job_link"}} target="_blank">
@@ -103,27 +110,3 @@ html
         {{/each}}
     /* %script{:src => "cordova.js", :type => "text/javascript"} */
 
-=======
-    .page
-      header.action-bar.fixed-top
-        a.action.app-icon href='#/'
-          i.icon-fries
-        h1.title Empfehlungsbund
-        ul.actions.pull-right
-          li
-            a.action(href='#/search')
-              i.icon-search
-          li
-            a.action href='#/merkliste'
-              i.icon-star-full
-          li
-            a.action href='#/settings'
-              i.icon-settings
-      .content
-        .inset[ng-view]
->>>>>>> a7f23278b5fb447a55083180fdf53ccabb7de15a
-    == javascript_include_tag  "all"
-
-    / initialize cordova app
-    script type='application/javascript'
-      | app.initialize();

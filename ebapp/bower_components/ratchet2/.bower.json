@@ -1,0 +1,40 @@
+{
+  "name": "ratchet2",
+  "homepage": "https://github.com/nbsp/ratchet2",
+  "authors": [
+    "kxy <kyrwastaken@gmail.com>"
+  ],
+  "description": "easy app prototyping",
+  "main": "css/ratchet.css",
+  "keywords": [
+    "ratchet",
+    "twbs",
+    "v2",
+    "html",
+    "javascript",
+    "js",
+    "css",
+    "app",
+    "prototype",
+    "phonegap"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bwr",
+    "test",
+    "tests"
+  ],
+  "_release": "29c46d11f3",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "29c46d11f39132b60c6b64be4dccc6ce3e066ec9"
+  },
+  "_source": "git://github.com/nbsp/ratchet2.git",
+  "_target": "*",
+  "_originalSource": "ratchet2",
+  "_direct": true
+}
