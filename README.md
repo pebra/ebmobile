@@ -19,14 +19,14 @@ In order to deploy the app to your android phone run
 
 
 ```bash
-bundle exec middleman build
-cordova build
-cordova run android
+bundle exec middleman build #run this in the ebapp folder
+cordova build #run this from the project root
+cordova run android #aswell as this
 ```
 
 ## Debug
 
-weinre let you debug your in mobile chrome
+weinre lets you debug your in mobile chrome
 
 ```bash
 npm install -g weinre
@@ -43,16 +43,15 @@ cordova run android
 adjust IP of course!
 
 ### Known bug:
-When running middleman build the built index.html contains wrong links to all.css and all.js. The leading "/" hast to be removed. "/css/all.css" => "/css/all.css"
 
 ### TODOS
 
 ### Milestone Store
 
-* Autocompletion
+* Autocompletion - DONE!
 * "Teilen" action ausloesbar? also Job durch das Android Share schiken @pebra
   * Merkliste als E-Mail(??) schicken
-* Buildskript: Pfade!!! /js -> js @zealot128
+* Buildskript: Pfade!!! /js -> js @zealot128 DONE!
 * Lade-Indikator
 * Notification/ gemerkt etc
 * Geolocation
