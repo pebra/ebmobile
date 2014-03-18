@@ -2,9 +2,9 @@
 
 
 
-ul.list[ng-if='lastQueries']
-  li.list-divider Letzte Suchanfragen
-  li[ng-repeat='query in lastQueries | reverse | limitTo:10']
+.content-padded[ng-if='lastQueries']
+  b Letzte Suchanfragen
+  p[ng-repeat='query in lastQueries | reverse | limitTo:10']
     a ng-href='#/search?q={{query | encodeURIComponent}}'
       | {{query}}
 

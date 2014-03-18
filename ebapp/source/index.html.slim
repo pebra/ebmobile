@@ -1,29 +1,28 @@
 html
   head
     meta charset="utf-8"
-    meta content="telephone=no" name="format-detection"
-    meta content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" name="viewport"
+    meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no"
+
+    meta name="apple-mobile-web-app-capable" content="yes"
+    meta name="apple-mobile-web-app-status-bar-style" content="black">
+    -#meta content="telephone=no" name="format-detection"
+    -#meta content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" name="viewport"
     == stylesheet_link_tag "all"
     -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
     title Empfehlungsbund-App
   body ng-app='ebmobile'
-    .page
-      header.action-bar.fixed-top
-        a.action.app-icon href='#/'
-          i.icon-fries
-        h1.title Empfehlungsbund
-        ul.actions.pull-right
-          li
-            a.action href='#/' title="Search"
-              i.icon-search
-          li
-            a.action href='#/merkliste' title="Favorites"
-              i.icon-star-full
-          li
-            a.action href='#/settings' title="Settings"
-              i.icon-settings
-      .content
-        .inset[ng-view]
+    header.bar.bar-tab
+      a.tab-item href='#/' title="Search"
+        span.icon.icon-search
+        span.tab-label Suche
+      a.tab-item href='#/merkliste' title="Favorites"
+        span.icon.icon-star
+        span.tab-label Merkliste
+      a.tab-item href='#/settings' title="Settings"
+        span.icon.icon-gear
+        span.tab-label Einstellungen
+    .content
+      .inset[ng-view]
 
     -# Jobs#show
     /* %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"} */

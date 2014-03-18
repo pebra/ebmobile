@@ -1,46 +1,46 @@
-div ng-if='job != undefined'
+div.content-padded ng-if='job != undefined'
   h2 {{job.title}}
-  ul.list.inset
-    li.list-item-multi-line.job-actions
-      button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
-        i.icon-remove
-        span  Von Merkliste entfernen
-      button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
-        i.icon-accept
-        span Auf die Merkliste
-      button.btn.btn-small onclick="window.plugins.socialsharing.share('Great Job!')"
-        i.icon-share
-        span Teilen
+  button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
+    i.icon-remove
+    span  Von Merkliste entfernen
+  button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
+    i.icon-accept
+    span Auf die Merkliste
+  button.btn.btn-small onclick="window.plugins.socialsharing.share('Great Job!')"
+    i.icon-share
+    span Teilen
 
-    li.list-item-multi-line.job-description ng-bind-html='html_safe(job.description)'
+  p ng-bind-html='html_safe(job.description)'
 
 
-    li.list-item-multi-line ng-if='company != undefined'
-      img ng-src="https://{{company.logo.resized}}"
-      div ng-if='company.description'
-        h2 Kurzbeschreibung zur {{company.name}}
-        p ng-bind-html='html_safe(company.description)'
+  p ng-if='company != undefined'
+  img ng-src="https://{{company.logo.resized}}"
+  div ng-if='company.description'
+    h2 Kurzbeschreibung zur {{company.name}}
+    p ng-bind-html='html_safe(company.description)'
 
-      div ng-if='company.statement'
-        h3 Mitarbeiterstatement
-        p ng-bind-html='html_safe(company.statement)'
+  div ng-if='company.statement'
+    h3 Mitarbeiterstatement
+    p ng-bind-html='html_safe(company.statement)'
 
-      h3 {{company.name}} im Netz
+  h3 {{company.name}} im Netz
 
-      div ng-if='company.rewards'
-        h3 Arbeitgeberauszeichnungen
+  div ng-if='company.rewards'
+    h3 Arbeitgeberauszeichnungen
 
-        div.reward ng-repeat='reward in company.rewards'
-          a ng-href='{{reward.link}}'
-            img(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
-            = ' '
-            span {{reward.name}}
+    div.reward ng-repeat='reward in company.rewards'
+      a ng-href='{{reward.link}}'
+        img(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
+        = ' '
+        span {{reward.name}}
 
-      ul.list
-        li
-          a ng-href='{{company.url_firma}}'
-            | Internetseite
-          a ng-href='{{company.facebook}}' ng-if='company.facebook'
-            | Facebook-Fanpage
-          a ng-href='{{company.twitter}}' ng-if='company.twitter'
-            | Twitter
+  ul
+    li
+      a ng-href='{{company.url_firma}}' target="_system"
+        | Internetseite
+    li
+      a ng-href='{{company.facebook}}' ng-if='company.facebook' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
+        | Facebook-Fanpage
+    li
+      a ng-href='{{company.twitter}}' ng-if='company.twitter' target="_system"
+        | Twitter

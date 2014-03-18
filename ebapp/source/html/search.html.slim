@@ -1,16 +1,17 @@
 == partial 'search_form'
-div ng-if='result.query != undefined'
-  ul.list
-    li.list-divider
-      | Suche nach "{{result.query}}" lieferte
+div.content-padded ng-if='result.query != undefined'
+  | Suche nach "{{result.query}}" lieferte
 
-      ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
+  ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
 
-      span[ng-if='coordinates']
-        | <a href='#/settings'> im {{radius}}km Umkreis um den Standort</a>
+  span[ng-if='coordinates']
+    | <a href='#/settings'> im {{radius}}km Umkreis um den Standort</a>
 
-    li ng-repeat='job in result.jobs'
-      a ng-href="#/job/{{job.id}}"
-        h3.truncated
-          | {{job.title}}
-      p {{job.company_name}} - {{job.location}}
+ul.table-view
+  li.table-view-cell.media ng-repeat='job in result.jobs'
+    a.navigate-right ng-href="#/job/{{job.id}}"
+      img class="media-object pull-left" 
+      -#ng-src="https://{{job.company_logo}}" width="42px"
+      .media-body
+        | {{job.title}}
+        p {{job.company_name}} - {{job.location}}

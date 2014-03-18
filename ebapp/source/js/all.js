@@ -1,6 +1,6 @@
 //= require _index
-//= require jquery/jquery.min.js
-//= require fries/dist/fries
+//= require jquery/dist/jquery.min.js
+//= require ratchet2/js/ratchet
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
