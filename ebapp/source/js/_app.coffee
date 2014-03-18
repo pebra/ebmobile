@@ -37,19 +37,19 @@ App.factory 'settings', (storage)->
 App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
    $routeProvider
      .when '/',
-       templateUrl: '/html/index.html'
+       templateUrl: 'html/index.html'
        controller: 'IndexController'
      .when '/search',
-       templateUrl: '/html/search.html'
+       templateUrl: 'html/search.html'
        controller: 'SearchController'
      .when '/job/:jobId',
-       templateUrl: '/html/job.html'
+       templateUrl: 'html/job.html'
        controller: 'JobController'
      .when '/merkliste',
-       templateUrl: '/html/merkliste.html'
+       templateUrl: 'html/merkliste.html'
        controller: 'MerklisteController'
      .when '/settings',
-       templateUrl: '/html/settings.html'
+       templateUrl: 'html/settings.html'
        controller: 'SettingsController'
      # .otherwise( redirectTo: '/')
 ]
