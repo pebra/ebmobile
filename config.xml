@@ -9,4 +9,9 @@
     <access origin="*" />
     <preference name="fullscreen" value="true" />
     <preference name="webviewbounce" value="true" />
+
+    <feature name="SocialSharing">
+      <param name="android-package" value="n1.xservices.plugins.SocialSharing"/>
+    </feature>
+
 </widget>
