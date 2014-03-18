@@ -2,6 +2,7 @@ window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalSto
 
 window.p = console.log
 
+App.filter('encodeURIComponent', -> return window.encodeURIComponent)
 
 App.factory 'merkliste', ->
   localStorage.merkliste = {} unless localStorage.liste
@@ -34,8 +35,8 @@ App.factory 'settings', (storage)->
 App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
    $routeProvider
      .when '/',
-       templateUrl: '/html/search.html'
-       controller: 'SearchController'
+       templateUrl: '/html/index.html'
+       controller: 'IndexController'
      .when '/search',
        templateUrl: '/html/search.html'
        controller: 'SearchController'

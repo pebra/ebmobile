@@ -8,10 +8,6 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location', ($s
 
   $scope.result = {}
 
-  $scope.search = ->
-    $scope.lastQuery = $scope.query
-    $location.path("/search").search('q', $scope.query)
-
   $scope.executeSearch = ->
     params =
       q: $scope.query
@@ -36,6 +32,13 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location', ($s
   else if $scope.lastQuery
     $scope.query = $scope.lastQuery
 ]
+App.controller 'IndexController', ($scope, settings, $location)->
+  settings.bind($scope)
+
+  $scope.search = ->
+    $scope.lastQuery = $scope.query
+    $location.path("/search").search('q', $scope.query)
+
 
 App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste', ($scope, Job, $routeParams, $sce, Company, merkliste)->
   $scope.job = null

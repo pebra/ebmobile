@@ -1,0 +1,10 @@
+== partial 'search_form'
+
+
+
+ul.list[ng-if='lastQueries']
+  li.list-divider Letzte Suchanfragen
+  li[ng-repeat='query in lastQueries']
+    a ng-href='#/search?q={{query | encodeURIComponent}}'
+      | {{query}}
+

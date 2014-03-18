@@ -1,9 +1,4 @@
-form.form-flex ng-submit='search()'
-  .flex-group
-    label.block-label Suchbegriff
-    input.input-text.flex1 type='text' placeholder='z.B. Java' ng-model='query'
-  input.btn.btn-block type='submit' value='Suchen'
-
+== partial 'search_form'
 div ng-if='result.query != undefined'
   ul.list
     li.list-divider
