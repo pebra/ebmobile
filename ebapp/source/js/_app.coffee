@@ -3,6 +3,8 @@ window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalSto
 window.p = console.log
 
 App.filter('encodeURIComponent', -> return window.encodeURIComponent)
+App.filter 'reverse', ->
+    return (items)-> items.slice().reverse()
 
 App.factory 'merkliste', ->
   localStorage.merkliste = {} unless localStorage.liste

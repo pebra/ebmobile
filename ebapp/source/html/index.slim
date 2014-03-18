@@ -4,7 +4,7 @@
 
 ul.list[ng-if='lastQueries']
   li.list-divider Letzte Suchanfragen
-  li[ng-repeat='query in lastQueries']
+  li[ng-repeat='query in lastQueries | reverse | limitTo:10']
     a ng-href='#/search?q={{query | encodeURIComponent}}'
       | {{query}}
 
