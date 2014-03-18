@@ -14,13 +14,13 @@ html
         h1.title Empfehlungsbund
         ul.actions.pull-right
           li
-            a.action(href='#/search')
+            a.action href='#/' title="Search"
               i.icon-search
           li
-            a.action href='#/merkliste'
+            a.action href='#/merkliste' title="Favorites"
               i.icon-star-full
           li
-            a href='#/settings' class='action'
+            a.action href='#/settings' title="Settings"
               i.icon-settings
       .content
         .inset[ng-view]
@@ -108,5 +108,3 @@ html
     / initialize cordova app
     script type='application/javascript'
       | app.initialize();
-
-    script type="text/javascript" src="js/SocialSharing.js"
