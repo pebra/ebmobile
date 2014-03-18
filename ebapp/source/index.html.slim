@@ -8,7 +8,7 @@ html
     -#meta content="telephone=no" name="format-detection"
     -#meta content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" name="viewport"
     == stylesheet_link_tag "all"
-    script src="http://192.168.6.211:8080/target/target-script-min.js"
+    -#script src="http://192.168.6.211:8080/target/target-script-min.js"
     title Empfehlungsbund-App
   body ng-app='ebmobile'
     header.bar.bar-tab
@@ -22,10 +22,11 @@ html
         span.icon.icon-gear
         span.tab-label Einstellungen
     .content
-      .inset[ng-view]
-      #deviceready.blink
-        p.event.listening Connecting to Device
-        p.event.received Device is Ready
+      .content-padded
+        .inset[ng-view]
+        #deviceready.blink
+          p.event.listening Connecting to Device
+          p.event.received Device is Ready
     == javascript_include_tag  "all"
 
     script type="text/javascript" src="cordova.js"
