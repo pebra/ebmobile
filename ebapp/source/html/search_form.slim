@@ -1,0 +1,9 @@
+form ng-submit='search()'
+  label.block-label Suchbegriff
+  input.input-text type='text' placeholder='z.B. Java' ng-model='query' ng-change='autocomplete()'
+  .form-actions
+    input.btn.btn-block type='submit' value='Suchen'
+  ul.list.inset[ng-if='autocomplete_result']
+    li[ng-repeat='res in autocomplete_tags | filter:tag_match | limitTo: 5']
+      a ng-click='select_autocomplete(res)'
+        | {{res.match_string}}

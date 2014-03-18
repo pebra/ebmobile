@@ -11,6 +11,7 @@ html
     -#<script src="http://192.168.6.115:8080/target/target-script-min.js"></script>
     title Empfehlungsbund-App
   body ng-app='ebmobile'
+<<<<<<< HEAD
     header.bar.bar-tab
       a.tab-item href='#/' title="Search"
         span.icon.icon-search
@@ -102,6 +103,25 @@ html
         {{/each}}
     /* %script{:src => "cordova.js", :type => "text/javascript"} */
 
+=======
+    .page
+      header.action-bar.fixed-top
+        a.action.app-icon href='#/'
+          i.icon-fries
+        h1.title Empfehlungsbund
+        ul.actions.pull-right
+          li
+            a.action(href='#/search')
+              i.icon-search
+          li
+            a.action href='#/merkliste'
+              i.icon-star-full
+          li
+            a.action href='#/settings'
+              i.icon-settings
+      .content
+        .inset[ng-view]
+>>>>>>> a7f23278b5fb447a55083180fdf53ccabb7de15a
     == javascript_include_tag  "all"
 
     / initialize cordova app

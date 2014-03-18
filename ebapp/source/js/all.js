@@ -8,6 +8,6 @@
 //= require angularjs-geolocation/dist/angularjs-geolocation.min.js
 //= require angularLocalStorage/src/angularLocalStorage
 //= require leaflet/dist/leaflet-src.js
-//= require ubilabs-geocomplete/jquery.geocomplete.js
+//= require allmighty-autocomplete/script/autocomplete.js
 //= require _app
 //= require_tree ./app/
