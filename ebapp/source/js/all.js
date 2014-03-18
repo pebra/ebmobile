@@ -7,7 +7,7 @@
 //= require angular-cookies/angular-cookies
 //= require angularjs-geolocation/dist/angularjs-geolocation.min.js
 //= require angularLocalStorage/src/angularLocalStorage
-// require leaflet/dist/leaflet-src.js
+//= require leaflet/dist/leaflet-src.js
 //= require ubilabs-geocomplete/jquery.geocomplete.js
 //= require _app
 //= require_tree ./app/
