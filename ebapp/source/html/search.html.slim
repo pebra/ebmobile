@@ -1,5 +1,5 @@
 == partial 'search_form'
-div.content-padded ng-if='result.query != undefined'
+div ng-if='result.query != undefined'
   | Suche nach "{{result.query}}" lieferte
 
   ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
