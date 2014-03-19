@@ -12,102 +12,25 @@ html
     title Empfehlungsbund-App
   body ng-app='ebmobile'
     header.bar.bar-tab
-      a.tab-item href='#/' title="Search"
+      a.tab-item href='#/' title="Home"
+        span.icon.icon-home
+        span.tab-label Home
+      a.tab-item href='#/search' title="Suche"
         span.icon.icon-search
         span.tab-label Suche
-      a.tab-item href='#/merkliste' title="Favorites"
+      a.tab-item href='#/merkliste' title="Merkliste"
         span.icon.icon-star
         span.tab-label Merkliste
-      a.tab-item href='#/settings' title="Settings"
+      a.tab-item href='#/settings' title="Einstellungen"
         span.icon.icon-gear
         span.tab-label Einstellungen
     .content
-      .content-padded
-        .inset[ng-view]
+      .content-padded[ng-view]
         #deviceready.blink
           p.event.listening Connecting to Device
           p.event.received Device is Ready
     == javascript_include_tag  "all"
 
     script type="text/javascript" src="cordova.js"
-    / initialize cordova app
     script type='application/javascript'
       | window.cordova_app.initialize();
-    -# Jobs#show
-    /* %script{"data-template-name" => "jobs/job", :type => "text/x-handlebars"} */
-      <a {{bindAttr href="job_link"}} target="_blank">
-      %h2 {{title}}
-      </a>
-      %ul.list.inset
-        %li.list-item-multi-line
-          {{#if this.favorite}}
-          <button {{action 'removeFromFavorites' model}} class="btn btn-small"><i class="icon-close"></i> Von Merkliste entfernen</button>
-          {{else}}
-          <button {{action 'addToFavorites' model}} class="btn btn-small"><i class='icon-plus'></i> Auf die Merkliste</button>
-          {{/if}}
-        %li.list-item-multi-line.job-description
-          {{{description}}}
-          {{#if company}}
-          <h3>Mehr Informationen zur {{company.name}}</h3>
-          <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-          .company-description
-            <p> {{{company.description}}} </p>
-            <h4>Statement</h4>
-            <p> {{{company.statement}}} </p>
-          {{/if}}
-
-    -# Favorites#index
-    /* %script{"data-template-name" => "favorites", :type => "text/x-handlebars"} */
-      %ul.list
-        %li.list-divider Merkliste
-        {{#each model}}
-        %li.list-item-multi-line
-          %h3 {{title}}
-          %p
-            {{#link-to 'jobs.job' id}}
-            <img {{bindAttr src="mobile_logo_url" alt="firm"}} />
-            {{/link-to}}
-        {{else}}
-        Keine Einträge in der Liste
-        {{/each}}
-
-    -# index page -> search
-    /* %script{"data-template-name" => "search", :type => "text/x-handlebars"} */
-      %form.form-flex
-        %label.block-label Suchbegriff
-        {{view App.SearchField placeholder="z.B. Java Developer" value=query target="App.SearchRoute" action="search"}}
-        .form-actions
-          <button {{action 'search' model}} type="button" class="btn btn-block">Suchen</button>
-      %ul.list
-        %li.list-divider
-          Ergebnisse
-        {{#each jobsResults}}
-        %li.list-item-multi-line.selectable
-          {{#link-to "jobs.job" id}}
-          %h3.truncated {{title}}
-          {{/link-to}}
-          %p
-            {{firm}} - {{location}}
-        {{/each}}
-
-    -# Settings#show
-    /* %script{"data-template-name" => "settings", :type => "text/x-handlebars"} */
-      %form.form-flex
-        %label.block-label Suchradius und Ort
-        .flex-group
-          {{input class="input-text flex1" type="text" placeholder="Ort" value=city }}
-          {{input class="input-text flex1" type="number" placeholder="Suchradius um den Ort in km" value=radius }}
-        <button {{action 'submitSettings' model}} class="btn btn-block">Speichern</button>
-
-    /* %script{"data-template-name" => "search/jobs", :type => "text/x-handlebars"} */
-      %h2 Suche
-      %ul
-        {{#each model}}
-        %li
-          {{job_id}}
-          {{firm}}
-        {{else}}
-        Keine Ergebnisse
-        {{/each}}
-    /* %script{:src => "cordova.js", :type => "text/javascript"} */
-

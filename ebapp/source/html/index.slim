@@ -1,8 +1,8 @@
 search-form
 
-.content-padded[ng-if='lastQueries']
-  b Letzte Suchanfragen
-  p[ng-repeat='query in lastQueries | reverse | limitTo:10']
+ul.table-view[ng-if='lastQueries']
+  li.table-view-divider Letzte Suchanfragen
+  li.table-view-cell[ng-repeat='query in lastQueries | reverse | limitTo:10']
     a ng-href='#/search?q={{query | encodeURIComponent}}'
       | {{query}}
 

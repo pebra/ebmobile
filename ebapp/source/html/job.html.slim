@@ -23,24 +23,25 @@ div.content-padded ng-if='job != undefined'
     h3 Mitarbeiterstatement
     p ng-bind-html='html_safe(company.statement)'
 
-  h3 {{company.name}} im Netz
+  ul.table-view ng-if='company.rewards'
+    li.table-view-divider Arbeitgeberauszeichnungen
+    li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
+      a.navigate-right ng-href='{{reward.link}}'
+        img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
+        .media-body[ng-bind='reward.name']
 
-  div ng-if='company.rewards'
-    h3 Arbeitgeberauszeichnungen
-
-    div.reward ng-repeat='reward in company.rewards'
-      a ng-href='{{reward.link}}'
-        img(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
-        = ' '
-        span {{reward.name}}
-
-  ul
-    li
+  ul.table-view
+    li.table-view-divider
+      | {{company.name}} im Internet
+    li.table-view-cell.media
       a ng-href='{{company.url_firma}}' target="_system"
-        | Internetseite
-    li
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Internetseite
+    li.table-view-cell.media
       a ng-href='{{company.facebook}}' ng-if='company.facebook' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
-        | Facebook-Fanpage
-    li
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Facebook-Fanpage
+    li.table-view-cell.media
       a ng-href='{{company.twitter}}' ng-if='company.twitter' target="_system"
-        | Twitter
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Twitter

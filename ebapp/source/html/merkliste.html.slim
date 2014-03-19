@@ -1,7 +1,6 @@
-ul.list
-  li.list-divider Merkliste
-  li.list-item-multi-line ng-repeat='job in jobs'
-    h3.truncated
-      a ng-href='#/job/{{job.id}}' {{job.title}}
+ul.table-view
+  li.table-view-divider Merkliste
+  li.table-view-cell[ng-repeat='job in jobs']
+    a.navigate-right.truncated ng-href='#/job/{{job.id}}' {{job.title}}
     p {{job.company_name}} - {{job.location}}
 
