@@ -9,6 +9,7 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tag
   $scope.result = {}
 
   $scope.executeSearch = ->
+    $scope.loading = true
     params =
       q: $scope.query
     if $scope.coordinates
@@ -25,6 +26,7 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tag
         spellcheck: r.spellcheck
         total_pages: r.total_pages
         facets: r.facets
+      $scope.loading = false
 
   if $location.search().q?
     $scope.query = $location.search().q
@@ -63,9 +65,6 @@ App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Compan
 
 App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Job, merkliste)->
   $scope.jobs = merkliste.all()
-]
-
-App.controller 'NavController', ['$rootScope', 'merkliste', ($scope, merkliste) ->
 ]
 
 App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', ($scope, settings, geolocation, $http)->
