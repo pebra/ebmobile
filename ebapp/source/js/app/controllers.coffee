@@ -86,44 +86,5 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
         $scope.coordinates = { lat: data.lat, lng: data.lng}
       .error (data)->
         console.log data
-  $scope.updateMap = ->
-    if $scope.coordinates?.lat?
-      if !$scope.map
-        osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-        osm = new L.TileLayer(osmUrl, { attribution: 'Map data © OpenStreetMap contributors' })
-        map = L.map('map', {zoomControl:false})
-        map.scrollWheelZoom.disable()
-        map.dragging.disable()
-        map.touchZoom.disable()
-        map.doubleClickZoom.disable()
-        map.boxZoom.disable()
-        map.keyboard.disable()
-        if map.tap
-          map.tap.disable()
-        $scope.radiusCircle = L.circle([$scope.coordinates.lat,$scope.coordinates.lng], 10000, {
-          color: 'blue',
-          fillColor: '#22e',
-          fillOpacity: 0.4
-        }).addTo(map)
-        map.addLayer(osm)
-        $scope.map = map
-      radius = parseInt($scope.radius) * 1000
-      zoom = switch
-        when radius < 10 then 10
-        when radius < 50000 then 9
-        when radius < 100000 then 8
-        when radius < 200000 then 7
-        when radius < 500000 then 6
-        when radius >= 500000 then 4
-      $scope.map.setView([$scope.coordinates.lat, $scope.coordinates.lng], zoom)
-
-      if radius > 0
-        $scope.radiusCircle.setRadius radius
-      $scope.radiusCircle.setLatLng([$scope.coordinates.lat, $scope.coordinates.lng])
-
-
-  $scope.updateMap()
-  $scope.$watch('radius', $scope.updateMap)
-  $scope.$watch('coordinates', $scope.updateMap)
 ]
 

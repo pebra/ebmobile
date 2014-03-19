@@ -23,7 +23,8 @@ ul.table-view
     | Suchergebnis: {{search_result.name}}
 
   li.table-view-cell
-    #map style='height: 400px; max-width: 90%'
+    div[eb-static-map radius='radius' lat='coordinates.lat' lng='coordinates.lng' style='height: 400px; width: 100%']
+    /* #map style='height: 400px; width: 100%' */
 
 
 ul.table-view

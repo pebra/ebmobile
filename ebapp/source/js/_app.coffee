@@ -18,18 +18,6 @@ App.factory 'merkliste', (storage, $rootScope)->
       delete $rootScope.merkliste[job.id]
 
   }
-  # localStorage.merkliste = {} unless localStorage.liste
-  # isMerked: (id)->
-  #   !!localStorage["merkliste-#{id}"]
-  # merk: (job)->
-  #   localStorage["merkliste-#{job.id}"] = JSON.stringify(job)
-  # unmerk: (job) ->
-  #   delete localStorage["merkliste-#{job.id}"]
-  # all: ->
-  #   result = []
-  #   $.each(localStorage, (a,b)->
-  #     result.push(JSON.parse(b)) if /^merkliste-/.test(a))
-  #   result
 
 App.factory 'settings', (storage)->
   {
@@ -56,6 +44,9 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
      .when '/job/:jobId',
        templateUrl: 'html/job.html'
        controller: 'JobController'
+     .when '/company/:CompanyId',
+       templateUrl: 'html/company.html'
+       controller: 'CompanyController'
      .when '/merkliste',
        templateUrl: 'html/merkliste.html'
        controller: 'MerklisteController'

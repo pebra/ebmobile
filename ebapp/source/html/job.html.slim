@@ -1,3 +1,4 @@
+eb-loading-spinner[ng-if='!job']
 div.content-padded ng-if='job != undefined'
   h2 {{job.title}}
   button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
@@ -13,35 +14,36 @@ div.content-padded ng-if='job != undefined'
   p ng-bind-html='html_safe(job.description)'
 
 
-  p ng-if='company != undefined'
-  img ng-src="https://{{company.logo.resized}}"
-  div ng-if='company.description'
-    h2 Kurzbeschreibung zur {{company.name}}
-    p ng-bind-html='html_safe(company.description)'
+  eb-loading-spinner[ng-if='!company']
+  div ng-if='company != undefined'
+    img ng-src="https://{{company.logo.resized}}"
+    div ng-if='company.description'
+      h2 Kurzbeschreibung zur {{company.name}}
+      p ng-bind-html='html_safe(company.description)'
 
-  div ng-if='company.statement'
-    h3 Mitarbeiterstatement
-    p ng-bind-html='html_safe(company.statement)'
+    div ng-if='company.statement'
+      h3 Mitarbeiterstatement
+      p ng-bind-html='html_safe(company.statement)'
 
-  ul.table-view ng-if='company.rewards'
-    li.table-view-divider Arbeitgeberauszeichnungen
-    li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
-      a.navigate-right ng-href='{{reward.link}}'
-        img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
-        .media-body[ng-bind='reward.name']
+    ul.table-view ng-if='company.rewards'
+      li.table-view-divider Arbeitgeberauszeichnungen
+      li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
+        a.navigate-right ng-href='{{reward.link}}'
+          img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
+          .media-body[ng-bind='reward.name']
 
-  ul.table-view
-    li.table-view-divider
-      | {{company.name}} im Internet
-    li.table-view-cell.media
-      a ng-href='{{company.url_firma}}' target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
-        .media-body Internetseite
-    li.table-view-cell.media
-      a ng-href='{{company.facebook}}' ng-if='company.facebook' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
-        .media-body Facebook-Fanpage
-    li.table-view-cell.media
-      a ng-href='{{company.twitter}}' ng-if='company.twitter' target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
-        .media-body Twitter
+    ul.table-view
+      li.table-view-divider
+        | {{company.name}} im Internet
+      li.table-view-cell.media
+        a ng-href='{{company.url_firma}}' target="_system"
+          <span class="icon icon-home media-object pull-left"></span>
+          .media-body Internetseite
+      li.table-view-cell.media
+        a ng-href='{{company.facebook}}' ng-if='company.facebook' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
+          <span class="icon icon-home media-object pull-left"></span>
+          .media-body Facebook-Fanpage
+      li.table-view-cell.media
+        a ng-href='{{company.twitter}}' ng-if='company.twitter' target="_system"
+          <span class="icon icon-home media-object pull-left"></span>
+          .media-body Twitter
