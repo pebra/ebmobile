@@ -1,3 +1,9 @@
+App.directive 'ebNavbar', ($rootScope)->
+  {
+    restrict: 'E'
+    templateUrl: 'html/navbar.html'
+    replace: true
+  }
 App.directive 'searchForm', ($location, tags) ->
   autocomplete_tags = []
   tags.get (data)->

@@ -11,24 +11,12 @@ html
     -#script src="http://192.168.6.211:8080/target/target-script-min.js"
     title Empfehlungsbund-App
   body ng-app='ebmobile'
-    header.bar.bar-tab ng-controller='NavController'
-      a.tab-item href='#/' title="Home"
-        span.icon.icon-home
-        span.tab-label Home
-      a.tab-item href='#/search' title="Suche"
-        span.icon.icon-search
-        span.tab-label Suche
-      a.tab-item href='#/merkliste' title="Merkliste"
-        span.icon.icon-star
-        span.tab-label Merkliste ({{merkliste | objectLength}})
-      a.tab-item href='#/settings' title="Einstellungen"
-        span.icon.icon-gear
-        span.tab-label Einstellungen
+    eb-navbar
     .content
       .content-padded[ng-view]
-        #deviceready.blink
-          p.event.listening Connecting to Device
-          p.event.received Device is Ready
+        .loading
+          .outer
+          .inner
     == javascript_include_tag  "all"
 
     script type="text/javascript" src="cordova.js"
