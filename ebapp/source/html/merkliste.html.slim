@@ -3,4 +3,6 @@ ul.table-view
   li.table-view-cell[ng-repeat='job in jobs']
     a.navigate-right.truncated ng-href='#/job/{{job.id}}' {{job.title}}
     p {{job.company_name}} - {{job.location}}
+  li.table-view-cell[ng-if='jobs.length == 0']
+    | Sie haben noch keine Stellen in Ihrer Merkliste
 

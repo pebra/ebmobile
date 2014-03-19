@@ -1,4 +1,5 @@
-== partial 'search_form'
+search-form
+
 div ng-if='result.query != undefined'
   | Suche nach "{{result.query}}" lieferte
 
@@ -10,7 +11,7 @@ div ng-if='result.query != undefined'
 ul.table-view
   li.table-view-cell.media ng-repeat='job in result.jobs'
     a.navigate-right ng-href="#/job/{{job.id}}"
-      img class="media-object pull-left" 
+      img class="media-object pull-left"
       -#ng-src="https://{{job.company_logo}}" width="42px"
       .media-body
         | {{job.title}}

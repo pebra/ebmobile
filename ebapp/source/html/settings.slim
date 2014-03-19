@@ -1,24 +1,38 @@
-form.form-flex
-  .flex-group
-    label.block-label for='radius' Suchradius um den Ort (in km)
-    input.input-text.flex1 type='number' ng-model='radius' name='radius'
-  .flex-group
+ul.table-view
+  li.table-view-divider Standort neu ermitteln
+  li.content-padded
+    button.btn.btn-block ng-click='geolocate()' Positions automatisch ermitteln
 
-button.btn ng-click='geolocate()' Positions automatisch ermitteln
+  li.table-view-divider Alternativ
+  li.table-view-cell
+    form.input-group[ng-submit='search(search_query)']
+      .input-row
+        label for='geosearch' Ortssuche
+        input[type='text' ng-model='search_query']
+      .input-row
+        button.btn.btn-block Suchen
+  li.table-view-divider Suchradius
+  li.table-view-cell
+    form.input-group
+      .input-row
+        label for='radius' km
+        input type='number' ng-model='radius' name='radius'
 
-form.form-flex[ng-submit='search(search_query)']
-  .flex-group
-    label.block-label for='geosearch' Alternativ: Ortssuche
-    input.input-text.flex1[type='text' ng-model='search_query']
-    button.btn Suchen
 
-
-div ng-if='search_result'
-  .glex-group
-  div
+  li.table-view-cell ng-if='search_result'
     | Suchergebnis: {{search_result.name}}
 
-#map style='height: 400px; max-width: 600px'
+  li.table-view-cell
+    #map style='height: 400px; max-width: 90%'
+
+
+ul.table-view
+  li.table-view-divider Alle Einstellungen und Chronik löschen
+  li.content-padded
+    div[ng-if='cleared']
+      | Einstellungen gelöscht!
+    button.btn.btn-block ng-click='clear()' Einstellungen löschen
+
 
 
 

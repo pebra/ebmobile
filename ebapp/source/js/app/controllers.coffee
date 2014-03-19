@@ -65,12 +65,19 @@ App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Jo
   $scope.jobs = merkliste.all()
 ]
 
+App.controller 'NavController', ['$rootScope', 'merkliste', ($scope, merkliste) ->
+]
+
 App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', ($scope, settings, geolocation, $http)->
   settings.bind($scope)
 
   $scope.geolocate = ->
     geolocation.getLocation().then (data)->
       $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
+
+  $scope.clear = ->
+    localStorage.clear()
+    $scope.cleared = true
 
   $scope.search = (term)->
     $http.jsonp('https://www.empfehlungsbund.de/api/v2/utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK'}})
@@ -84,7 +91,15 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
       if !$scope.map
         osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
         osm = new L.TileLayer(osmUrl, { attribution: 'Map data © OpenStreetMap contributors' })
-        map = L.map('map')
+        map = L.map('map', {zoomControl:false})
+        map.scrollWheelZoom.disable()
+        map.dragging.disable()
+        map.touchZoom.disable()
+        map.doubleClickZoom.disable()
+        map.boxZoom.disable()
+        map.keyboard.disable()
+        if map.tap
+          map.tap.disable()
         $scope.radiusCircle = L.circle([$scope.coordinates.lat,$scope.coordinates.lng], 10000, {
           color: 'blue',
           fillColor: '#22e',
@@ -111,3 +126,4 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
   $scope.$watch('radius', $scope.updateMap)
   $scope.$watch('coordinates', $scope.updateMap)
 ]
+

@@ -2,19 +2,34 @@ window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalSto
 
 window.p = console.log
 
-App.factory 'merkliste', ->
-  localStorage.merkliste = {} unless localStorage.liste
-  isMerked: (id)->
-    !!localStorage["merkliste-#{id}"]
-  merk: (job)->
-    localStorage["merkliste-#{job.id}"] = JSON.stringify(job)
-  unmerk: (job) ->
-    delete localStorage["merkliste-#{job.id}"]
-  all: ->
-    result = []
-    $.each(localStorage, (a,b)->
-      result.push(JSON.parse(b)) if /^merkliste-/.test(a))
-    result
+App.factory 'merkliste', (storage, $rootScope)->
+  storage.bind($rootScope, 'merkliste', defaultValue: {})
+  {
+    bind: ($scope)->
+      storage.bind($scope, 'merkliste', defaultValue: {})
+    all: ->
+      for k,v of $rootScope.merkliste
+        v
+    isMerked: (id)->
+      !!$rootScope.merkliste[id]
+    merk: (job)->
+      $rootScope.merkliste[job.id] = job
+    unmerk: (job)->
+      delete $rootScope.merkliste[job.id]
+
+  }
+  # localStorage.merkliste = {} unless localStorage.liste
+  # isMerked: (id)->
+  #   !!localStorage["merkliste-#{id}"]
+  # merk: (job)->
+  #   localStorage["merkliste-#{job.id}"] = JSON.stringify(job)
+  # unmerk: (job) ->
+  #   delete localStorage["merkliste-#{job.id}"]
+  # all: ->
+  #   result = []
+  #   $.each(localStorage, (a,b)->
+  #     result.push(JSON.parse(b)) if /^merkliste-/.test(a))
+  #   result
 
 App.factory 'settings', (storage)->
   {
