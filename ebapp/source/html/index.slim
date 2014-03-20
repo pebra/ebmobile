@@ -1,8 +1,10 @@
 search-form
 
 ul.table-view[ng-if='lastQueries']
-  li.table-view-divider Letzte Suchanfragen
+  li.table-view-divider Ihre letzten Suchanfragen
   li.table-view-cell[ng-repeat='query in lastQueries | reverse | limitTo:10']
     a ng-href='#/search?q={{query | encodeURIComponent}}'
       | {{query}}
+
+eb-job-results[ng-if='coordinates.lat' query-params='newest_query' query-function='newest' title='Neuste Stellen in Ihrer Region']
 

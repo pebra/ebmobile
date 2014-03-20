@@ -1,0 +1,12 @@
+ul.table-view
+  li.table-view-divider {{title}}
+  li.table-view-cell.media[ng-repeat='job in jobs.jobs']
+    a.navigate-right ng-href="#/job/{{job.id}}"
+      img class="media-object pull-left"
+      .media-body
+        | {{job.title}}
+        p {{job.company_name}} - {{job.location}}
+  li.table-view-cell[ng-if='paginationEnabled && jobs.next_page']
+    a ng-click='showMore()' Mehr (Seite {{jobs.next_page}})
+  eb-loading-spinner[ng-if='loading']
+

@@ -8,11 +8,5 @@ div ng-if='result.query != undefined'
   span[ng-if='coordinates']
     | <a href='#/settings'> im {{radius}}km Umkreis um den Standort</a>
 
-ul.table-view
-  li.table-view-cell.media ng-repeat='job in result.jobs'
-    a.navigate-right ng-href="#/job/{{job.id}}"
-      img class="media-object pull-left"
-      -#ng-src="https://{{job.company_logo}}" width="42px"
-      .media-body
-        | {{job.title}}
-        p {{job.company_name}} - {{job.location}}
+eb-job-results[ng-if='query_params' query-params='query_params' query-function='search' title='' result='result' pagination-enabled='true']
+

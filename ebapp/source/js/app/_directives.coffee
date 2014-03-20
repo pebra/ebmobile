@@ -100,3 +100,54 @@ App.directive 'searchForm', ($location, tags) ->
           scope.autocomplete_tags = scope.autocomplete_tags
   }
 
+App.directive 'ebJobResults', (settings, Job)->
+  {
+    restrict: 'E',
+    templateUrl: 'html/job_results.html'
+    scope: {
+      title: '@title'
+      queryFunction: '@queryFunction'
+      queryParams: '=queryParams'
+      paginationEnabled: '@paginationEnabled'
+      result: '=result'
+    }
+    link: ($scope,element,attr)->
+      attr.$observe('title', -> $scope.title = attr.title)
+      settings.bind($scope)
+
+      default_params = { lat: $scope.coordinates.lat, lon: $scope.coordinates.lng, radius: $scope.radius}
+      func = Job[$scope.queryFunction]
+      $scope.$watch 'queryParams', ->
+        $scope.loading = true
+        extra_params = $scope.queryParams
+        params = {}
+        angular.extend(params, default_params, extra_params)
+        func params, (response)->
+          $scope.loading = false
+          $scope.jobs =
+            jobs: response.jobs
+            length: response.length
+            query: params.q
+            total_pages: response.total_pages
+            current_page: response.current_page
+            next_page: if response.current_page < response.total_pages then response.current_page + 1 else null
+          $scope.$parent.$parent[attr.result] =  $scope.jobs
+
+      $scope.showMore = ->
+        $scope.loading = true
+        extra_params = $scope.queryParams
+        params = {}
+        angular.extend(params, default_params, extra_params)
+        params.page = $scope.jobs.next_page
+        func params, (response)->
+          $scope.loading = false
+          $scope.jobs =
+            jobs: Array.concat($scope.jobs, response.jobs)
+            length: response.length
+            query: params.q
+            total_pages: response.total_pages
+            current_page: response.current_page
+            next_page: if response.current_page < response.total_pages then response.current_page + 1 else null
+          $scope.$parent.$parent[attr.result] =  $scope.jobs
+
+  }

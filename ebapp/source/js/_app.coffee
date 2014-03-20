@@ -72,6 +72,11 @@ App.factory 'Job', ['$resource' , ($resource) ->
       params:
         id: 'search'
         callback: 'JSON_CALLBACK'
+    newest:
+      method: 'JSONP'
+      url: 'https://www.empfehlungsbund.de/api/v2/jobs/lists/newest.jsonp'
+      params:
+        callback: 'JSON_CALLBACK'
 ]
 
 App.factory 'Company', ['$resource' , ($resource) ->
