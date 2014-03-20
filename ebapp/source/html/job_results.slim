@@ -8,5 +8,6 @@ ul.table-view
         p {{job.company_name}} - {{job.location}}
   li.table-view-cell[ng-if='paginationEnabled && jobs.next_page']
     a.link ng-click='showMore()' Mehr (Seite {{jobs.next_page}})
+
   eb-loading-spinner[ng-if='loading']
 

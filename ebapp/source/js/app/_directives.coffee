@@ -71,7 +71,10 @@ App.directive 'searchForm', ($location, tags) ->
     templateUrl: 'html/search_form.html'
     link: (scope,element,attr)->
       scope.search =  ->
-        scope.lastQuery = scope.query
+        if scope.query? and scope.query != ''
+          scope.lastQuery = scope.query
+        else
+          scope.query = ''
         $location.path("/search").search('q', scope.query)
 
       scope.autocomplete_tags = autocomplete_tags
@@ -121,6 +124,7 @@ App.directive 'ebJobResults', (settings, Job)->
       $scope.search =  (params) ->
         $scope.loading = true
         extra_params = $scope.queryParams
+
         angular.extend(params, default_params, extra_params)
         func params, (response)->
           $scope.loading = false

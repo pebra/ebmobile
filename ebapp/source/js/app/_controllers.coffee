@@ -7,9 +7,9 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tag
     '2': '{} Suchergebnisse'
   $scope.result = {}
 
-
   $scope.executeSearch = ->
     $scope.query_params = { q: $scope.query }
+    $scope.lastQuery = $scope.query
 
   if $location.search().q?
     $scope.query = $location.search().q
@@ -22,8 +22,8 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tag
       $scope.tags = data
 ]
 App.controller 'IndexController', ($scope, settings, $location, Job)->
-  settings.bind($scope)
   $scope.newest_query = { per: 10 }
+  settings.bind($scope)
 
 App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste', ($scope, Job, $routeParams, $sce, Company, merkliste)->
   $scope.job = null
@@ -48,7 +48,7 @@ App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', ($scope, Jo
   $scope.jobs = merkliste.all()
 ]
 
-App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', ($scope, settings, geolocation, $http)->
+App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', ($scope, settings, geolocation, $http)->
   settings.bind($scope)
 
   $scope.geolocate = ->
@@ -56,6 +56,7 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
       $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
 
   $scope.clear = ->
+    settings.clear()
     localStorage.clear()
     $scope.cleared = true
 

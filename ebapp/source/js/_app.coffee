@@ -31,6 +31,8 @@ App.factory 'settings', (storage)->
       if scope.lastQueries.indexOf(newVal) == -1
         scope.lastQueries.push newVal
       scope.lastQueries = scope.lastQueries[-20..]
+    clear: ->
+      storage.clearAll()
   }
 
 App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationProvider) ->
@@ -78,6 +80,7 @@ App.factory 'Job', ['$resource' , ($resource) ->
       params:
         callback: 'JSON_CALLBACK'
 ]
+
 
 App.factory 'Company', ['$resource' , ($resource) ->
   $resource 'https://www.empfehlungsbund.de/api/v2/companies/:id.jsonp', null,
