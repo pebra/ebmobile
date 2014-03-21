@@ -1,0 +1,21 @@
+eb-loading-spinner[ng-if='!job']
+div.content-padded ng-if='job != undefined'
+  h2 {{job.title}}
+  button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
+    i.icon-remove
+    span  Von Merkliste entfernen
+  button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
+    i.icon-accept
+    span Auf die Merkliste
+  button.btn.btn-small ng-click="cordova.plugins.SocialShare.share(null, null, { dialogTitle : 'Share', url: 'http://google.com', text: 'wow much amaze'} )"
+    i.icon-share
+    span Teilen
+
+  p ng-bind-html='html_safe(job.description)'
+
+
+  a ng-href='#/company/{{job.company_id}}'
+    button.btn-block
+      img ng-src="https:{{job.company_logo}}"
+      | Mehr zur {{job.company_name}}
+
