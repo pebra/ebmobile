@@ -26,6 +26,6 @@ ul.table-view ng-if='job != undefined'
       img ng-src="https:{{job.company_logo}}"
       p Mehr zur {{job.company_name}}
   li.table-view-cell[ng-if='domain']
-    a ng-href='#/company/{{domain.id}}'
+    a ng-href='#/community/{{domain.name}}'
       img ng-src="https:{{domain.logo.thumb}}"
       p Mehr zu {{domain.name}}
