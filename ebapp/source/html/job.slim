@@ -4,18 +4,14 @@ ul.table-view ng-if='job != undefined'
     | {{job.title}}
   li.table-view-cell
     p
-      button.btn.btn-small ng-if='on_merkliste' ng-click='unmerk()'
-        span.icon.icon-star
-        = ' '
+      button.btn.btn-small> ng-if='on_merkliste' ng-click='unmerk()'
+        span.icon.icon-star>
         span  Von Merkliste entfernen
-      button.btn.btn-small ng-if='!on_merkliste' ng-click='merk()'
-        span.icon.icon-star-filled
-        = ' '
+      button.btn.btn-small> ng-if='!on_merkliste' ng-click='merk()'
+        span.icon.icon-star-filled>
         span Auf die Merkliste
-      = ' '
       button.btn.btn-small ng-click="cordova.plugins.SocialShare.share(null, null, { dialogTitle : 'Share', url: 'http://google.com', text: 'wow much amaze'} )"
-        span.icon-share.icon
-        = ' '
+        span.icon-share.icon>
         span Teilen
 
   li.table-view-cell

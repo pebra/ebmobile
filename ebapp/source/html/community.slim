@@ -8,10 +8,12 @@ div ng-if='community'
       p[ng-bind-html='community.description | unsafe']
     li.table-view-cell
       | Gründungsdatum:
-      p {{community.launch_date}}
+      p
+        | {{community.launch_date}}
     li.table-view-cell
       | Branchen:
-      p {{community.branchen}}
+      p
+        | {{community.branchen}}
     li.table-view-cell.media
       span.icon-home.media-object.icon.pull-left
       .media-body
