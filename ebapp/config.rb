@@ -30,7 +30,7 @@ set :images_dir, 'images'
 
 # Build-specific configuration
 configure :build do
-  self.build_dir = '../www'
+  set :build_dir, '../www'
   activate :minify_css
   activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
   # Enable cache buster

@@ -1,0 +1,78 @@
+<div class="content-padded" ng-if="!coordinates.lat">
+  <h4>
+    Ermitteln Sie Ihren Standort per Klick oder manuell per Suche
+  </h4>
+  <p>
+    Alle Suchanfragen und Stellenlisten beinhalten dann automatisch nur Stellen aus Ihrer Region.
+  </p>
+</div>
+<div class="content-padded" ng-if="coordinates.lat">
+  <h4>
+    Ihr Standort wurde ermittelt.
+  </h4>
+  <p>
+    Alle Suchanfragen und Stellenlisten beinhalten automatisch nur Stellen aus Ihrer Region. Sie können die Position ändern oder den Radius festlegen.
+  </p>
+</div>
+<ul class="table-view">
+  <li class="content-padded">
+    <button class="btn btn-block" ng-click="geolocate()">Positions automatisch ermitteln</button>
+  </li>
+  <li class="table-view-divider">
+    Alternativ
+  </li>
+  <li class="table-view-cell">
+    <form class="input-group" ng-submit="search(search_query)">
+      <div class="input-row">
+        <label for="geosearch">Ortssuche</label><input ng-model="search_query" placeholder="z.B. Berlin" type="text" />
+      </div>
+      <div class="input-row">
+        <button class="btn btn-block">Suchen</button>
+      </div>
+    </form>
+  </li>
+  <li class="table-view-cell" ng-if="search_result">
+    Suchergebnis: {{search_result.name}}
+  </li>
+</ul>
+<ul class="table-view" ng-if="coordinates.lat">
+  <li class="table-view-divider">
+    Suchradius
+  </li>
+  <li class="table-view-cell">
+    <form class="input-group">
+      <div class="input-row">
+        <label for="radius">km</label><input name="radius" ng-model="radius" placeholder="50 (km)" type="number" />
+      </div>
+    </form>
+  </li>
+  <li class="table-view-cell">
+    <div eb-static-map="" lat="coordinates.lat" lng="coordinates.lng" radius="radius" style="height: 400px; width: 100%"></div>
+  </li>
+</ul>
+<ul class="table-view">
+  <li class="table-view-divider">
+    Stellenfilter
+  </li>
+  <li class="table-view-cell">
+    <form class="input-group">
+      <div class="input-row">
+        <label for="intern">Jobs für Fach- und Führungskräfte</label><input ng-model="filter_fid.4" type="checkbox" value="1" />
+      </div>
+      <div class="input-row">
+        <label for="intern">Praktika, Ausbildungen, Werkstudenten</label><input ng-model="filter_fid.5" type="checkbox" value="1" />
+      </div>
+    </form>
+  </li>
+</ul>
+<ul class="table-view">
+  <li class="table-view-divider">
+    Alle Einstellungen und Chronik löschen
+  </li>
+  <li class="content-padded">
+    <div ng-if="cleared">
+      Einstellungen gelöscht!
+    </div>
+    <button class="btn btn-block" ng-click="clear()">Einstellungen löschen</button>
+  </li>
+</ul>

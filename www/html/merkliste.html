@@ -1,0 +1,14 @@
+<ul class="table-view">
+  <li class="table-view-divider">
+    Merkliste
+  </li>
+  <li class="table-view-cell" ng-repeat="job in jobs">
+    <a class="navigate-right truncated" ng-href="#/job/{{job.id}}">{{job.title}}</a>
+    <p>
+      {{job.company_name}} - {{job.location}}
+    </p>
+  </li>
+  <li class="table-view-cell" ng-if="jobs.length == 0">
+    Sie haben noch keine Stellen in Ihrer Merkliste
+  </li>
+</ul>
