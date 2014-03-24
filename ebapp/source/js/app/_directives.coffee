@@ -104,7 +104,7 @@ App.directive 'searchForm', ($location, tags) ->
           scope.autocomplete_tags = scope.autocomplete_tags
   }
 
-App.directive 'ebJobResults', (settings, Job)->
+App.directive 'ebJobResults', (settings, Job, merkliste)->
   {
     restrict: 'E',
     templateUrl: 'html/job_results.html'
@@ -118,6 +118,15 @@ App.directive 'ebJobResults', (settings, Job)->
     link: ($scope,element,attr)->
       attr.$observe('title', -> $scope.title = attr.title)
       settings.bind($scope)
+
+      $scope.merk = (job)->
+        merkliste.merk(job)
+      $scope.unmerk = (job)->
+        merkliste.unmerk(job)
+      $scope.on_merkliste = (job)->
+        merkliste.isMerked(job.id)
+
+
 
       default_params =
         lat: $scope.coordinates.lat
@@ -154,4 +163,7 @@ App.directive 'ebJobResults', (settings, Job)->
 
   }
 
+App.run  ($rootScope) ->
+  #TODO @peter
+  $rootScope.cordova = true
 

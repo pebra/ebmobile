@@ -16,5 +16,5 @@ App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Compan
     $scope.on_merkliste = true
   $scope.unmerk = (job)->
     merkliste.unmerk($scope.job)
-    $scope.on_mekliste = false
+    $scope.on_merkliste = false
 ]
