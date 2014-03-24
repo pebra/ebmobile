@@ -1,31 +1,44 @@
+.content-padded[ng-if='!coordinates.lat']
+  h4 Ermitteln Sie Ihren Standort per Klick oder manuell per Suche
+  p Alle Suchanfragen und Stellenlisten beinhalten dann automatisch nur Stellen aus Ihrer Region.
+.content-padded[ng-if='coordinates.lat']
+  h4 Ihr Standort wurde ermittelt.
+  p Alle Suchanfragen und Stellenlisten beinhalten automatisch nur Stellen aus Ihrer Region. Sie können die Position ändern oder den Radius festlegen.
 ul.table-view
-  li.table-view-divider
-    | Standort neu ermitteln
   li.content-padded
     button.btn.btn-block ng-click='geolocate()' Positions automatisch ermitteln
-
   li.table-view-divider Alternativ
   li.table-view-cell
     form.input-group[ng-submit='search(search_query)']
       .input-row
         label for='geosearch' Ortssuche
-        input[type='text' ng-model='search_query']
+        input[type='text' ng-model='search_query' placeholder='z.B. Berlin']
       .input-row
         button.btn.btn-block Suchen
+  li.table-view-cell ng-if='search_result'
+    | Suchergebnis: {{search_result.name}}
+
+ul.table-view[ng-if='coordinates.lat']
   li.table-view-divider Suchradius
   li.table-view-cell
     form.input-group
       .input-row
         label for='radius' km
-        input type='number' ng-model='radius' name='radius'
-
-
-  li.table-view-cell ng-if='search_result'
-    | Suchergebnis: {{search_result.name}}
-
+        input type='number' ng-model='radius' name='radius' placeholder='50 (km)'
   li.table-view-cell
     div[eb-static-map radius='radius' lat='coordinates.lat' lng='coordinates.lng' style='height: 400px; width: 100%']
     /* #map style='height: 400px; width: 100%' */
+
+ul.table-view
+  li.table-view-divider Stellenfilter
+  li.table-view-cell
+    form.input-group
+      .input-row
+        label for='intern' Jobs für Fach- und Führungskräfte
+        input[type='checkbox' ng-model='filter_fid.4' value='1']
+      .input-row
+        label for='intern' Praktika, Ausbildungen, Werkstudenten
+        input[type='checkbox' ng-model='filter_fid.5' value='1']
 
 
 ul.table-view

@@ -1,0 +1,5 @@
+<search-form></search-form><eb-loading-spinner ng-if="loading"></eb-loading-spinner>
+<div ng-if="result.query != undefined">
+  Suche nach "{{result.query}}" lieferte<ng-pluralize count="result.length" when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"></ng-pluralize><span ng-if="coordinates"><a href='#/settings'> im {{radius}}km Umkreis um den Standort</a></span>
+</div>
+<eb-job-results ng-if="query_params" pagination-enabled="true" query-function="search" query-params="query_params" result="result" title=""></eb-job-results>

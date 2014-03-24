@@ -1,0 +1,47 @@
+<eb-loading-spinner ng-if="!community"></eb-loading-spinner>
+<div ng-if="community">
+  <ul class="table-view">
+    <li class="table-view-cell">
+      <img ng-src="https:{{community.logo.medium}}" />
+    </li>
+    <li class="table-view-cell">
+      Beschreibung
+      <p ng-bind-html="community.description | unsafe"></p>
+    </li>
+    <li class="table-view-cell">
+      Gründungsdatum:
+      <p>
+        {{community.launch_date}}
+      </p>
+    </li>
+    <li class="table-view-cell">
+      Branchen:
+      <p>
+        {{community.branchen}}
+      </p>
+    </li>
+    <li class="table-view-cell media">
+      <span class="icon-home media-object icon pull-left"></span>
+      <div class="media-body">
+        <a ng-href="https://twitter.com/{{community.twitter_profile}}">Twitter</a>
+      </div>
+    </li>
+    <li class="table-view-cell media">
+      <span class="icon-home media-object icon pull-left"></span>
+      <div class="media-body">
+        <a ng-href="{{community.google_plus_url}}">Google+</a>
+      </div>
+    </li>
+    <li class="table-view-cell media">
+      <span class="icon-home media-object icon pull-left"></span>
+      <div class="media-body">
+        <a ng-href="https://www.facebook.com/{{community.facebook_fanpage}}">Facebook</a>
+      </div>
+    </li>
+  </ul>
+  <search-form target="/community/{{community.name}}"></search-form>
+  <div ng-if="result.query != undefined">
+    Suche nach "{{result.query}}" in {{community.name}} lieferte<ng-pluralize count="result.length" when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"></ng-pluralize><span ng-if="coordinates"><a href='#/settings'> im {{radius}}km Umkreis um den Standort</a></span>
+  </div>
+  <eb-job-results ng-if="query_params" pagination-enabled="true" query-function="search" query-params="query_params" result="result" title=""></eb-job-results>
+</div>

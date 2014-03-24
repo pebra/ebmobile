@@ -1,0 +1,46 @@
+eb-loading-spinner[ng-if='!company']
+div ng-if='company != undefined'
+  ul.table-view
+    li.table-view-cell
+      img ng-src="https:{{company.logo.resized}}"
+      p
+        |{{company.name}}
+    li.table-view-cell ng-if='company.description'
+      | Kurzbeschreibung zur {{company.name}}
+      p ng-bind-html='company.description | unsafe'
+
+    li.table-view-cell ng-if='company.statement'
+      | Mitarbeiterstatement
+      p ng-bind-html='company.statement | unsafe'
+
+    li.table-view-divider  ng-if='company.rewards' Arbeitgeberauszeichnungen
+    li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
+      a.navigate-right ng-href='{{reward.link}}'
+        img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
+        .media-body[ng-bind='reward.name']
+
+    li.table-view-divider
+      | {{company.name}} im Internet
+    li.table-view-cell.media
+      a ng-href='{{company.url_firma}}' target="_system"
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Internetseite
+    li.table-view-cell.media ng-if='company.facebook'
+      a ng-href='{{company.facebook}}' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Facebook-Fanpage
+    li.table-view-cell.media[ng-if='company.twitter']
+      a ng-href='{{company.twitter}}'  target="_system"
+        <span class="icon icon-home media-object pull-left"></span>
+        .media-body Twitter
+  eb-job-results[query-params='query_params' query-function='newest' title='Neuste Stellen der Organisation in Ihrer Region']
+  ul.table-view[ng-if='communities']
+    li.table-view-divider
+      | {{company.name}} ist Mitglied von:
+    li.table-view-cell[ng-repeat='membership in company.memberships' ng-if='communities[membership]']
+      a ng-href='#/community/{{membership}}'
+        img.media-object ng-src="https:{{communities[membership].logo.medium}}"
+        p[ng-bind-html='communities[membership].description | unsafe']
+
+
+

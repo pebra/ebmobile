@@ -1,6 +1,6 @@
 //= require _index
 //= require jquery/dist/jquery.min.js
-//= require ratchet2/js/ratchet
+//= require ratchet2/js/ratchet.js
 //= require angular/angular
 //= require angular-route/angular-route
 //= require angular-resource/angular-resource
@@ -8,6 +8,5 @@
 //= require angularjs-geolocation/dist/angularjs-geolocation.min.js
 //= require angularLocalStorage/src/angularLocalStorage
 //= require leaflet/dist/leaflet-src.js
-//= require allmighty-autocomplete/script/autocomplete.js
 //= require _app
 //= require_tree ./app/

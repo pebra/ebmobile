@@ -1,0 +1,19 @@
+<ul class="table-view">
+  <li class="table-view-divider">
+    {{title}}
+  </li>
+  <li class="table-view-cell media" ng-repeat="job in jobs.jobs">
+    <a class="navigate-right" ng-href="#/job/{{job.id}}"><img class="media-object pull-left" />
+      <div class="media-body">
+        {{job.title}}
+        <p>
+          {{job.company_name}} - {{job.location}}
+        </p>
+      </div>
+    </a>
+  </li>
+  <li class="table-view-cell" ng-if="paginationEnabled && jobs.next_page">
+    <a class="link" ng-click="showMore()">Mehr (Seite {{jobs.next_page}})</a>
+  </li>
+  <eb-loading-spinner ng-if="loading"></eb-loading-spinner>
+</ul>

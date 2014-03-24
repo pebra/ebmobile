@@ -1,0 +1,37 @@
+eb-loading-spinner[ng-if='!community']
+div ng-if='community'
+  ul.table-view
+    li.table-view-cell
+      img ng-src="https:{{community.logo.medium}}"
+    li.table-view-cell
+      | Beschreibung
+      p[ng-bind-html='community.description | unsafe']
+    li.table-view-cell
+      | Gründungsdatum:
+      p
+        | {{community.launch_date}}
+    li.table-view-cell
+      | Branchen:
+      p
+        | {{community.branchen}}
+    li.table-view-cell.media
+      span.icon-home.media-object.icon.pull-left
+      .media-body
+        a ng-href='https://twitter.com/{{community.twitter_profile}}' Twitter
+    li.table-view-cell.media
+      span.icon-home.media-object.icon.pull-left
+      .media-body
+        a ng-href='{{community.google_plus_url}}' Google+
+    li.table-view-cell.media
+      span.icon-home.media-object.icon.pull-left
+      .media-body
+        a ng-href='https://www.facebook.com/{{community.facebook_fanpage}}' Facebook
+  search-form target='/community/{{community.name}}'
+  div ng-if='result.query != undefined'
+    | Suche nach "{{result.query}}" in {{community.name}} lieferte
+
+    ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
+
+    span[ng-if='coordinates']
+      | <a href='#/settings'> im {{radius}}km Umkreis um den Standort</a>
+  eb-job-results[ng-if='query_params' query-params='query_params' query-function='search' title='' result='result' pagination-enabled='true']

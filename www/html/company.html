@@ -1,0 +1,62 @@
+<eb-loading-spinner ng-if="!company"></eb-loading-spinner>
+<div ng-if="company != undefined">
+  <ul class="table-view">
+    <li class="table-view-cell">
+      <img ng-src="https:{{company.logo.resized}}" />
+      <p>
+        {{company.name}}
+      </p>
+    </li>
+    <li class="table-view-cell" ng-if="company.description">
+      Kurzbeschreibung zur {{company.name}}
+      <p ng-bind-html="company.description | unsafe"></p>
+    </li>
+    <li class="table-view-cell" ng-if="company.statement">
+      Mitarbeiterstatement
+      <p ng-bind-html="company.statement | unsafe"></p>
+    </li>
+    <li class="table-view-divider" ng-if="company.rewards">
+      Arbeitgeberauszeichnungen
+    </li>
+    <li class="table-view-cell media reward" ng-repeat="reward in company.rewards">
+      <a class="navigate-right" ng-href="{{reward.link}}"><img class="media-object pull-left" ng-src="https://{{reward.badge}}" style="width: 50px; background: white" />
+        <div class="media-body" ng-bind="reward.name"></div>
+      </a>
+    </li>
+    <li class="table-view-divider">
+      {{company.name}} im Internet
+    </li>
+    <li class="table-view-cell media">
+      <a ng-href="{{company.url_firma}}" target="_system"><span class="icon icon-home media-object pull-left"></span>
+        <div class="media-body">
+          Internetseite
+        </div>
+      </a>
+    </li>
+    <li class="table-view-cell media" ng-if="company.facebook">
+      <a ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" ng-href="{{company.facebook}}" target="_system"><span class="icon icon-home media-object pull-left"></span>
+        <div class="media-body">
+          Facebook-Fanpage
+        </div>
+      </a>
+    </li>
+    <li class="table-view-cell media" ng-if="company.twitter">
+      <a ng-href="{{company.twitter}}" target="_system"><span class="icon icon-home media-object pull-left"></span>
+        <div class="media-body">
+          Twitter
+        </div>
+      </a>
+    </li>
+  </ul>
+  <eb-job-results query-function="newest" query-params="query_params" title="Neuste Stellen der Organisation in Ihrer Region"></eb-job-results>
+  <ul class="table-view" ng-if="communities">
+    <li class="table-view-divider">
+      {{company.name}} ist Mitglied von:
+    </li>
+    <li class="table-view-cell" ng-if="communities[membership]" ng-repeat="membership in company.memberships">
+      <a ng-href="#/community/{{membership}}"><img class="media-object" ng-src="https:{{communities[membership].logo.medium}}" />
+        <p ng-bind-html="communities[membership].description | unsafe"></p>
+      </a>
+    </li>
+  </ul>
+</div>

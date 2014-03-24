@@ -75,7 +75,8 @@ App.directive 'searchForm', ($location, tags) ->
           scope.lastQuery = scope.query
         else
           scope.query = ''
-        $location.path("/search").search('q', scope.query)
+        target = attr.target || '/search'
+        $location.path(target).search('q', scope.query)
 
       scope.autocomplete_tags = autocomplete_tags
       scope.tag_match = (tag)-> tag.matched
@@ -118,7 +119,14 @@ App.directive 'ebJobResults', (settings, Job)->
       attr.$observe('title', -> $scope.title = attr.title)
       settings.bind($scope)
 
-      default_params = { lat: $scope.coordinates.lat, lon: $scope.coordinates.lng, radius: $scope.radius}
+      default_params =
+        lat: $scope.coordinates.lat
+        lon: $scope.coordinates.lng
+        radius: $scope.radius
+        fid: []
+      for fid,bool of $scope.filter_fid
+        default_params.fid.push(fid) if bool
+
       func = Job[$scope.queryFunction]
 
       $scope.search =  (params) ->
@@ -145,3 +153,5 @@ App.directive 'ebJobResults', (settings, Job)->
         $scope.search({ page:  $scope.jobs.next_page })
 
   }
+
+
