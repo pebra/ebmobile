@@ -1,14 +1,16 @@
+
 App.directive 'ebStaticMap', ->
   map = null
   radiusCircle = null
   osmUrl = 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-  osm = new L.TileLayer(osmUrl, { attribution: 'Map data © OpenStreetMap contributors' })
   {
     restrict: 'A'
     link: (scope, element, attr) ->
+      console.log 'link called'
       radius = -> parseInt(scope.$eval(attr.radius)) * 1000
       coords = -> [ scope.$eval(attr.lat), scope.$eval(attr.lng) ]
-      el = element.find('div')
+
+      osm = new L.TileLayer(osmUrl, { attribution: 'Map data © OpenStreetMap contributors' })
       map = L.map(element[0], {zoomControl:false})
       map.scrollWheelZoom.disable()
       map.dragging.disable()
@@ -22,15 +24,18 @@ App.directive 'ebStaticMap', ->
       map.addLayer(osm)
 
       rerender = ->
+        console.log 'rerender called'
         r = radius()
         c = coords()
         if !radiusCircle
+          console.log 'noch kein Radiuscircl'
           radiusCircle = L.circle(c, r, {
             color: 'blue',
             fillColor: '#22e',
             fillOpacity: 0.4
           }).addTo(map)
         else
+          console.log 'hat Radiuscircl'
           radiusCircle.setRadius(r) if r > 0
           radiusCircle.setLatLng(c)
         zoom = switch
@@ -42,8 +47,9 @@ App.directive 'ebStaticMap', ->
           when r >= 500000 then 4
         map.setView(c, zoom)
 
-      scope.$watch attr.radius, (newVal,oldVal)-> rerender()
-      scope.$watch attr.lat, (newVal,oldVal)-> rerender()
+      fn = $.throttle(rerender, 300, null, true) #[timeout], [callback], [delayed], [trailing]);
+      scope.$watch attr.radius, (newVal,oldVal)-> fn()
+      scope.$watch attr.lat, (newVal,oldVal)-> fn()
   }
 
 App.directive 'ebLoadingSpinner', ($rootScope)->
