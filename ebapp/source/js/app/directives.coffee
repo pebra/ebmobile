@@ -95,8 +95,8 @@ App.directive 'searchForm', ($location, tags) ->
         words = scope.query.split(' ')
         word = words[words.length - 1]
         before_words = words[0...words.length - 1]
-        if word and word.length > 0
-          for tag in scope.autocomplete_tags
+        for tag in scope.autocomplete_tags
+          if word and word.length > 0
             if tag.name.toLowerCase().indexOf(word.toLowerCase()) != -1
               tag.match_string = before_words.join(' ') + ' ' + tag.name
               tag.display = before_words.join(' ') + ' ' + tag.name.replace(word.toLowerCase(), "<strong>#{word}</strong>")
@@ -104,7 +104,10 @@ App.directive 'searchForm', ($location, tags) ->
             else
               tag.match_string = ''
               tag.matched = false
-          scope.autocomplete_tags = scope.autocomplete_tags
+          else
+            tag.match_string = ''
+            tag.matched = false
+        scope.autocomplete_tags = scope.autocomplete_tags
   }
 
 App.directive 'ebJobResults', (settings, Job, merkliste)->
