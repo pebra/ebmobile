@@ -1,5 +1,5 @@
 App.factory 'merkliste', (storage, $rootScope)->
-  storage.bind($rootScope, 'merkliste', defaultValue: {})
+  # storage.bind($rootScope, 'merkliste', defaultValue: {})
   {
     bind: ($scope)->
       storage.bind($scope, 'merkliste', defaultValue: {})

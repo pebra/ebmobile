@@ -1,9 +1,12 @@
 App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', ($scope, settings, geolocation, $http)->
+
   settings.bind($scope)
 
   $scope.geolocate = ->
     geolocation.getLocation().then (data)->
       $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
+
+
 
   $scope.clear = ->
     $scope.coordinates = {}
