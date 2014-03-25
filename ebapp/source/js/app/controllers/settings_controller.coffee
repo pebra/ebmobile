@@ -1,4 +1,4 @@
-App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', ($scope, settings, geolocation, $http)->
+App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', ($scope, settings, geolocation, $http, $rootScope)->
 
   settings.bind($scope)
 
@@ -16,6 +16,7 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
     settings.clear()
     localStorage.clear()
     $scope.cleared = true
+    $rootScope.merkliste = {}
 
   $scope.search = (term)->
     $http.jsonp('https://www.empfehlungsbund.de/api/v2/utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK'}})

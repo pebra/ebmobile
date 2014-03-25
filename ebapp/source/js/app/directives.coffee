@@ -6,7 +6,6 @@ App.directive 'ebStaticMap', ->
   {
     restrict: 'A'
     link: (scope, element, attr) ->
-      console.log 'link called'
       radius = -> parseInt(scope.$eval(attr.radius)) * 1000
       coords = -> [ scope.$eval(attr.lat), scope.$eval(attr.lng) ]
 
@@ -24,26 +23,24 @@ App.directive 'ebStaticMap', ->
       map.addLayer(osm)
 
       rerender = ->
-        console.log 'rerender called'
         r = radius()
         c = coords()
         if !radiusCircle
-          console.log 'noch kein Radiuscircl'
           radiusCircle = L.circle(c, r, {
             color: 'blue',
             fillColor: '#22e',
             fillOpacity: 0.4
           }).addTo(map)
         else
-          console.log 'hat Radiuscircl'
           radiusCircle.setRadius(r) if r > 0
           radiusCircle.setLatLng(c)
         zoom = switch
           when r < 10 then 10
-          when r < 50000 then 9
-          when r < 100000 then 8
-          when r < 200000 then 7
-          when r < 500000 then 6
+          when r < 50000 then 9 # 50km
+          when r < 70000 then 8
+          when r < 150000 then 7
+          when r < 300000 then 6
+          when r <= 500000 then 5
           when r >= 500000 then 4
         map.setView(c, zoom)
 
@@ -132,8 +129,6 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
       $scope.on_merkliste = (job)->
         merkliste.isMerked(job.id)
 
-
-
       default_params =
         lat: $scope.coordinates.lat
         lon: $scope.coordinates.lng
@@ -153,7 +148,7 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
           $scope.loading = false
           jobs = ($scope.jobs || {}).jobs || []
           $scope.jobs =
-            jobs: Array.concat(jobs, response.jobs)
+            jobs: jobs.concat(response.jobs)
             length: response.length
             query: params.q
             total_pages: response.total_pages

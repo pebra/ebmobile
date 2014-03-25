@@ -1,7 +1,7 @@
 ul.table-view
   li.table-view-divider
     | {{title}}
-  li.table-view-cell.media[ng-repeat='job in jobs.jobs track by id']
+  li.table-view-cell.media[ng-repeat='job in jobs.jobs']
     a.navigate-right ng-href="#/job/{{job.id}}"
       a.media-object.pull-left>[href ng-if='on_merkliste(job)' ng-click='unmerk(job)']
         span.icon.icon-star-filled>

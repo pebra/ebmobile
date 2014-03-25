@@ -8,14 +8,14 @@ ul.table-view
   li.content-padded
     button.btn.btn-block ng-click='geolocate()' Positions automatisch ermitteln
   li.table-view-divider Alternativ
-  li.table-view-cell
+  li.content-padded
     form[ng-submit='search(search_query)']
-      .input-row
+      p
         label for='geosearch' Ortssuche
         input[type='text' ng-model='search_query' placeholder='z.B. Berlin']
-      .input-row
+      p
         button.btn.btn-block Suchen
-  li.table-view-cell ng-if='search_result'
+  li.table-view-cell ng-if='search_result' ng-show='search_result'
     | Suchergebnis: {{search_result.name}}
 
 ul.table-view[ng-if='coordinates.lat']
