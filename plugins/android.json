@@ -6,12 +6,21 @@
     "config_munge": {
         "res/xml/config.xml": {
             "/*": {
-                "<feature name=\"SocialShare\"><param name=\"android-package\" value=\"com.gestionaleauto.SocialShare\" /></feature>": 1
+                "<feature name=\"SocialShare\"><param name=\"android-package\" value=\"com.gestionaleauto.SocialShare\" /></feature>": 1,
+                "<feature name=\"SocialSharing\"><param name=\"android-package\" value=\"nl.xservices.plugins.SocialSharing\" /></feature>": 1
+            }
+        },
+        "AndroidManifest.xml": {
+            "/manifest": {
+                "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />": 1
             }
         }
     },
     "installed_plugins": {
         "com.gestionaleauto.SocialShare": {
+            "PACKAGE_NAME": "de.pludoni.ebmobile"
+        },
+        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "de.pludoni.ebmobile"
         }
     },

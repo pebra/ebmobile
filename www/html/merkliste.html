@@ -2,7 +2,7 @@
   <li class="table-view-divider">
     Merkliste
   </li>
-  <li class="table-view-cell" ng-repeat="job in jobs">
+  <li class="table-view-cell" ng-repeat="job in jobs track by job.id">
     <a class="navigate-right truncated" ng-href="#/job/{{job.id}}">{{job.title}}</a>
     <p>
       {{job.company_name}} - {{job.location}}
