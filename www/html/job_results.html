@@ -3,14 +3,14 @@
     {{title}}
   </li>
   <li class="table-view-cell media" ng-repeat="job in jobs.jobs">
-    <a class="navigate-right" ng-href="#/job/{{job.id}}"><img class="media-object pull-left" />
-      <div class="media-body">
-        {{job.title}}
+    <a class="media-object pull-left" href="" ng-click="unmerk(job)" ng-if="on_merkliste(job)"><span class="icon icon-star-filled"></span> </a> <a class="media-object pull-left" href="" ng-click="merk(job)" ng-if="!on_merkliste(job)"><span class="icon icon-star"></span> </a> 
+    <div class="media-body">
+      <a class="navigate-right" ng-href="#/job/{{job.id}}">{{job.title}}
         <p>
           {{job.company_name}} - {{job.location}}
         </p>
-      </div>
-    </a>
+      </a>
+    </div>
   </li>
   <li class="table-view-cell" ng-if="paginationEnabled && jobs.next_page">
     <a class="link" ng-click="showMore()">Mehr (Seite {{jobs.next_page}})</a>

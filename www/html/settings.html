@@ -21,17 +21,17 @@
   <li class="table-view-divider">
     Alternativ
   </li>
-  <li class="table-view-cell">
-    <form class="input-group" ng-submit="search(search_query)">
-      <div class="input-row">
+  <li class="content-padded">
+    <form ng-submit="search(search_query)">
+      <p>
         <label for="geosearch">Ortssuche</label><input ng-model="search_query" placeholder="z.B. Berlin" type="text" />
-      </div>
-      <div class="input-row">
+      </p>
+      <p>
         <button class="btn btn-block">Suchen</button>
-      </div>
+      </p>
     </form>
   </li>
-  <li class="table-view-cell" ng-if="search_result">
+  <li class="table-view-cell" ng-if="search_result" ng-show="search_result">
     Suchergebnis: {{search_result.name}}
   </li>
 </ul>
@@ -40,9 +40,9 @@
     Suchradius
   </li>
   <li class="table-view-cell">
-    <form class="input-group">
+    <form>
       <div class="input-row">
-        <label for="radius">km</label><input name="radius" ng-model="radius" placeholder="50 (km)" type="number" />
+        <label for="radius">km</label><input name="radius" ng-model="$parent.radius" placeholder="50 (km)" type="text" />
       </div>
     </form>
   </li>
@@ -55,7 +55,7 @@
     Stellenfilter
   </li>
   <li class="table-view-cell">
-    <form class="input-group">
+    <form>
       <div class="input-row">
         <label for="intern">Jobs für Fach- und Führungskräfte</label><input ng-model="filter_fid.4" type="checkbox" value="1" />
       </div>
