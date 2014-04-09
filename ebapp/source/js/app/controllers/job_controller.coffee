@@ -9,7 +9,7 @@ App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Compan
 
 
   $scope.share = ->
-    console.log 'share now'
+    alert 'share now via old plugin'
     cordova.plugins.SocialShare.share(null, null, { dialogTitle : 'Share', url: 'http://google.com', text: 'wow much amaze'} )
     cordova.plugins.socialsharing.share(null, null, null, 'http://www.stefanwienert.de')
 

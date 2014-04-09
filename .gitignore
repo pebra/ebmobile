@@ -1,11 +1,7 @@
 *.sw?
 work
 .DS_Store
-www/css/
-www/index.html
-www/js/
-www/spec.html
-www/spec/
+www/
 ebapp/source/ignore/
 .bundle
 platforms/android/*
