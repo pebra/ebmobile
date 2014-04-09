@@ -20,7 +20,7 @@ fulltest:
 	pgrep -f middleman | xargs kill
 
 build:
-	cd ebapp/ && middleman build
+	cd ebapp/ && bundle exec middleman build
 	rm -rf www/ignore/
 	rm -rf www/spec/
 	cordova build

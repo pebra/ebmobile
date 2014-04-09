@@ -170,4 +170,5 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
 App.run  ($rootScope) ->
   #TODO @peter
   $rootScope.cordova = true
+  $rootScope.cordova_type = 'android'
 
