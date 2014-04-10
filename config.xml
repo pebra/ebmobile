@@ -13,5 +13,9 @@
     <feature name="SocialSharing">
       <param name="android-package" value="n1.xservices.plugins.SocialSharing"/>
     </feature>
+    <feature name="Geolocation">
+      <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+
 
 </widget>
