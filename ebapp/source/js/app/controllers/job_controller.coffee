@@ -1,5 +1,5 @@
 
-App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste','communities', ($scope, Job, $routeParams, $sce, Company, merkliste, communities)->
+App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Company', 'merkliste','communities','sharing', ($scope, Job, $routeParams, $sce, Company, merkliste, communities,sharing)->
   $scope.job = null
   $scope.company = null
   Job.get { id: $routeParams.jobId }, (r)->
@@ -9,9 +9,7 @@ App.controller 'JobController', ['$scope','Job', '$routeParams', '$sce', 'Compan
 
 
   $scope.share = ->
-    alert 'share now via old plugin'
-    cordova.plugins.SocialShare.share(null, null, { dialogTitle : 'Share', url: 'http://google.com', text: 'wow much amaze'} )
-    cordova.plugins.socialsharing.share(null, null, null, 'http://www.stefanwienert.de')
+    sharing.shareUrl($scope.job.url, $scope.job.title)
 
   $scope.html_safe = (string)-> $sce.trustAsHtml(string)
   $scope.on_merkliste = merkliste.isMerked($routeParams.jobId)

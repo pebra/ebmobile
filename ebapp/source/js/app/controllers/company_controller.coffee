@@ -1,4 +1,4 @@
-App.controller 'CompanyController', ['$scope', '$routeParams', 'Company', 'communities', ($scope, $routeParams,Company,communities) ->
+App.controller 'CompanyController', ['$scope', '$routeParams', 'Company', 'communities', 'sharing', ($scope, $routeParams, Company, communities, sharing) ->
     communities.all (c)->
       $scope.communities = c
 
@@ -8,4 +8,7 @@ App.controller 'CompanyController', ['$scope', '$routeParams', 'Company', 'commu
       $scope.query_params = {
         user_name: r.user_name
       }
+    # $scope.share = ->
+    #   p $scope.company
+    #   sharing.shareUrl($scope.job.url, $scope.job.title)
 ]

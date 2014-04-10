@@ -5,6 +5,10 @@ div ng-if='company != undefined'
       img ng-src="https:{{company.logo.resized}}"
       p
         |{{company.name}}
+      /* p */
+        button.btn.btn-small ng-if='cordova' ng-click="share()"
+          span.icon-share.icon>
+          span Teilen
     li.table-view-cell ng-if='company.description'
       | Kurzbeschreibung zur {{company.name}}
       p ng-bind-html='company.description | unsafe'
@@ -33,6 +37,7 @@ div ng-if='company != undefined'
       a ng-href='{{company.twitter}}'  target="_system"
         <span class="icon icon-home media-object pull-left"></span>
         .media-body Twitter
+
   eb-job-results[query-params='query_params' query-function='newest' title='Neuste Stellen der Organisation in Ihrer Region']
   ul.table-view[ng-if='communities']
     li.table-view-divider

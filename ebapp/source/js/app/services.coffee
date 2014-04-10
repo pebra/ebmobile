@@ -52,3 +52,22 @@ App.factory 'tags', ($http)->
     get: (callback) ->
       $http({url: 'tags.json', method: 'GET', cache: true}).success (data)-> callback(data)
   }
+
+App.factory 'sharing', ->
+  {
+    # message = {
+    #   subject: "Test Subject",
+    #   text: "This is a test message",
+    #   url: "http://ilee.co.uk"
+    # }
+    share: (message)->
+      window.socialmessage.send(message)
+
+    shareUrl: (url, title)->
+      message = {
+        subject: title
+        url: url
+      }
+      window.socialmessage.send(message)
+
+  }
