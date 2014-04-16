@@ -52,7 +52,7 @@ App.directive 'ebStaticMap', ->
 App.directive 'ebLoadingSpinner', ($rootScope)->
   {
     restrict: 'E'
-    template: '<div class="loading"><div class="outer"></div><div class="inner"></div></div>'
+    template: '<div class="spinner"></div>'
     replace: true
   }
 App.directive 'ebNavbar', ($rootScope)->
