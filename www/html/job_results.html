@@ -3,7 +3,7 @@
     {{title}}
   </li>
   <li class="table-view-cell media" ng-repeat="job in jobs.jobs">
-    <a class="media-object pull-left" href="" ng-click="unmerk(job)" ng-if="on_merkliste(job)"><span class="icon icon-star-filled"></span> </a> <a class="media-object pull-left" href="" ng-click="merk(job)" ng-if="!on_merkliste(job)"><span class="icon icon-star"></span> </a> 
+    <a class="media-object pull-left" ng-href="#/job/{{job.id}}"><img src="http://{{job.company_logo}}" /></a>
     <div class="media-body">
       <a class="navigate-right" ng-href="#/job/{{job.id}}">{{job.title}}
         <p>
