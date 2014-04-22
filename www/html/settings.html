@@ -14,9 +14,12 @@
     Alle Suchanfragen und Stellenlisten beinhalten automatisch nur Stellen aus Ihrer Region. Sie können die Position ändern oder den Radius festlegen.
   </p>
 </div>
-<ul class="table-view">
-  <li class="content-padded">
+<ul class="table-view no-border">
+  <li class="content-padded" ng-if="!geolocationInProgress">
     <button class="btn btn-block" ng-click="geolocate()">Positions automatisch ermitteln</button>
+  </li>
+  <li class="content-padded" ng-if="geolocationInProgress">
+    <button class="btn btn-block">bitte warten...</button>
   </li>
   <li class="table-view-divider">
     Alternativ
@@ -35,7 +38,7 @@
     Suchergebnis: {{search_result.name}}
   </li>
 </ul>
-<ul class="table-view" ng-if="coordinates.lat">
+<ul class="no-border table-view" ng-if="coordinates.lat">
   <li class="table-view-divider">
     Suchradius
   </li>
@@ -50,22 +53,28 @@
     <div eb-static-map="" lat="coordinates.lat" lng="coordinates.lng" radius="radius" style="height: 400px; width: 100%"></div>
   </li>
 </ul>
-<ul class="table-view">
+<ul class="no-border table-view">
   <li class="table-view-divider">
     Stellenfilter
   </li>
-  <li class="table-view-cell">
-    <form>
-      <div class="input-row">
-        <label for="intern">Jobs für Fach- und Führungskräfte</label><input ng-model="filter_fid.4" type="checkbox" value="1" />
-      </div>
-      <div class="input-row">
-        <label for="intern">Praktika, Ausbildungen, Werkstudenten</label><input ng-model="filter_fid.5" type="checkbox" value="1" />
-      </div>
-    </form>
+  <li class="table-view-cell toggles">
+    <p>
+      Jobs für Fach- und Führungskräfte
+    </p>
+    <div class="toggle" ng-class="{active: active(4)}" ng-click="toggleFid(4)">
+      <div class="toggle-handle"></div>
+    </div>
+  </li>
+  <li class="table-view-cell toggles">
+    <p>
+      Praktika, Ausbildungen, Werkstudenten
+    </p>
+    <div class="toggle" ng-class="{active: active(5)}" ng-click="toggleFid(5)">
+      <div class="toggle-handle"></div>
+    </div>
   </li>
 </ul>
-<ul class="table-view">
+<ul class="table-view no-border">
   <li class="table-view-divider">
     Alle Einstellungen und Chronik löschen
   </li>

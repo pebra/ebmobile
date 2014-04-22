@@ -4,13 +4,13 @@ ul.table-view ng-if='job != undefined'
     | {{job.title}}
   li.table-view-cell
     p
-      button.btn.btn-small> ng-if='on_merkliste' ng-click='unmerk()'
+      button.btn-block.btn.btn-small> ng-if='on_merkliste' ng-click='unmerk()'
         span.icon.icon-star-filled>
         span  Von Merkliste entfernen
-      button.btn.btn-small> ng-if='!on_merkliste' ng-click='merk()'
+      button.btn-block.btn.btn-small> ng-if='!on_merkliste' ng-click='merk()'
         span.icon.icon-star>
         span Auf die Merkliste
-      button.btn.btn-small ng-if='cordova' ng-click="share()"
+      button.btn-block.btn.btn-small ng-if='cordova' ng-click="share()"
         span.icon-share.icon>
         span Teilen
 

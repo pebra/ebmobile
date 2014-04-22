@@ -1,21 +1,38 @@
-App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', ($scope, settings, geolocation, $http, $rootScope)->
+App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$http', '$rootScope', 'notification', ($scope, settings, geolocation, $http, $rootScope, notification)->
 
+  $scope.geolocationInProgress = false
   settings.bind($scope)
 
+  $rootScope.$on 'error', (a,b,c)->
+    $scope.geolocationInProgress = false
+    notification.info('Position konnte nicht ermittelt werden.')
+
   $scope.geolocate = ->
+    notification.info 'Position wird ermittelt...'
+    return if $scope.geolocationInProgress
+    $scope.geolocationInProgress = true
+    setTimeout ->
+      if $scope.geolocationInProgress
+        $scope.geolocationInProgress = false
+        notification.info 'Position konnte nicht ermittelt werden'
+    , 5000
     geolocation.getLocation().then (data)->
-      console.log data
+      notification.info 'Position wurde ermittelt.'
       $scope.coordinates = {lat: data.coords.latitude, lng: data.coords.longitude}
+      $scope.geolocationInProgress = false
 
   $scope.clear = ->
     $scope.coordinates = {}
     $scope.radius = 50
-    $scope.filter_fid_intern = true
-    $scope.filter_fid_jobs = true
+    $scope.filter_fid = { 4: true, 5: true}
     settings.clear()
     localStorage.clear()
-    $scope.cleared = true
     $rootScope.merkliste = {}
+    notification.info "Einstellungen gelöscht!"
+
+  $scope.active = (what)-> $scope.filter_fid[what]
+  $scope.toggleFid = (what)->
+    $scope.filter_fid[what] = !$scope.filter_fid[what]
 
   $scope.search = (term)->
     $http.jsonp('https://www.empfehlungsbund.de/api/v2/utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK'}})
@@ -23,5 +40,5 @@ App.controller 'SettingsController', ['$scope', 'settings', 'geolocation', '$htt
         $scope.search_result = data
         $scope.coordinates = { lat: data.lat, lng: data.lng}
       .error (data)->
-        console.log data
+        notification.info "#{term} wurde nicht gefunden. Bitte prüfen Sie Ihre Eingabe."
 ]

@@ -21,5 +21,12 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
      .when '/settings',
        templateUrl: 'html/settings.html'
        controller: 'SettingsController'
+     .when '/assistent',
+       templateUrl: 'html/assistent.html'
+       controller: 'AssistentController'
+     .when '/assistent/location',
+       templateUrl: 'html/assistent_location.html'
+       controller: 'SettingsController'
+
      # .otherwise( redirectTo: '/')
 ]

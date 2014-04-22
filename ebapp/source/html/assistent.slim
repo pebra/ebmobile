@@ -1,0 +1,16 @@
+h1 Willkommen!
+
+ul.no-border.table-view
+  li.table-view-divider 
+    | Was m&ouml;chten Sie suchen?
+  li.table-view-cell.toggles
+
+    p Jobs für Fach- und Führungskräfte
+    .toggle[ng-class='{active: active(4)}' ng-click='toggleFid(4)']
+      .toggle-handle
+  li.table-view-cell.toggles
+    p Praktika, Ausbildungen, Werkstudenten
+    .toggle[ng-class='{active: active(5)}' ng-click='toggleFid(5)']
+      .toggle-handle
+.content-padded
+  a.btn.btn-block.pull-right href='#/assistent/location' Weiter

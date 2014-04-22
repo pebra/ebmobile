@@ -1,4 +1,4 @@
-<ul class="table-view">
+<ul class="table-view no-border">
   <li class="table-view-divider">
     Merkliste
   </li>
@@ -10,5 +10,10 @@
   </li>
   <li class="table-view-cell" ng-if="jobs.length == 0">
     Sie haben noch keine Stellen in Ihrer Merkliste
+  </li>
+  <li class="table-view-cell">
+    <p>
+      <button class="btn-block btn btn-small" ng-click="share()" ng-if="cordova"><span class="icon-share icon"></span> <span>Teilen</span></button>
+    </p>
   </li>
 </ul>

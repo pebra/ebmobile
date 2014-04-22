@@ -1,5 +1,5 @@
 ul.table-view
-  li.table-view-divider
+  li.table-view-divider[ng-if='title']
     | {{title}}
   li.table-view-cell.media[ng-repeat='job in jobs.jobs']
     a.media-object.pull-left ng-href="#/job/{{job.id}}"

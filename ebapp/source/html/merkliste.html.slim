@@ -1,4 +1,4 @@
-ul.table-view
+ul.table-view.no-border
   li.table-view-divider Merkliste
   li.table-view-cell[ng-repeat='job in jobs track by job.id']
     a.navigate-right.truncated ng-href='#/job/{{job.id}}'
@@ -8,3 +8,8 @@ ul.table-view
   li.table-view-cell[ng-if='jobs.length == 0']
     | Sie haben noch keine Stellen in Ihrer Merkliste
 
+  
+  li.table-view-cell
+    p: button.btn-block.btn.btn-small ng-if='cordova' ng-click="share()"
+      span.icon-share.icon>
+      span Teilen

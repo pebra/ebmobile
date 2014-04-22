@@ -1,1 +1,1 @@
-{"source":{"type":"local","path":"../cordova-plugin-social-message"}}
+{"source":{"type":"git","url":"https://github.com/leecrossley/cordova-plugin-social-message.git","subdir":"."}}

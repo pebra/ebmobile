@@ -2,7 +2,7 @@ form ng-submit='search()'
   label.block-label Suchbegriff
   input.input-text type='text' placeholder='z.B. Java' ng-model='query' ng-change='autocomplete()'
   span
-  ul.table-view[ng-if='autocomplete_tags']
+  ul.table-view.no-border[ng-if='has_match && autocomplete_tags']
     li.table-view-cell[ng-repeat='res in autocomplete_tags | filter:tag_match | limitTo: 5']
       a ng-click='select_autocomplete(res)' ng-bind-html='res.display | unsafe'
   .form-actions
