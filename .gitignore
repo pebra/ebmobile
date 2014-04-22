@@ -4,6 +4,5 @@ work
 www/
 ebapp/source/ignore/
 .bundle
-platforms/android/*
 www/ignore
 ebapp/bower_components/*
