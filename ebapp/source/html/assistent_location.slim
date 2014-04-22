@@ -10,7 +10,7 @@ ul.table-view.no-border
   li.content-padded[ng-if='geolocationInProgress']
     button.btn.btn-block bitte warten...
   li.content-padded
-    button.btn.btn-block ng-click='open = true' Ort manuell angeben
+    button.btn.btn-block ng-click='open = !open' Ort manuell angeben
 
 ul.table-view.no-border[ng-if='open']
   li.content-padded
@@ -23,5 +23,8 @@ ul.table-view.no-border[ng-if='open']
   li.table-view-cell ng-if='search_result' ng-show='search_result'
     | Suchergebnis: {{search_result.name}}
 
-  li.content-padded[ng-if='coordinates.lat']
-    a.btn.btn-block href='#/' Los geht's!
+/* nav.bar.bar-tab */
+/*   a.tab-item href='#/' Los geht's */
+br
+.content-padded[ng-if='coordinates.lat']
+  a.btn.btn-block href='#/' Los geht's!

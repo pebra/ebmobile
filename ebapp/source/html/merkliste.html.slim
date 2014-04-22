@@ -9,7 +9,7 @@ ul.table-view.no-border
     | Sie haben noch keine Stellen in Ihrer Merkliste
 
   
-  li.table-view-cell
+  li.table-view-cell[ng-if='jobs.length != 0']
     p: button.btn-block.btn.btn-small ng-if='cordova' ng-click="share()"
       span.icon-share.icon>
       span Teilen

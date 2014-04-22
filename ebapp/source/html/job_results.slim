@@ -1,4 +1,4 @@
-ul.table-view
+ul.table-view.no-border
   li.table-view-divider[ng-if='title']
     | {{title}}
   li.table-view-cell.media[ng-repeat='job in jobs.jobs']
@@ -9,8 +9,8 @@ ul.table-view
         | {{job.title}}
         p
           |{{job.company_name}} - {{job.location}}
-  li.table-view-cell[ng-if='paginationEnabled && jobs.next_page']
-    a.link ng-click='showMore()' Mehr (Seite {{jobs.next_page}})
-
   eb-loading-spinner[ng-if='loading']
+  li.table-view-cell[ng-if='paginationEnabled && jobs.next_page']
+    p: a.btn.btn-block ng-click='showMore()' Mehr
+
 
