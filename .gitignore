@@ -4,5 +4,6 @@ work
 www/
 ebapp/source/ignore/
 .bundle
+platforms/*
 www/ignore
 ebapp/bower_components/*

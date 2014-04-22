@@ -7,6 +7,12 @@ install:
 	npm install karma-qunit --save-dev
 	npm install karma-ember-preprocessor --save-dev
 
+init:
+	cordova platform add android
+	android update project -p platforms/android
+	cd ebapp/ && bower install
+	echo 'MAKE SURE LEAFLET IS COMPILED!!!!!!!!'
+
 server:
 	cd ebapp/source && middleman server -p 3506
 
@@ -25,3 +31,5 @@ build:
 	rm -rf www/spec/
 	cordova build
 	cordova run android
+
+
