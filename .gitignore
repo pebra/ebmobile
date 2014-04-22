@@ -7,3 +7,4 @@ ebapp/source/ignore/
 platforms/*
 www/ignore
 ebapp/bower_components/*
+credentials

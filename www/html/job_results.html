@@ -1,4 +1,4 @@
-<ul class="table-view">
+<ul class="table-view no-border">
   <li class="table-view-divider" ng-if="title">
     {{title}}
   </li>
@@ -12,8 +12,10 @@
       </a>
     </div>
   </li>
-  <li class="table-view-cell" ng-if="paginationEnabled && jobs.next_page">
-    <a class="link" ng-click="showMore()">Mehr (Seite {{jobs.next_page}})</a>
-  </li>
   <eb-loading-spinner ng-if="loading"></eb-loading-spinner>
+  <li class="table-view-cell" ng-if="paginationEnabled && jobs.next_page">
+    <p>
+      <a class="btn btn-block" ng-click="showMore()">Mehr</a>
+    </p>
+  </li>
 </ul>
