@@ -1,7 +1,7 @@
 .content-padded
   h3 Schritt 2: Standort
 ul.no-border.table-view
-  li.table-view-divider 
+  li.table-view-divider
     | In welcher Region suchen Sie eine Stelle?
 
 ul.table-view.no-border
@@ -20,11 +20,10 @@ ul.table-view.no-border[ng-if='open']
         input[type='text' ng-model='search_query' placeholder='z.B. Berlin']
       p
         button.btn.btn-block Suchen
+ul.table-view.no-border
   li.table-view-cell ng-if='search_result' ng-show='search_result'
     | Suchergebnis: {{search_result.name}}
 
-/* nav.bar.bar-tab */
-/*   a.tab-item href='#/' Los geht's */
 br
 .content-padded[ng-if='coordinates.lat']
   a.btn.btn-block href='#/' Los geht's!
