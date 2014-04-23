@@ -135,14 +135,7 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
       $scope.on_merkliste = (job)->
         merkliste.isMerked(job.id)
 
-      default_params =
-        lat: $scope.coordinates.lat
-        lon: $scope.coordinates.lng
-        radius: $scope.radius
-        fid: []
-      for fid,bool of $scope.filter_fid
-        default_params.fid.push(fid) if bool
-
+      default_params = $scope.default_params()
       func = Job[$scope.queryFunction]
 
       $scope.search =  (params) ->

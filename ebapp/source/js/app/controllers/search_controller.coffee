@@ -10,6 +10,7 @@ App.controller 'SearchController', ['$scope','Job', 'settings', '$location','tag
   $scope.executeSearch = ->
     $scope.query_params = { q: $scope.query }
     $scope.lastQuery = $scope.query
+    settings.addQuery($scope.query, null, $scope)
 
   if $location.search().q?
     $scope.query = $location.search().q

@@ -29,22 +29,42 @@ App.factory 'communities', ($rootScope, Community) ->
 
 App.factory 'settings', (storage, Community)->
   {
+
     bind: ($scope)->
       storage.bind($scope,'radius', defaultValue: 50)
       storage.bind($scope,'coordinates')
       storage.bind($scope,'lastQuery')
+      storage.bind($scope,'lastUsage')
       storage.bind($scope,'filter_fid', defaultValue: { '4': true, '5':true})
       storage.bind($scope,'lastQueries', defaultValue: [])
-      $scope.$watch('lastQuery', this.addQuery)
+      # $scope.$watch('lastQuery', this.addQuery)
+      $scope.default_params = ->
+        default_params =
+          lat: $scope.coordinates.lat
+          lon: $scope.coordinates.lng
+          radius: $scope.radius
+          fid: []
+        for fid,bool of $scope.filter_fid
+          default_params.fid.push(fid) if bool
+        default_params
+
     storage: storage
     addQuery: (newVal,oldVal,scope)->
       return unless newVal?
       return if newVal == ''
-      if scope.lastQueries.indexOf(newVal) == -1
-        scope.lastQueries.push newVal
+      found = false
+      for q,i in scope.lastQueries
+        if q.q == newVal
+          scope.lastQueries[i].date = window.today()
+          found = true
+
+      if !found
+        today = window.today()
+        scope.lastQueries.push { q: newVal, date: today }
+
       scope.lastQueries = scope.lastQueries[-20..]
-    clear: ->
-      storage.clearAll()
+
+    clear: -> storage.clearAll()
   }
 
 App.factory 'tags', ($http)->
