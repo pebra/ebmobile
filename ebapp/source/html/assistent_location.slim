@@ -1,28 +1,13 @@
 .content-padded
   h3 Schritt 2: Standort
+
 ul.no-border.table-view
   li.table-view-divider
     | In welcher Region suchen Sie eine Stelle?
-
+eb-location-form
 ul.table-view.no-border
-  li.content-padded[ng-if='!geolocationInProgress']
-    button.btn.btn-block ng-click='geolocate()' Ort automatisch ermitteln
-  li.content-padded[ng-if='geolocationInProgress']
-    button.btn.btn-block bitte warten...
-  li.content-padded
-    button.btn.btn-block ng-click='open = !open' Ort manuell angeben
-
-ul.table-view.no-border[ng-if='open']
-  li.content-padded
-    form[ng-submit='search(search_query)']
-      p
-        label for='geosearch' Ortssuche
-        input[type='text' ng-model='search_query' placeholder='z.B. Berlin']
-      p
-        button.btn.btn-block Suchen
-ul.table-view.no-border
-  li.table-view-cell ng-if='search_result' ng-show='search_result'
-    | Suchergebnis: {{search_result.name}}
+  li.table-view-cell ng-if='coordinates.name'
+    | Suchergebnis: {{coordinates.name}}
 
 br
 .content-padded[ng-if='coordinates.lat']

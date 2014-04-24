@@ -23,7 +23,7 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
        controller: 'SettingsController'
      .when '/assistent',
        templateUrl: 'html/assistent.html'
-       controller: 'AssistentController'
+       controller: 'SettingsController'
      .when '/assistent/location',
        templateUrl: 'html/assistent_location.html'
        controller: 'SettingsController'

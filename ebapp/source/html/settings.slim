@@ -1,34 +1,18 @@
-.content-padded[ng-if='!coordinates.lat']
-  h4 Ermitteln Sie Ihren Standort per Klick oder manuell per Suche
-  p Alle Suchanfragen und Stellenlisten beinhalten dann automatisch nur Stellen aus Ihrer Region.
-.content-padded[ng-if='coordinates.lat']
-  h4 Ihr Standort wurde ermittelt.
-  p Alle Suchanfragen und Stellenlisten beinhalten automatisch nur Stellen aus Ihrer Region. Sie können die Position ändern oder den Radius festlegen.
 ul.table-view.no-border
-  li.content-padded[ng-if='!geolocationInProgress']
-    button.btn.btn-block ng-click='geolocate()' Positions automatisch ermitteln
-  li.content-padded[ng-if='geolocationInProgress']
-    button.btn.btn-block bitte warten...
-  li.table-view-divider Alternativ
-  li.content-padded
-    form[ng-submit='search(search_query)']
-      p
-        label for='geosearch' Ortssuche
-        input[type='text' ng-model='search_query' placeholder='z.B. Berlin']
-      p
-        button.btn.btn-block Suchen
-  li.table-view-cell ng-if='search_result' ng-show='search_result'
-    | Suchergebnis: {{search_result.name}}
+  li.table-view-divider Standort
+  li.table-view-cell ng-if='coordinates.name'
+    | Aktueller Standort: {{coordinates.name}}
+eb-location-form
 
 ul.no-border.table-view[ng-if='coordinates.lat']
   li.table-view-divider Suchradius
+  li.table-view-cell
+    div[eb-static-map radius='radius' lat='coordinates.lat' lng='coordinates.lng' style='height: 400px; width: 100%']
   li.table-view-cell
     form
       .input-row
         label for='radius' km
         input type='text' ng-model='$parent.radius' name='radius' placeholder='50 (km)'
-  li.table-view-cell
-    div[eb-static-map radius='radius' lat='coordinates.lat' lng='coordinates.lng' style='height: 400px; width: 100%']
 
 ul.no-border.table-view
   li.table-view-divider Stellenfilter
@@ -42,6 +26,14 @@ ul.no-border.table-view
     .toggle[ng-class='{active: active(5)}' ng-click='toggleFid(5)']
       .toggle-handle
 
+
+  li.table-view-divider
+    | Berufe
+  li.table-view-cell.toggles[ng-repeat='pt in portal_type_list']
+    p[ng-bind='pt.title']
+      | {{pt.title}}
+    .toggle[ng-class='{active: activePortalType(pt.key)}' ng-click='togglePt(pt.key)']
+      .toggle-handle
 
 ul.table-view.no-border
   li.table-view-divider Alle Einstellungen und Chronik löschen

@@ -1,5 +1,5 @@
 App.factory 'Job', ['$resource' , ($resource) ->
-  $resource 'https://www.empfehlungsbund.de/api/v2/jobs/:id.jsonp', null,
+  $resource App.api + 'jobs/:id.jsonp', null,
     get:
       method: 'JSONP'
       params:
@@ -11,14 +11,14 @@ App.factory 'Job', ['$resource' , ($resource) ->
         callback: 'JSON_CALLBACK'
     newest:
       method: 'JSONP'
-      url: 'https://www.empfehlungsbund.de/api/v2/jobs/lists/newest.jsonp'
+      url: App.api + 'jobs/lists/newest.jsonp'
       params:
         callback: 'JSON_CALLBACK'
 ]
 
 
 App.factory 'Company', ['$resource' , ($resource) ->
-  $resource 'https://www.empfehlungsbund.de/api/v2/companies/:id.jsonp', null,
+  $resource App.api + 'companies/:id.jsonp', null,
     get:
       method: 'JSONP'
       params:
@@ -26,7 +26,7 @@ App.factory 'Company', ['$resource' , ($resource) ->
 ]
 
 App.factory 'Community', ['$resource', ($resource)->
-  $resource 'https://www.empfehlungsbund.de/api/v2/domains.jsonp', null,
+  $resource App.api + 'domains.jsonp', null,
     getAll:
       method: 'JSONP'
       isArray: true

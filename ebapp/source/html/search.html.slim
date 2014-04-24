@@ -1,7 +1,10 @@
 search-form
 eb-loading-spinner[ng-if='loading']
 div ng-if='result.query != undefined'
-  | Suche nach "{{result.query}}" lieferte
+  span[ng-if='result.query && result.query.length > 0']
+    | Suche nach "{{result.query}}" lieferte
+  span[ng-if='!result.query || result.query.length == 0']
+    | Suche nach den neusten Stellen liefert
 
   ng-pluralize count='result.length' when="{'0': ' kein Suchergebnis', '1': ' ein Suchergebnis','other': ' {} Suchergebnisse'}"
 
