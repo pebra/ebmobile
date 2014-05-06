@@ -1,13 +1,13 @@
 .content-padded
-  h3 Schritt 2: Standort
-
+  h3 
+    | Schritt 2: Ihr Standort
+    br
+    small<[ng-if='coordinates.name' ng-bind='coordinates.name']
+      
 ul.no-border.table-view
   li.table-view-divider
     | In welcher Region suchen Sie eine Stelle?
 eb-location-form
-ul.table-view.no-border
-  li.table-view-cell ng-if='coordinates.name'
-    | Suchergebnis: {{coordinates.name}}
 
 br
 .content-padded[ng-if='coordinates.lat']

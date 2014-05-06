@@ -1,23 +1,15 @@
-Position automatisch ermitteln:
 
+## RELEASE
+Fokus!
+Nutzungsbedingungen Datenschutz -> IMpressumsseite
 
-15s Timeout. Falls Timeout erreicht -> Text: Standort konnte nicht ermittelt werden.
-Mögliche Ursachen sind:
-* Standortdienste sind deaktiviert [In App link?]
-* Datenschutzeinstellungen verhindern den Zugriff auf Ihren Standort
-Vielleicht progressbar?
-abpruefen? https://github.com/oaugustus/phonegap-diagnostic-plugin
-
-since Parameter im EB: Heute echt groesser nicht groesser gleich
-Date Format, Gruendungsdatum
-
-Auszeichnungen floaten durch die Kante
-
-ITsax.de
-Suchbegriff: Nur auf ITsax suchen
+Peter: GEdanken zur UI im Schritt 2
+  + toast on success
 
 Firma:
   Keine CommMitgliedschaften
+
+Google Analytics
 
 Stelle:
   LOGO
@@ -26,23 +18,20 @@ Stelle:
   Was ist ITsax ->
 
 
-Internetseite, Facebook Fanpage, Twitter Logos
-
+## Stefan
+since Parameter im EB: Heute echt groesser nicht groesser gleich
 Auszeichnung hat einen kleinen Text?
-
 Company Seite:
   Ansprechpartner mit Bild, Email und Telefonnummer...
+API: Jobseite -> sollte als Click zaehlen
 
-Google Analytics
-
-Jobseite -> sollte als Click zaehlen
-
-Nutzungsbedingungen Datenschutz -> IMpressumsseite
 
 ## Weiterentwicklungen
+Position automatisch ermitteln:
+10s Timeout. Falls Timeout erreicht 
+Vielleicht progressbar?
 
 * Telefonpush Kontaktbuch Anrufen E-Mail <1d
 * Notifications 1w
 * Bewerben 1-2d
 * iPhone ????
-

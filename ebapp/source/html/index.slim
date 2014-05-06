@@ -6,7 +6,7 @@ ul.table-view.no-border[ng-if='lastQueries']
     a ng-href='#/search?q={{query.q | encodeURIComponent}}'
       | {{query.q}}
       small.job-count<[ng-if='searchCounts[query.q]']
-        | ({{searchCounts[query.q]}} neue seit {{query.date}})
+        | ({{searchCounts[query.q]}} neue seit {{query.date | dateFormat}})
 
 eb-job-results[ng-if='coordinates.lat' query-params='newest_query' query-function='newest' title='Neuste Stellen in Ihrer Region']
 

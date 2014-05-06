@@ -1,46 +1,18 @@
-<div class="content-padded" ng-if="!coordinates.lat">
-  <h4>
-    Ermitteln Sie Ihren Standort per Klick oder manuell per Suche
-  </h4>
-  <p>
-    Alle Suchanfragen und Stellenlisten beinhalten dann automatisch nur Stellen aus Ihrer Region.
-  </p>
-</div>
-<div class="content-padded" ng-if="coordinates.lat">
-  <h4>
-    Ihr Standort wurde ermittelt.
-  </h4>
-  <p>
-    Alle Suchanfragen und Stellenlisten beinhalten automatisch nur Stellen aus Ihrer Region. Sie können die Position ändern oder den Radius festlegen.
-  </p>
-</div>
 <ul class="table-view no-border">
-  <li class="content-padded" ng-if="!geolocationInProgress">
-    <button class="btn btn-block" ng-click="geolocate()">Positions automatisch ermitteln</button>
-  </li>
-  <li class="content-padded" ng-if="geolocationInProgress">
-    <button class="btn btn-block">bitte warten...</button>
-  </li>
   <li class="table-view-divider">
-    Alternativ
+    Standort
   </li>
-  <li class="content-padded">
-    <form ng-submit="search(search_query)">
-      <p>
-        <label for="geosearch">Ortssuche</label><input ng-model="search_query" placeholder="z.B. Berlin" type="text" />
-      </p>
-      <p>
-        <button class="btn btn-block">Suchen</button>
-      </p>
-    </form>
-  </li>
-  <li class="table-view-cell" ng-if="search_result" ng-show="search_result">
-    Suchergebnis: {{search_result.name}}
+  <li class="table-view-cell" ng-if="coordinates.name">
+    Aktueller Standort: {{coordinates.name}}
   </li>
 </ul>
+<eb-location-form></eb-location-form>
 <ul class="no-border table-view" ng-if="coordinates.lat">
   <li class="table-view-divider">
     Suchradius
+  </li>
+  <li class="table-view-cell">
+    <div eb-static-map="" lat="coordinates.lat" lng="coordinates.lng" radius="radius" style="height: 400px; width: 100%"></div>
   </li>
   <li class="table-view-cell">
     <form>
@@ -48,9 +20,6 @@
         <label for="radius">km</label><input name="radius" ng-model="$parent.radius" placeholder="50 (km)" type="text" />
       </div>
     </form>
-  </li>
-  <li class="table-view-cell">
-    <div eb-static-map="" lat="coordinates.lat" lng="coordinates.lng" radius="radius" style="height: 400px; width: 100%"></div>
   </li>
 </ul>
 <ul class="no-border table-view">
@@ -70,6 +39,17 @@
       Praktika, Ausbildungen, Werkstudenten
     </p>
     <div class="toggle" ng-class="{active: active(5)}" ng-click="toggleFid(5)">
+      <div class="toggle-handle"></div>
+    </div>
+  </li>
+  <li class="table-view-divider">
+    Berufe
+  </li>
+  <li class="table-view-cell toggles" ng-repeat="pt in portal_type_list">
+    <p ng-bind="pt.title">
+      {{pt.title}}
+    </p>
+    <div class="toggle" ng-class="{active: activePortalType(pt.key)}" ng-click="togglePt(pt.key)">
       <div class="toggle-handle"></div>
     </div>
   </li>

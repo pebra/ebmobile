@@ -3,6 +3,8 @@ App.config ['$routeProvider', '$locationProvider', ($routeProvider, $locationPro
      .when '/',
        templateUrl: 'html/index.html'
        controller: 'IndexController'
+     .when '/impressum',
+       templateUrl: 'html/impressum.html'
      .when '/search',
        templateUrl: 'html/search.html'
        controller: 'SearchController'

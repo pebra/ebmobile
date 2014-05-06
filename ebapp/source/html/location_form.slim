@@ -1,3 +1,10 @@
+.content-padded[ng-if='geolocationError']
+  p Ihr Standort konnte nicht ermittelt werden.  Mögliche Ursachen sind:
+  ul
+    li 
+      a href='#' ng-click='switchToLocationSettings()' 
+        | Standortdienste sind deaktiviert
+    li Datenschutzeinstellungen verhindern den Zugriff auf Ihren Standort
 ul.table-view.no-border
   li.content-padded[ng-if='!geolocationInProgress']
     button.btn.btn-block ng-click='geolocate()' Ort automatisch ermitteln

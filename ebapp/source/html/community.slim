@@ -9,24 +9,24 @@ div ng-if='community'
     li.table-view-cell
       | Gründungsdatum:
       p
-        | {{community.launch_date}}
+        | {{community.launch_date | dateFormat}}
     li.table-view-cell
       | Branchen:
       p
         | {{community.branchen}}
     li.table-view-cell.media
-      span.icon-home.media-object.icon.pull-left
+      span.icon-twitter2.media-object.icon.pull-left
       .media-body
         a ng-href='https://twitter.com/{{community.twitter_profile}}' Twitter
     li.table-view-cell.media
-      span.icon-home.media-object.icon.pull-left
+      span.icon-googleplus.media-object.icon.pull-left
       .media-body
         a ng-href='{{community.google_plus_url}}' Google+
     li.table-view-cell.media
-      span.icon-home.media-object.icon.pull-left
+      span.icon-facebook2.media-object.icon.pull-left
       .media-body
         a ng-href='https://www.facebook.com/{{community.facebook_fanpage}}' Facebook
-  search-form target='/community/{{community.name}}'
+  search-form target='/community/{{community.name}}' title='Innerhalb von {{community.name}} suchen:'
   div ng-if='result.query != undefined'
     | Suche nach "{{result.query}}" in {{community.name}} lieferte
 

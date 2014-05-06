@@ -4,7 +4,7 @@
     Ihre letzten Suchanfragen
   </li>
   <li class="table-view-cell" ng-repeat="query in lastQueries | reverse | limitTo:10">
-    <a ng-href="#/search?q={{query | encodeURIComponent}}">{{query}}</a>
+    <a ng-href="#/search?q={{query.q | encodeURIComponent}}">{{query.q}} <small class="job-count" ng-if="searchCounts[query.q]">({{searchCounts[query.q]}} neue seit {{query.date | dateFormat}})</small></a>
   </li>
 </ul>
 <eb-job-results ng-if="coordinates.lat" query-function="newest" query-params="newest_query" title="Neuste Stellen in Ihrer Region"></eb-job-results>

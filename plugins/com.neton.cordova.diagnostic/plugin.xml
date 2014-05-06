@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:rim="http://www.blackberry.com/ns/widgets"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    id="com.neton.cordova.diagnostic"
+    version="0.2.3">
+    <name>Diagnostic</name>
+    <description>Cordova Diagnostic Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,diagnostic</keywords>
+
+    <js-module src="www/diagnostic.js" name="diagnostic">
+        <clobbers target="diagnostic" />
+    </js-module>
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="Diagnostic" >
+                <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic"/>
+            </feature>
+        </config-file>
+
+        <source-file src="src/android/Diagnostic.java" target-dir="src/com/neton/cordova/diagnostic" />
+        <source-file src="src/android/MyLocationListener.java" target-dir="src/com/neton/cordova/diagnostic" />
+
+    </platform>
+
+</plugin>

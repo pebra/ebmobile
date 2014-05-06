@@ -27,15 +27,15 @@ div ng-if='company != undefined'
       | {{company.name}} im Internet
     li.table-view-cell.media
       a ng-href='{{company.url_firma}}' target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
+        span.icon.icon-home.media-object.pull-left
         .media-body Internetseite
     li.table-view-cell.media ng-if='company.facebook'
       a ng-href='{{company.facebook}}' ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
+        span.icon.icon-facebook2.media-object.pull-left
         .media-body Facebook-Fanpage
     li.table-view-cell.media[ng-if='company.twitter']
       a ng-href='{{company.twitter}}'  target="_system"
-        <span class="icon icon-home media-object pull-left"></span>
+        span.icon.icon-twitter2.media-object.pull-left
         .media-body Twitter
 
   eb-job-results[query-params='query_params' query-function='newest' title='Neuste Stellen der Organisation in Ihrer Region']

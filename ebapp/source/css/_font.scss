@@ -1,0 +1,113 @@
+@font-face {
+  font-family: 'icomoon';
+  src: font-url('icomoon.eot?kejsp3');
+  src: font-url('icomoon.eot?#iefixkejsp3') format('embedded-opentype'),
+     font-url('icomoon.woff?kejsp3') format('woff'),
+     font-url('icomoon.ttf?kejsp3') format('truetype'),
+     font-url('icomoon.svg?kejsp3#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e600";
+}
+.icon-play:before {
+  content: "\e601";
+}
+.icon-phone:before {
+  content: "\e602";
+}
+.icon-location:before {
+  content: "\e603";
+}
+.icon-user:before {
+  content: "\e604";
+}
+.icon-quotes-left:before {
+  content: "\e605";
+}
+.icon-search:before {
+  content: "\e606";
+}
+.icon-settings:before {
+  content: "\e607";
+}
+.icon-cog:before {
+  content: "\e608";
+}
+.icon-remove:before {
+  content: "\e609";
+}
+.icon-target:before {
+  content: "\e60a";
+}
+.icon-bookmark:before {
+  content: "\e60b";
+}
+.icon-star:before {
+  content: "\e60c";
+}
+.icon-star2:before {
+  content: "\e60d";
+}
+.icon-star3:before {
+  content: "\e60e";
+}
+.icon-loop:before {
+  content: "\e60f";
+}
+.icon-filter:before {
+  content: "\e610";
+}
+.icon-share:before {
+  content: "\e611";
+}
+.icon-mail:before {
+  content: "\e612";
+}
+.icon-mail2:before {
+  content: "\e613";
+}
+.icon-googleplus:before {
+  content: "\e614";
+}
+.icon-facebook:before {
+  content: "\e615";
+}
+.icon-facebook2:before {
+  content: "\e616";
+}
+.icon-twitter:before {
+  content: "\e617";
+}
+.icon-twitter2:before {
+  content: "\e618";
+}
+.icon-feed:before {
+  content: "\e619";
+}
+.icon-feed2:before {
+  content: "\e61a";
+}
+.icon-youtube:before {
+  content: "\e61b";
+}
+.icon-xing:before {
+  content: "\e61c";
+}
+

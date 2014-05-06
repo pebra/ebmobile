@@ -20,6 +20,8 @@ App.directive 'searchForm', ($location, tags) ->
         target = attr.target || '/search'
         $location.path(target).search('q', scope.query)
 
+      scope.title = attr.title || "Suchbegriff"
+
       scope.autocomplete_tags = autocomplete_tags
       scope.tag_match = (tag)-> tag.matched
 

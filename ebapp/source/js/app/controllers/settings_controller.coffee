@@ -29,6 +29,9 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     }
   ]
   $scope.search = (term)->
+    el = document.getElementsByTagName('input')[0]
+    el.focus()
+    el.blur()
     $http.jsonp(App.api + 'utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK', api_key: App.eb_api_key}})
       .success (data)->
         $scope.coordinates = { lat: data.lat, lng: data.lng}

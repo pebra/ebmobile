@@ -3,7 +3,7 @@
     {{title}}
   </li>
   <li class="table-view-cell media" ng-repeat="job in jobs.jobs">
-    <a class="media-object pull-left" ng-href="#/job/{{job.id}}"><img src="http://{{job.company_logo}}" /></a>
+    <a class="media-object pull-left" ng-href="#/job/{{job.id}}"><img ng-src="https:{{job.company_logo}}" /></a>
     <div class="media-body">
       <a class="navigate-right" ng-href="#/job/{{job.id}}">{{job.title}}
         <p>
