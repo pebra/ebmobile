@@ -11,3 +11,4 @@ www/ignore
 ebapp/bower_components/*
 credentials
 ebapp/source/js/credentials.coffee
+pludoni-release.keystore

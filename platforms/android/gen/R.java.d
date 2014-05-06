@@ -1,0 +1,24 @@
+/home/pebra/development/ebmobile/platforms/android/gen/de/pludoni/empfehlungsbundmobile/R.java \
+ : /home/pebra/development/ebmobile/platforms/android/res/drawable-xhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-xhdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-mdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-mdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/res/xml/config.xml \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-xxxhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-xxhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/res/values/strings.xml \
+/home/pebra/development/ebmobile/platforms/android/res/drawable/icon.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-hdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-hdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/res/drawable-ldpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-xhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-xhdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-mdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-mdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-xxxhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-xxhdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-hdpi/ic_launcher.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-hdpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/res/drawable-ldpi/icon.png \
+/home/pebra/development/ebmobile/platforms/android/bin/AndroidManifest.xml \

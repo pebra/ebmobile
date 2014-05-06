@@ -34,3 +34,8 @@ build:
 	cordova run android
 
 
+release:
+	mkdir -p releases
+	cd platforms/android/ && ant release
+	mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-`date +%Y-%m-%d`.apk
+
