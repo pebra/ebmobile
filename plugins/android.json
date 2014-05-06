@@ -8,7 +8,8 @@
             "/*": {
                 "<feature name=\"Geolocation\"><param name=\"android-package\" value=\"org.apache.cordova.geolocation.GeoBroker\" /></feature>": 1,
                 "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>": 1,
-                "<feature name=\"Diagnostic\"><param name=\"android-package\" value=\"com.neton.cordova.diagnostic.Diagnostic\" /></feature>": 1
+                "<feature name=\"Diagnostic\"><param name=\"android-package\" value=\"com.neton.cordova.diagnostic.Diagnostic\" /></feature>": 1,
+                "<feature name=\"GAPlugin\"><param name=\"android-package\" value=\"com.adobe.plugins.GAPlugin\" /></feature>": 1
             }
         },
         "AndroidManifest.xml": {
@@ -36,6 +37,9 @@
             "PACKAGE_NAME": "de.pludoni.ebmobile"
         },
         "com.neton.cordova.diagnostic": {
+            "PACKAGE_NAME": "de.pludoni.ebmobile"
+        },
+        "com.adobe.plugins.GAPlugin": {
             "PACKAGE_NAME": "de.pludoni.ebmobile"
         }
     },

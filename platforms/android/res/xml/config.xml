@@ -9,8 +9,8 @@
     </feature>
     <name>Empfehlungsbund</name>
     <description>
-      Stellen des Empfehlungsbundes.
-    </description>
+    Stellen des Empfehlungsbundes.
+  </description>
     <author email="app@pludoni.de" href="http://empfehlungsbund.de">pludoni GmbH</author>
     <content src="index.html" />
     <access origin="*" />
@@ -27,5 +27,8 @@
     </feature>
     <feature name="Diagnostic">
         <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
+    </feature>
+    <feature name="GAPlugin">
+        <param name="android-package" value="com.adobe.plugins.GAPlugin" />
     </feature>
 </widget>

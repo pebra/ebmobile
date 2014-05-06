@@ -29,6 +29,7 @@ build:
 	cd ebapp/ && bundle exec middleman build
 	rm -rf www/ignore/
 	rm -rf www/spec/
+	cordova prepare
 	cordova build
 	cordova run android
 

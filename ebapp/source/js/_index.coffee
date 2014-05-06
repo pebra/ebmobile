@@ -16,8 +16,9 @@ window.cordova_app =
   # function, we must explicity call 'app.receivedEvent(...);'
   onDeviceReady: ->
     cordova_app.receivedEvent "deviceready"
-    console.log "YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY"
     alert "YOLO DEVICE READY"
+    fn = -> true
+    window.plugins.gaPlugin.init(fn, fn,'UA-6810907-13', 10)
 
   # Bind Event Listeners
   #
@@ -29,4 +30,16 @@ window.cordova_app =
   # Application Constructor
   initialize: ->
     @bindEvents()
+
+if window.cordova
+  cordova_app.initialize()
+
+
+window.onDeviceReady = ->
+
+document.addEventListener "deviceready", ->
+  fn = -> true
+  window.plugins.gaPlugin.init(fn, fn,'UA-6810907-13', 10)
+
+, false
 

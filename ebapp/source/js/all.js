@@ -9,5 +9,9 @@
 //= require angularjs-geolocation/dist/angularjs-geolocation.min.js
 //= require angularLocalStorage/src/angularLocalStorage
 //= require leaflet/dist/leaflet-src.js
+//= require angulartics/dist/angulartics.min.js
+//= require angulartics/dist/angulartics-ga.min.js
+//= require angulartics/dist/angulartics-ga-cordova.min.js
+//= require angulartics/dist/angulartics-ga.min.js
 //= require _app
 //= require_tree ./app/

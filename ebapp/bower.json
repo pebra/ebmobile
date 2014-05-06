@@ -24,6 +24,7 @@
     "leaflet": "~0.7.2",
     "jquery": "~2.1.0",
     "angular": "~1.2.14",
-    "jquery.throttle": "~1.0.0"
+    "jquery.throttle": "~1.0.0",
+    "angulartics": "~0.15.17"
   }
 }
