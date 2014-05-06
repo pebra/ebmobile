@@ -4,7 +4,9 @@ work
 www/
 ebapp/source/ignore/
 .bundle
-platforms/*
+platforms/android/ant-build/*
+platforms/android/ant-gen/*
+local.properties
 www/ignore
 ebapp/bower_components/*
 credentials
