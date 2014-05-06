@@ -1,7 +1,7 @@
 *.sw?
 work
 .DS_Store
-www/
+www/*
 ebapp/source/ignore/
 .bundle
 platforms/android/ant-build/*
@@ -12,3 +12,4 @@ ebapp/bower_components/*
 credentials
 ebapp/source/js/credentials.coffee
 pludoni-release.keystore
+/platforms/android/assets/www/
