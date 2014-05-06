@@ -17,7 +17,7 @@
        under the License.
  */
 
-package de.pludoni.ebmobile;
+package de.pludoni.empfehlungsbundmobile;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

@@ -1,4 +1,5 @@
 /home/pebra/development/ebmobile/platforms/android/bin/classes.dex : \
+/home/pebra/development/ebmobile/platforms/android/bin/classes/de/pludoni/empfehlungsbundmobile/Empfehlungsbund.class \
 /home/pebra/development/ebmobile/platforms/android/bin/classes/de/pludoni/empfehlungsbundmobile/R$attr.class \
 /home/pebra/development/ebmobile/platforms/android/bin/classes/de/pludoni/empfehlungsbundmobile/R$drawable.class \
 /home/pebra/development/ebmobile/platforms/android/bin/classes/de/pludoni/empfehlungsbundmobile/R$string.class \
