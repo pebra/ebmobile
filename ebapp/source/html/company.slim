@@ -19,9 +19,14 @@ div ng-if='company != undefined'
 
     li.table-view-divider  ng-if='company.rewards' Arbeitgeberauszeichnungen
     li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
-      a.navigate-right ng-href='{{reward.link}}'
+      a.navigate-right[ng-click='reward.visible = !reward.visible']
         img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
         .media-body[ng-bind='reward.name']
+
+      div.clearfix[ng-if='reward.visible' style='margin-top: 10px']
+        p[ng-bind-html='reward.description | unsafe']
+        p: a[ng-href='{{reward.link}}'] Online-Profil der Auszeichnung
+
 
     li.table-view-divider
       | {{company.name}} im Internet
@@ -39,12 +44,6 @@ div ng-if='company != undefined'
         .media-body Twitter
 
   eb-job-results[query-params='query_params' query-function='newest' title='Neuste Stellen der Organisation in Ihrer Region']
-  ul.table-view[ng-if='communities']
-    li.table-view-divider
-      | {{company.name}} ist Mitglied von:
-    li.table-view-cell[ng-repeat='membership in company.memberships' ng-if='communities[membership]']
-      a ng-href='#/community/{{membership}}'
-        img.media-object ng-src="https:{{communities[membership].logo.medium}}"
 
 
 
