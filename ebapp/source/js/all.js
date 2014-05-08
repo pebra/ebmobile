@@ -14,4 +14,5 @@
 //= require angulartics/dist/angulartics-ga-cordova.min.js
 //= require angulartics/dist/angulartics-ga.min.js
 //= require _app
+//= require credentials
 //= require_tree ./app/

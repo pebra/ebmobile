@@ -23,6 +23,7 @@ App.factory 'Company', ['$resource' , ($resource) ->
       method: 'JSONP'
       params:
         callback: 'JSON_CALLBACK'
+        api_key: App.eb_api_key
 ]
 
 App.factory 'Community', ['$resource', ($resource)->
