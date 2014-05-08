@@ -15,3 +15,4 @@
 //= require angulartics/dist/angulartics-ga.min.js
 //= require _app
 //= require_tree ./app/
+//= require credentials
