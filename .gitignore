@@ -6,6 +6,7 @@ ebapp/source/ignore/
 .bundle
 platforms/android/ant-build/*
 platforms/android/ant-gen/*
+platforms/android/bin/*
 local.properties
 www/ignore
 ebapp/bower_components/*
