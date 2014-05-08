@@ -45,7 +45,6 @@ div ng-if='company != undefined'
     li.table-view-cell[ng-repeat='membership in company.memberships' ng-if='communities[membership]']
       a ng-href='#/community/{{membership}}'
         img.media-object ng-src="https:{{communities[membership].logo.medium}}"
-        p[ng-bind-html='communities[membership].description | unsafe']
 
 
 
