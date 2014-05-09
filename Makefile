@@ -37,7 +37,7 @@ build:
 release:
 	cd ebapp/ && bundle exec middleman build
 	mkdir -p releases
-	cd platforms/android/ && ant release
 	cordova prepare && cordova compile
+	cd platforms/android/ && ant release
 	mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-`date +%Y-%m-%d`.apk
 

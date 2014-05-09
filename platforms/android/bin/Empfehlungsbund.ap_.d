@@ -28,6 +28,7 @@
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/css \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/fonts \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/html \
+/Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/ignore \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/images \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/index.html \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js \
@@ -62,6 +63,7 @@
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/html/search.html \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/html/search_form.html \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/html/settings.html \
+/Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/ignore/screenshot.jpg \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/images/icon \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/images/icon/android \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/images/icon/android/icon-36-ldpi.png \
@@ -71,6 +73,7 @@
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/all.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/app \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/credentials.example \
+/Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/credentials.js \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/app/controllers \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/app/directives \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/assets/www/js/app/filters.js \
