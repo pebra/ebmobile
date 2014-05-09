@@ -17,5 +17,7 @@
         <move file="ant-build/AndroidManifest.xml" tofile="ant-build/AndroidManifest.cordova.xml" failonerror="false" overwrite="true" />
         <move file="CordovaLib/ant-build/AndroidManifest.xml" tofile="CordovaLib/ant-build/AndroidManifest.cordova.xml" failonerror="false" overwrite="true" />
     </target>
+
+    <property file="secure.properties" />
 </project>
 
