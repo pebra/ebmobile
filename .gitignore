@@ -5,6 +5,7 @@ www/*
 ebapp/source/ignore/
 .bundle
 platforms/android/ant-build/*
+platforms/android/bin/*
 platforms/android/ant-gen/*
 local.properties
 www/ignore
