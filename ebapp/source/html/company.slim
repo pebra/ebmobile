@@ -45,7 +45,7 @@ div ng-if='company != undefined'
 
   ul.table-view.no-border ng-if='company.people'
     li.table-view-divider  Ansprechpartner
-  ul.table-view.border ng-repeat='person in company.people'
+  ul.table-view.margin ng-repeat='person in company.people'
     li.table-view-cell.media.person
       img.media-object.pull-left[ng-src='https:{{person.photo}}' style='width: 50px;']
       .media-body
