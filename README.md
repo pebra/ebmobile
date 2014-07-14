@@ -50,11 +50,11 @@ adjust IP of course!
 
 * Autocompletion - DONE!
 * "Teilen" action ausloesbar? also Job durch das Android Share schiken @pebra
-  * Merkliste als E-Mail(??) schicken
+  * Merkliste als E-Mail(??) schicken - DONE
 * Buildskript: Pfade!!! /js -> js @zealot128 DONE!
-* Lade-Indikator
+* Lade-Indikator - DONE
 * Notification/ gemerkt etc
-* Geolocation
+* Geolocation - DONE
 
 
 

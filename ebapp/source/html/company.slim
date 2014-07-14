@@ -1,6 +1,6 @@
 eb-loading-spinner[ng-if='!company']
 div ng-if='company != undefined'
-  ul.table-view
+  ul.table-view.no-border
     li.table-view-cell
       img ng-src="https:{{company.logo.resized}}"
       p
@@ -19,9 +19,14 @@ div ng-if='company != undefined'
 
     li.table-view-divider  ng-if='company.rewards' Arbeitgeberauszeichnungen
     li.table-view-cell.media.reward ng-repeat='reward in company.rewards'
-      a.navigate-right ng-href='{{reward.link}}'
+      a.navigate-right[ng-click='reward.visible = !reward.visible']
         img.media-object.pull-left(ng-src="https://{{reward.badge}}" style='width: 50px; background: white')
-        .media-body[ng-bind='reward.name']
+        .media-body ng-bind='reward.name'
+
+      .media-bottom ng-if='reward.visible'
+        p[ng-bind-html='reward.description | unsafe']
+        p: a[ng-href='{{reward.link}}' ng-target='_system'] Online-Profil der Auszeichnung
+
 
     li.table-view-divider
       | {{company.name}} im Internet
@@ -38,14 +43,32 @@ div ng-if='company != undefined'
         span.icon.icon-twitter2.media-object.pull-left
         .media-body Twitter
 
+  ul.table-view.no-border ng-if='company.people'
+    li.table-view-divider  Ansprechpartner
+  ul.table-view.no-border ng-repeat='person in company.people'
+    li.table-view-cell.media.person
+      img.media-object.pull-left[ng-src='https:{{person.photo}}' style='width: 50px;']
+      .media-body
+        | {{person.anrede}} {{person.title}} {{person.name}},<br/> <small>{{person.position}}</small>
+
+    li.table-view-cell.media[ng-if='person.profile_url']
+      a.navigate-right[ng-href='person.profile_url' target='_system']
+        span.icon.icon-xing.media-object.pull-left>
+        | XING-Profil
+    li.table-view-cell.media[ng-if='person.telefon']
+      a.navigate-right[ng-href='tel:{{person.telefon}}' target='_system']
+        span.icon.icon-phone.media-object.pull-left>
+        | Anrufen
+    li.table-view-cell.media[ng-if='person.email']
+      a.navigate-right[ng-href='mailto:{{person.email}}' target='_system']
+        span.icon.icon-mail.media-object.pull-left>
+        | E-Mail
+
+
+
+
+
   eb-job-results[query-params='query_params' query-function='newest' title='Neuste Stellen der Organisation in Ihrer Region']
-  ul.table-view[ng-if='communities']
-    li.table-view-divider
-      | {{company.name}} ist Mitglied von:
-    li.table-view-cell[ng-repeat='membership in company.memberships' ng-if='communities[membership]']
-      a ng-href='#/community/{{membership}}'
-        img.media-object ng-src="https:{{communities[membership].logo.medium}}"
-        p[ng-bind-html='communities[membership].description | unsafe']
 
 
 

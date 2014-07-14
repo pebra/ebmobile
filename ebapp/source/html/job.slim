@@ -14,14 +14,15 @@ ul.table-view ng-if='job != undefined'
         span.icon-share.icon>
         span Teilen
 
-  li.table-view-cell
+  li.table-view-cell.job-description
     p ng-bind-html='html_safe(job.description)'
 
   li.table-view-cell
     a ng-href='#/company/{{job.company_id}}'
-      img ng-src="https:{{job.company_logo}}"
+      img ng-src="https:{{job.company_logo_big}}"
       p Mehr zur {{job.company_name}}
   li.table-view-cell[ng-if='domain']
     a ng-href='#/community/{{domain.name}}'
-      img ng-src="https:{{domain.logo.thumb}}"
+      img ng-src="https:{{domain.logo.medium}}"
+      p Diese Stelle wurde auf {{domain.name}} gefunden. {{domain.name}} ist die Job-Community für {{domain.description}}
       p Mehr zu {{domain.name}}
