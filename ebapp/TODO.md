@@ -23,3 +23,4 @@ Vielleicht progressbar?
 * Notifications 1w
 * Bewerben 1-2d
 * iPhone ????
+* native android top bar eingeblendet lassen
