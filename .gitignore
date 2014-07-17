@@ -8,6 +8,7 @@ platforms/android/ant-build/*
 platforms/android/bin/*
 platforms/android/ant-gen/*
 platforms/android/bin/*
+platforms/android/CordovaLib/*
 local.properties
 www/ignore
 ebapp/bower_components/*
