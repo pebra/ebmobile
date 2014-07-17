@@ -47,7 +47,7 @@ div ng-if='company != undefined'
     li.table-view-divider  Ansprechpartner
   ul.table-view.no-border ng-repeat='person in company.people'
     li.table-view-cell.media.person
-      img.media-object.pull-left[ng-src='https:{{person.photo}}' style='width: 50px;']
+      img.media-object.pull-left[ng-src='https:{{person.photo}}' ng-src-fallback="http://img2.wikia.nocookie.net/__cb20130623142745/elderscrolls2/de/images/f/f5/Pedob%C3%A4r.jpg" style='width: 50px;']
       .media-body
         | {{person.anrede}} {{person.title}} {{person.name}},<br/> <small>{{person.position}}</small>
 
