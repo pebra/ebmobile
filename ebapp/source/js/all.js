@@ -16,3 +16,4 @@
 //= require _app
 //= require credentials
 //= require_tree ./app/
+//= require credentials
