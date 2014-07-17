@@ -33,12 +33,12 @@ build:
 	cordova build
 
 prepare_ios: 
-	sed -iE 's/ratchet\-theme\-android\.min\.css/ratchet\-theme\-ios\.min\.css/' ebapp/source/css/all.css
+	sed -i -E 's/ratchet\-theme\-android\.min\.css/ratchet\-theme\-ios\.min\.css/' ebapp/source/css/all.css
 
 build_ios: prepare_ios build
 
 prepare_android:
-	sed -iE 's/ratchet\-theme\-ios\.min\.css/ratchet-theme-android\.min\.css/' ebapp/source/css/all.css
+	sed -i -E 's/ratchet\-theme\-ios\.min\.css/ratchet-theme-android\.min\.css/' ebapp/source/css/all.css
 
 build_android: prepare_android build
 
