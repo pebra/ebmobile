@@ -1,6 +1,6 @@
 window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalStorage','ngCookies', 'geolocation', 'angulartics', 'angulartics.google.analytics', 'angulartics.google.analytics.cordova']).config(
-  ['$compileProvider', ($compileProvider) -> 
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|app):/)
+  ['$compileProvider', ($compileProvider) ->
+    $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|file|mailto|tel|app|chrome-extension):/)
   ])
 
 App.api = 'https://www.empfehlungsbund.de/api/v2/'
