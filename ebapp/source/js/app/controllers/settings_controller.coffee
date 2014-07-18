@@ -12,9 +12,15 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     notification.info "Einstellungen gelöscht!"
 
   $scope.active = (what)-> $scope.filter_fid[what]
-  $scope.activePortalType = (what)-> $scope.portal_types[what]
-  $scope.toggleFid = (what)-> $scope.filter_fid[what] = !$scope.filter_fid[what]
-  $scope.togglePt = (what)-> $scope.portal_types[what] = !$scope.portal_types[what]
+
+  $scope.activePortalType = (what)->
+    $scope.portal_types[what]
+
+  $scope.toggleFid = (what)->
+    $scope.filter_fid[what] = !$scope.filter_fid[what]
+
+  $scope.togglePt = (what)->
+    $scope.portal_types[what] = !$scope.portal_types[what]
 
   $scope.portal_type_list = [
     {

@@ -17,7 +17,6 @@ ul.no-border.table-view[ng-if='coordinates.lat']
 ul.no-border.table-view
   li.table-view-divider Stellenfilter
   li.table-view-cell.toggles
-
     p Jobs für Fach- und Führungskräfte
     .toggle[ng-class='{active: active(4)}' ng-click='toggleFid(4)']
       .toggle-handle
@@ -26,9 +25,7 @@ ul.no-border.table-view
     .toggle[ng-class='{active: active(5)}' ng-click='toggleFid(5)']
       .toggle-handle
 
-
-  li.table-view-divider
-    | Berufe
+  li.table-view-divider Berufe
   li.table-view-cell.toggles[ng-repeat='pt in portal_type_list']
     p[ng-bind='pt.title']
       | {{pt.title}}
@@ -42,7 +39,4 @@ ul.table-view.no-border
 
   li.table-view-cell
     small: a href='#/impressum' Impressum &amp; Datenschutzerklärung
-
-
-
 
