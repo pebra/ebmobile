@@ -28,3 +28,8 @@ html
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
       ga('create', 'UA-6810907-13', 'auto');
 
+    javascript:
+      // hack to make toggles work on settings page and wizard
+      $('.content').scroll(function() {
+        $('.tab-item').first().toggleClass('thumb');
+      });

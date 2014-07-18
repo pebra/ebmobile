@@ -31,7 +31,7 @@ Vielleicht progressbar?
 über den Menüpunkt, sondern ein Stück nach unten verrutscht -> test
 
 * wenn kein Ansprechpartner Bild da ist, dann auch nix anzeigen (jetzt kommt
-ein komischer Rahmen) auf der PartnerProfil Seite
+ein komischer Rahmen) auf der PartnerProfil Seite -> fixed
 
 Das hatte Stefan noch mal aufgelistet:
 * die aktuell obene Beta Version hat noch ein paar Bugs, z.B. dass diese API
