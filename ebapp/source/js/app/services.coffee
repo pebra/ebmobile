@@ -29,7 +29,7 @@ App.factory 'communities', ($rootScope, Community) ->
 
 App.factory 'settings', (storage, Community)->
   {
-    bind: ($scope)->
+    bind: ($scope) ->
       storage.bind($scope,'radius', defaultValue: 50)
       storage.bind($scope,'coordinates')
       storage.bind($scope,'lastQuery')

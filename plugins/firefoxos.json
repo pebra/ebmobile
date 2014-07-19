@@ -9,7 +9,7 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Geolocation\"><param name=\"firefoxos-package\" value=\"Geolocation\" /></feature>",
+                            "xml": "<permission description=\"Required for accessing user location.\" name=\"geolocation\" />",
                             "count": 1
                         }
                     ]
@@ -18,19 +18,16 @@
         }
     },
     "installed_plugins": {
-        "com.adobe.plugins.GAPlugin": {
-            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
-        },
         "com.neton.cordova.diagnostic": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
-        "org.apache.cordova.geolocation": {
+        "uk.co.ilee.socialmessage": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
-        "uk.co.ilee.socialmessage": {
+        "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },

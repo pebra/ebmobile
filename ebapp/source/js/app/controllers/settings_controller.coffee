@@ -22,6 +22,7 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
   $scope.togglePt = (what)->
     $scope.portal_types[what] = !$scope.portal_types[what]
 
+  $scope.geoButtonText = "Ort automatisch ermitteln"
   $scope.portal_type_list = [
     {
       title: 'IT - Softwareentwickler und ITler'
