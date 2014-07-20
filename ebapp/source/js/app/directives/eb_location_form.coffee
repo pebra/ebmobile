@@ -1,4 +1,4 @@
-App.directive 'ebLocationForm', ($rootScope, $http, notification, geolocation) ->
+App.directive 'ebLocationForm', ($rootScope, $http, notification, geolocation, $timeout) ->
   {
     restrict: 'E'
     templateUrl: 'html/location_form.html'
@@ -11,6 +11,7 @@ App.directive 'ebLocationForm', ($rootScope, $http, notification, geolocation) -
       $rootScope.$on 'error', (a,b,c)->
         $scope.geolocationInProgress = false
         $scope.geolocationError = true
+        $scope.geoButtonText = "Ort automatisch ermitteln"
         notification.info('Position konnte nicht ermittelt werden.')
 
       $scope.geolocate = ->
@@ -18,12 +19,12 @@ App.directive 'ebLocationForm', ($rootScope, $http, notification, geolocation) -
         return if $scope.geolocationInProgress
         $scope.geolocationInProgress = true
         $scope.geoButtonText = "bitte warten"
-        setTimeout ->
+        $timeout ->
           if $scope.geolocationInProgress
             $scope.geolocationInProgress = false
             $scope.geolocationError = true
-            $scope.geoButtonText = "Ort automatisch ermitteln"
             notification.info 'Position konnte nicht ermittelt werden'
+            $scope.geoButtonText = "Ort automatisch ermitteln"
         , 10000
 
         geolocation.getLocation().then (data)->
