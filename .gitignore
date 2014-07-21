@@ -15,3 +15,19 @@ credentials
 ebapp/source/js/credentials.coffee
 pludoni-release.keystore
 /platforms/android/assets/www/
+
+# Android
+platforms/android/assets/www
+platforms/android/bin/
+platforms/android/gen/
+platforms/android/res/xml/config.xml
+ 
+# iOS
+platforms/ios/build/
+platforms/ios/CordovaLib/build/
+platforms/ios/www
+platforms/ios/MyPace/config.xml
+platforms/ios/.staging
+ 
+# Emulator logs
+platforms/ios/cordova/console.log

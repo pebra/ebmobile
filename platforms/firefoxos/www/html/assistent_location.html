@@ -1,0 +1,16 @@
+<div class="content-padded">
+  <h3>
+    Schritt 2: Ihr Standort
+  </h3>
+  
+  <h4 class="highlight" ng-bind="coordinates.name" ng-if="coordinates.name"></h4>
+</div>
+<ul class="no-border table-view">
+  <li class="table-view-divider">
+    In welcher Region suchen Sie eine Stelle?
+  </li>
+</ul>
+<eb-location-form></eb-location-form><br />
+<div class="content-padded" ng-if="coordinates.lat">
+  <a class="btn btn-block" href="#/">Los geht's!</a>
+</div>

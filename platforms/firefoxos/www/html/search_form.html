@@ -1,0 +1,11 @@
+<form ng-submit="search()">
+  <label class="block-label" ng-bind="title"></label><input class="input-text" ng-change="autocomplete()" ng-model="query" placeholder="z.B. Java" type="text" /><span></span>
+  <ul class="table-view no-border" ng-if="has_match && autocomplete_tags">
+    <li class="table-view-cell" ng-repeat="res in autocomplete_tags | filter:tag_match | limitTo: 5">
+      <a ng-bind-html="res.display | unsafe" ng-click="select_autocomplete(res)"></a>
+    </li>
+  </ul>
+  <div class="form-actions">
+    <input class="btn btn-block" type="submit" value="Suchen" />
+  </div>
+</form>

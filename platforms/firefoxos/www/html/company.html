@@ -1,0 +1,80 @@
+<eb-loading-spinner ng-if="!company"></eb-loading-spinner>
+<div ng-if="company != undefined">
+  <ul class="table-view no-border">
+    <li class="table-view-cell">
+      <img ng-src="https:{{company.logo.resized}}" />
+      <p>
+        {{company.name}}
+      </p>
+    </li>
+    <li class="table-view-cell" ng-if="company.description">
+      Kurzbeschreibung zur {{company.name}}
+      <p ng-bind-html="company.description | unsafe"></p>
+    </li>
+    <li class="table-view-cell" ng-if="company.statement">
+      Mitarbeiterstatement
+      <p ng-bind-html="company.statement | unsafe"></p>
+    </li>
+    <li class="table-view-divider" ng-if="company.rewards">
+      Arbeitgeberauszeichnungen
+    </li>
+    <li class="table-view-cell media reward" ng-repeat="reward in company.rewards">
+      <a class="navigate-right" ng-click="reward.visible = !reward.visible"><img class="media-object pull-left" ng-src="https://{{reward.badge}}" style="width: 50px; background: white" />
+        <div class="media-body" ng-bind="reward.name"></div>
+      </a>
+      <div class="media-bottom" ng-if="reward.visible">
+        <p ng-bind-html="reward.description | unsafe"></p>
+        <p>
+          <a ng-href="{{reward.link}}" ng-target="_system">Online-Profil der Auszeichnung</a>
+        </p>
+      </div>
+    </li>
+    <li class="table-view-divider">
+      {{company.name}} im Internet
+    </li>
+    <li class="table-view-cell media">
+      <a ng-href="{{company.url_firma}}" target="_system"><span class="icon icon-home media-object pull-left"></span>
+        <div class="media-body">
+          Internetseite
+        </div>
+      </a>
+    </li>
+    <li class="table-view-cell media" ng-if="company.facebook">
+      <a ng-click="navigator.app.loadUrl('{{company.facebook}}', { openExternal:true });" ng-href="{{company.facebook}}" target="_system"><span class="icon icon-facebook2 media-object pull-left"></span>
+        <div class="media-body">
+          Facebook-Fanpage
+        </div>
+      </a>
+    </li>
+    <li class="table-view-cell media" ng-if="company.twitter">
+      <a ng-href="{{company.twitter}}" target="_system"><span class="icon icon-twitter2 media-object pull-left"></span>
+        <div class="media-body">
+          Twitter
+        </div>
+      </a>
+    </li>
+  </ul>
+  <ul class="table-view no-border" ng-if="company.people">
+    <li class="table-view-divider">
+      Ansprechpartner
+    </li>
+  </ul>
+  <ul class="table-view no-border" ng-repeat="person in company.people">
+    <li class="table-view-cell media person">
+      <img class="media-object pull-left" ng-src="https:{{person.photo}}" ng-src-fallback="http://img2.wikia.nocookie.net/__cb20130623142745/elderscrolls2/de/images/f/f5/Pedob%C3%A4r.jpg" style="width: 50px;" />
+      <div class="media-body">
+        {{person.anrede}} {{person.title}} {{person.name}},<br/> <small>{{person.position}}</small>
+      </div>
+    </li>
+    <li class="table-view-cell media" ng-if="person.profile_url">
+      <a class="navigate-right" ng-href="person.profile_url" target="_system"><span class="icon icon-xing media-object pull-left"></span> XING-Profil</a>
+    </li>
+    <li class="table-view-cell media" ng-if="person.telefon">
+      <a class="navigate-right" ng-href="tel:{{person.telefon}}" target="_system"><span class="icon icon-phone media-object pull-left"></span> Anrufen</a>
+    </li>
+    <li class="table-view-cell media" ng-if="person.email">
+      <a class="navigate-right" ng-href="mailto:{{person.email}}" target="_system"><span class="icon icon-mail media-object pull-left"></span> E-Mail</a>
+    </li>
+  </ul>
+  <eb-job-results query-function="newest" query-params="query_params" title="Neuste Stellen der Organisation in Ihrer Region"></eb-job-results>
+</div>

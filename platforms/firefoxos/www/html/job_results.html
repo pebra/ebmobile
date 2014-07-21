@@ -1,0 +1,21 @@
+<ul class="table-view no-border">
+  <li class="table-view-divider" ng-if="title">
+    {{title}}
+  </li>
+  <li class="table-view-cell media" ng-repeat="job in jobs.jobs">
+    <a class="media-object pull-left" ng-href="#/job/{{job.id}}"><img ng-src="https:{{job.company_logo}}" /></a>
+    <div class="media-body">
+      <a class="navigate-right" ng-href="#/job/{{job.id}}">{{job.title}}
+        <p>
+          {{job.company_name}} - {{job.location}}
+        </p>
+      </a>
+    </div>
+  </li>
+  <eb-loading-spinner ng-if="loading"></eb-loading-spinner>
+  <li class="table-view-cell" ng-if="paginationEnabled && jobs.next_page">
+    <p>
+      <a class="btn btn-block" ng-click="showMore()">Mehr</a>
+    </p>
+  </li>
+</ul>
