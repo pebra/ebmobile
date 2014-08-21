@@ -70,7 +70,7 @@ App.factory 'settings', (storage, Community)->
 
       if !found
         today = window.today()
-        scope.lastQueries.push { q: newVal, date: today }
+        scope.lastQueries.unshift { q: newVal, date: today }
 
       scope.lastQueries = scope.lastQueries[-20..]
 
