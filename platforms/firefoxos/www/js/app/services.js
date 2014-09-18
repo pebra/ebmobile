@@ -125,7 +125,7 @@
         }
         if (!found) {
           today = window.today();
-          scope.lastQueries.push({
+          scope.lastQueries.unshift({
             q: newVal,
             date: today
           });

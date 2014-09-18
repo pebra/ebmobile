@@ -2,4 +2,3 @@
 /Users/peter/Development/self/ember/ebmobile/platforms/android/bin/Empfehlungsbund.ap_ \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/bin/classes.dex \
 /Users/peter/Development/self/ember/ebmobile/platforms/android/CordovaLib/ant-build/classes.jar \
-/Users/peter/Development/self/ember/ebmobile/platforms/android/libs/libGoogleAnalyticsV2.jar \

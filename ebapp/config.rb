@@ -47,6 +47,6 @@ end
 
 activate :relative_assets
 
-ready do
+after_configuration do
   sprockets.append_path File.join(root, 'bower_components')
 end

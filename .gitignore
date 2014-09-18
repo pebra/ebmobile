@@ -1,20 +1,15 @@
+ebapp/source/css/all.css-E
 *.sw?
 work
 .DS_Store
 www/*
-ebapp/source/ignore/
 .bundle
-platforms/android/ant-build/*
-platforms/android/bin/*
-platforms/android/ant-gen/*
-platforms/android/bin/*
 local.properties
 www/ignore
 ebapp/bower_components/*
 credentials
 ebapp/source/js/credentials.coffee
 pludoni-release.keystore
-/platforms/android/assets/www/
 
 # Android
 platforms/android/assets/www
@@ -31,3 +26,43 @@ platforms/ios/.staging
  
 # Emulator logs
 platforms/ios/cordova/console.log
+
+
+default.properties
+gen
+assets/www/cordova.js
+framework/assets/www/.tmp*
+local.properties
+framework/lib
+proguard.cfg
+proguard.cfg
+proguard-project.txt
+framework/bin
+framework/test/org/apache/cordova/*.class
+framework/assets/www/.DS_Store
+framework/assets/www/cordova-*.js
+framework/assets/www/phonegap-*.js
+framework/libs
+framework/javadoc-public
+framework/javadoc-private
+test/libs
+example
+./test
+test/bin
+test/assets/www/.tmp*
+test/assets/www/cordova.js
+test/cordova/plugins/org.apache.cordova.device/www/device.js
+test/cordova/plugins/org.apache.cordova.device/src/android/Device.java
+tmp/**
+.metadata
+tmp/**/*
+Thumbs.db
+Desktop.ini
+*.tmp
+*.bak
+*.swp
+*.class
+*.jar
+# IntelliJ IDEA files
+*.iml
+.idea

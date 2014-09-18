@@ -3,7 +3,7 @@
   <li class="table-view-divider">
     Ihre letzten Suchanfragen
   </li>
-  <li class="table-view-cell" ng-repeat="query in lastQueries | reverse | limitTo:10">
+  <li class="table-view-cell" ng-repeat="query in lastQueries | limitTo:10">
     <a ng-href="#/search?q={{query.q | encodeURIComponent}}">{{query.q}} <small class="job-count" ng-if="searchCounts[query.q]">({{searchCounts[query.q]}} neue seit {{query.date | dateFormat}})</small></a>
   </li>
 </ul>
