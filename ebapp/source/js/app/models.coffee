@@ -1,4 +1,4 @@
-App.factory 'Job', ['$resource' , ($resource) ->
+App.factory 'Job', ['$resource', ($resource) ->
   $resource App.api + 'jobs/:id.jsonp', null,
     get:
       method: 'JSONP'
