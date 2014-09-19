@@ -45,6 +45,7 @@ build_android: prepare_android build
 deploy:
 	cordova run android
 
+deploy_android: prepare_android build deploy
 
 release:
 	cd ebapp/ && bundle exec middleman build
