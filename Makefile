@@ -2,22 +2,33 @@ app:
 	cordova build
 	cordova run android
 
+
+prereq_osx:
+	brew install java
+	brew install ant
+	brew install android-sdk
+	brew install node
+	npm install -g cordova bower
+
 install:
-	npm install karma --save-dev
-	npm install karma-qunit --save-dev
-	npm install karma-ember-preprocessor --save-dev
+	cd ebapp/
+	bundle
+	bower install
 
 init:
 	cordova platform add android
 	android update project -p platforms/android
-	cd ebapp/ && bower install
-	echo 'MAKE SURE LEAFLET IS COMPILED!!!!!!!!'
 
 server:
 	cd ebapp/source && middleman server -p 3506
 
 test:
 	cd ebapp/ && bundle exec rspec
+
+test_prereq:
+	npm install karma --save-dev
+	npm install karma-qunit --save-dev
+	npm install karma-ember-preprocessor --save-dev
 
 fulltest:
 	cd ebapp/source &&  bundle exec middleman server -p 3506 &
@@ -32,7 +43,7 @@ build:
 	cordova prepare
 	cordova build
 
-prepare_ios: 
+prepare_ios:
 	sed -i -E 's/ratchet\-theme\-android\.min\.css/ratchet\-theme\-ios\.min\.css/' ebapp/source/css/all.css
 
 build_ios: prepare_ios build
