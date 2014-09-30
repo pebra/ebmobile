@@ -58,7 +58,10 @@ deploy:
 
 deploy_android: prepare_android build deploy
 
+ANDROID_HOME := /usr/local/Cellar/android-sdk/23.0.2/
+
 release:
+	@echo ${ANDROID_HOME}
 	cd ebapp/ && bundle exec middleman build
 	mkdir -p releases
 	cordova prepare && cordova compile

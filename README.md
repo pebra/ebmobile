@@ -42,6 +42,21 @@ cordova run android
 
 adjust IP of course!
 
+## Release
+
+change platforms/android/local.properties
+
+```
+#platforms/android/local.properties
+
+sdk.dir=/usr/local/Cellar/android-sdk/23.0.2/
+
+key.store=pludoni-release.keystore
+key.alias=pludoni
+key.alias.password=.......
+key.store.password=.......
+```
+
 ### Known bug:
 
 ### TODOS
