@@ -19,6 +19,7 @@ platforms/android/res/xml/config.xml
 platforms/android/CordovaLib/bin/
 platforms/android/ant-build/
 platforms/android/CordovaLib/ant-build/
+platforms/android/out
 
 # iOS
 platforms/ios/build/
