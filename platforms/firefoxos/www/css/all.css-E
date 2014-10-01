@@ -1,6 +1,0 @@
-//= require leaflet/dist/leaflet.css
-//= require ratchet2/css/ratchet.css
-//= require ratchet2/css/ratchet-theme-android.min.css
-//= require _spinner
-//= require _font
-//= require _style

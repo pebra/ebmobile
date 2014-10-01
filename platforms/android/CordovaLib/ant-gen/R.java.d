@@ -1,1 +1,1 @@
- : /Users/peter/Development/self/ember/ebmobile/platforms/android/CordovaLib/ant-build/AndroidManifest.xml \
+ : /Users/stefan/Projects/ebmobile/platforms/android/CordovaLib/ant-build/AndroidManifest.xml \

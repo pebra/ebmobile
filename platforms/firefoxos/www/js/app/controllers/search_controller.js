@@ -17,7 +17,6 @@
       };
       if ($location.search().q != null) {
         $scope.query = $location.search().q;
-        $scope.lastQuery = $scope.query;
         return $scope.executeSearch();
       } else if ($scope.lastQuery) {
         $scope.query = $scope.lastQuery;

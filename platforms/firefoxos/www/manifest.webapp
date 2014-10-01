@@ -3,7 +3,7 @@
     "installs_allowed_from": [
         "*"
     ],
-    "version": "2.0.7",
+    "version": "2.0.8",
     "name": "Empfehlungsbund",
     "pkgName": "de.pludoni.empfehlungsbundmobile",
     "description": "Stellen des Empfehlungsbundes.",
