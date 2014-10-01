@@ -1,8 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.pludoni.empfehlungsbundmobile" version="2.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.pludoni.empfehlungsbundmobile" version="2.0.9" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
-    <feature name="App">
-        <param name="android-package" value="org.apache.cordova.App" />
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="Diagnostic">
+        <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
     </feature>
     <feature name="SocialMessage">
         <param name="android-package" value="uk.co.ilee.socialmessage.SocialMessage" />
@@ -16,19 +19,4 @@
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
-    <feature name="SocialSharing">
-        <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
-    </feature>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
-    </feature>
-    <feature name="Toast">
-        <param name="android-package" value="nl.xservices.plugins.Toast" />
-    </feature>
-    <feature name="Diagnostic">
-        <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
-    </feature>
-    <feature name="GAPlugin">
-        <param name="android-package" value="com.adobe.plugins.GAPlugin" />
-    </feature>
 </widget>
