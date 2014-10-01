@@ -3,7 +3,7 @@
     "installs_allowed_from": [
         "*"
     ],
-    "version": "2.0.9",
+    "version": "2.0.10",
     "name": "Empfehlungsbund",
     "description": "Stellen des Empfehlungsbundes.",
     "developer": {

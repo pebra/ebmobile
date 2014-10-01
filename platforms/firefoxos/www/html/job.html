@@ -1,5 +1,15 @@
-<eb-loading-spinner ng-if="!job"></eb-loading-spinner>
-<ul class="table-view" ng-if="job != undefined">
+<eb-loading-spinner ng-if="!job && !error"></eb-loading-spinner>
+<ul class="table-view" ng-if="error">
+  <li class="table-view-cell">
+    {{ error }}
+  </li>
+  <li class="table-view-cell">
+    <p>
+      <button class="btn-block btn btn-small" ng-click="unmerk()" ng-if="on_merkliste"><span class="icon icon-star3"></span> <span> Von Merkliste entfernen</span></button> 
+    </p>
+  </li>
+</ul>
+<ul class="table-view" ng-if="job && !error">
   <li class="table-view-cell">
     {{job.title}}
   </li>

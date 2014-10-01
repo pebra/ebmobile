@@ -11,7 +11,6 @@
           text += "" + job.title + "\n" + job.company_name + "\n" + job.url + "\n\n";
         }
         text += "\n\nGepostet von der Empfehlungsbund-App (https://play.google.com/store/apps/details?id=de.pludoni.empfehlungsbundmobile)";
-        console.log(text);
         return sharing.share({
           text: text,
           subject: "Ihre Merkliste aus der Empfehlungsbund-App (" + $scope.jobs.length + " Jobs)"
