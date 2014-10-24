@@ -14,6 +14,11 @@ App.factory 'Job', ['$resource', ($resource) ->
       url: App.api + 'jobs/lists/newest.jsonp'
       params:
         callback: 'JSON_CALLBACK'
+    insider:
+      method: 'JSONP'
+      url: App.api + 'jobs/lists/insider.jsonp'
+      params:
+        callback: 'JSON_CALLBACK'
 ]
 
 
