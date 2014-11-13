@@ -7,3 +7,14 @@ form ng-submit='search()'
       a ng-click='select_autocomplete(res)' ng-bind-html='res.display | unsafe'
   .form-actions
     input.btn.btn-block type='submit' value='Suchen'
+
+div ng-controller="GcmCtrl"
+  a.btn.btn-block ng-click="register()" ng-if="showSubscribeButton"
+    | Suche abonieren
+  a.btn.btn-block ng-click="test()"
+    | Test API
+
+
+ul.table-view.no-border
+  li.table-view-cell[ng-repeat='message in pushMessages']
+    | {{ message }}

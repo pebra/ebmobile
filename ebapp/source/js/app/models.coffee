@@ -39,3 +39,29 @@ App.factory 'Community', ['$resource', ($resource)->
       params:
         callback: 'JSON_CALLBACK'
 ]
+
+App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
+  $resource App.eb_push_url, null,
+    addDeviceKey:
+      method: 'JSONP'
+      url: App.eb_push_url + '/devices/create.jsonp'
+      params:
+        callback: 'JSON_CALLBACK'
+        api_key: App.eb_push_key
+    allSearches:
+      method: 'JSONP'
+      url: App.eb_push_url + '/searches/index.jsonp'
+      isArray: true
+      params:
+        callback: 'JSON_CALLBACK'
+        api_key: App.eb_push_key
+        key: PushService.getRegId()
+    addSearch:
+      method: 'JSONP'
+      url: App.eb_push_url + '/searches/create.jsonp'
+      params:
+        callback: 'JSON_CALLBACK'
+        api_key: App.eb_push_key
+        key: PushService.getRegId()
+
+]

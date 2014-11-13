@@ -19,8 +19,11 @@ init:
 	cordova platform add android
 	android update project -p platforms/android
 
+logcat:
+	adb logcat CordovaLog:D chromium:D *:S
+
 server:
-	cd ebapp/source && middleman server -p 3506
+	cd ebapp/source && bundle exec middleman server -p 3500
 
 test:
 	cd ebapp/ && bundle exec rspec

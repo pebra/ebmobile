@@ -32,7 +32,7 @@ set :images_dir, 'images'
 configure :build do
   set :build_dir, '../www'
   activate :minify_css
-  activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
+  #activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
   # Enable cache buster
   # activate :cache_buster
   # Compress PNGs after build

@@ -4,10 +4,15 @@ window.App = angular.module('ebmobile', ['ngRoute','ngResource','angularLocalSto
   ])
 
 App.api = 'https://www.empfehlungsbund.de/api/v2/'
-App.run  ($rootScope, $location, trackingId) ->
+App.run  ($rootScope, $location, trackingId, PushApi) ->
   #TODO @peter
   $rootScope.cordova = true
   $rootScope.cordova_type = 'android'
+
+  if $rootScope.regId?
+    PushApi.allSearches (searches)->
+      $rootScope.subscribedSearches = searches
+
   # $rootScope.$on '$viewContentLoaded', (event)->
   #   console.log $location.path()
   #   window._gaq.push ['_trackPageview', $location.path()]

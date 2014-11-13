@@ -27,6 +27,9 @@ window.cordova_app =
   bindEvents: ->
     document.addEventListener "deviceready", @onDeviceReady, false
 
+
+  #On Notification Event
+
   # Application Constructor
   initialize: ->
     @bindEvents()
