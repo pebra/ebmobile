@@ -1,25 +1,24 @@
 App.controller 'GcmCtrl', ['$scope','Device','PushService', '$http','PushApi','SubscribedSearches', '$rootScope', 'settings', ($scope,Device,PushService,$http,PushApi,SubscribedSearches, $rootScope, settings) ->
-  $scope.showSubscribeButton = Device.isAndroid() && $scope.query_params? && SubscribedSearches.is_subscribed($scope.query)
+
+  regId = PushService.getRegId()
+  # TODO regId leer -> Fehler?
+
+  $scope.showSubscribeButton = ->
+    Device.isAndroid() && $scope.query_params? && SubscribedSearches.is_subscribed($scope.query) && regId?
+
   settings.bind($scope)
 
   $scope.register = ->
-  PushService.register( (regId)->
-    console.log "STARTING API PUSH"
-    #$scope.test() # TODO
-  )
-
-  $scope.test = ->
     default_params = $scope.default_params()
     extra_params = $scope.$parent.query_params
     params = {}
     angular.extend(params, default_params, extra_params)
-    console.log "TEST START"
-
-    PushApi.addDeviceKey {key: PushService.getRegId()}, (response)->
+    PushApi.addDeviceKey {key: regId}, (response)->
       console.log "Device key angelegt"
       PushApi.addSearch { search: params }, (response) ->
         console.log "Suche angelegt"
         SubscribedSearches.getAll()
+
 ]
 
 App.factory "Device", ($rootScope)->
@@ -57,10 +56,8 @@ App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope)->
 
 
 # Managed Key Austausch mit Android GCM
-App.factory 'PushService', ($rootScope, $http) ->
+App.factory 'PushService', ($rootScope, $http, $location) ->
   $rootScope.pushMessages = []
-  $rootScope.regId = 'APA91bFiDLIUcWdEB7nZiNuCI7cryD1b-l1_UbnhIVF93ls4wFhJXjv8m4pDKZ1WDmpZnaNhzqBz9OVd2OmmTvlmWsHfDx2odulnqxfrT1AtxOJr1ojZAaZAIL3zbyebiPvKPaPfr12mxrEiVijH8rIveRleYH5NyhYQZR2T9s3eBY7iwL1Grq4'
-  # TODO
   last_success_callback = null
 
   {
@@ -68,41 +65,32 @@ App.factory 'PushService', ($rootScope, $http) ->
     getRegId: -> $rootScope.regId
 
     register: (success_callback)->
-      successHandler = (r)->
-        console.log 'SUCCESS HANDLER CALLED'
-        console.log r
+      successHandler = (r)-> true
       errorHandler = (r)->
+        # TODO notification
         console.log 'ERROR HANDLER CALLED'
         console.log r
+
       last_success_callback = success_callback
-      # $("#app-status-ul").append("<li>deviceready event received</li>");
       pushNotification = window.plugins.pushNotification
       if device.platform == "android" || device.platform == "Android"
-        console.log("Geht")
         pushNotification.register(successHandler, errorHandler, {
           senderID: App.gcm_api_key,
           ecb: "onNotificationGCM"
         })
 
     onNotification: (e)->
-      #$rootScope.pushMessages.push "EVENT -> RECEIVED: #{e.event}"
+      window.last_event = e
       switch e.event
         when "registered"
           if e.regid.length > 0
-            #$rootScope.pushMessages.push "REGISTERED -> REGID: #{e.regid}"
-            #$rootScope.regId = e.regid
+            $rootScope.regId = e.regid
             last_success_callback(e.regid)
         when "message"
-          if e.foreground
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt)
-          else
-            if e.coldstart
-              window.location.href = "#/search"
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt)
-            else
-              window.location.href = "#/search"
-              alert('message = '+e.message+' msgcnt = '+e.msgcnt)
+          search_id = e.payload.search_id
+          $location.path('/searches/show').search('id', search_id)
 
         else
+          # TODO? Notification?
           $rootScope.pushMessages.push "Event Unknown: #{e.event} - #{e.msg}"
   }

@@ -14,6 +14,7 @@ pludoni-release.keystore
 # Android
 platforms/android/assets/www
 platforms/android/bin/
+platforms/android/ant-gen/
 platforms/android/gen/
 platforms/android/res/xml/config.xml
 platforms/android/CordovaLib/bin/
@@ -70,3 +71,4 @@ Desktop.ini
 # IntelliJ IDEA files
 *.iml
 .idea
+.rake*

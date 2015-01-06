@@ -6,4 +6,5 @@ cd ./ebapp
 bundle exec middleman build
 cd ..
 cordova build android
-cordova run --emulator android
+cordova run android
+# cordova run --emulator android

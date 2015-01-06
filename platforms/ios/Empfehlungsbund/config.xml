@@ -19,14 +19,14 @@
     <feature name="LocalStorage">
         <param name="ios-package" value="CDVLocalStorage" />
     </feature>
-    <feature name="Toast">
-        <param name="ios-package" value="Toast" />
-    </feature>
     <feature name="SocialMessage">
         <param name="ios-package" value="SocialMessage" />
     </feature>
-    <feature name="Geolocation">
-        <param name="ios-package" value="CDVLocation" />
+    <feature name="PushPlugin">
+        <param name="ios-package" value="PushPlugin" />
+    </feature>
+    <feature name="Device">
+        <param name="ios-package" value="CDVDevice" />
     </feature>
     <name>Empfehlungsbund</name>
     <description>
@@ -37,4 +37,21 @@
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
+    <feature name="SocialSharing">
+        <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="ios-package" value="CDVLocation" />
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <feature name="Toast">
+        <param name="ios-package" value="Toast" />
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="Diagnostic">
+        <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
+    </feature>
+    <feature name="GAPlugin">
+        <param name="android-package" value="com.adobe.plugins.GAPlugin" />
+    </feature>
 </widget>

@@ -1,0 +1,12 @@
+eb-loading-spinner[ng-if='!search']
+ul.table-view ng-if='search'
+  li.table-view-cell
+    | Neue Suchergebnisse für '{{search.params.q}}'
+
+eb-job-results[ng-if='search' query-params='search.params' query-function='newest' title='']
+ul.table-view ng-if='search'
+  li.table-view-cell
+    p
+      button.btn-block.btn.btn-small> ng-click='unsubscribe()'
+        span.icon.icon-star3>
+        span Suche abbestellen
