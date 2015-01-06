@@ -1,3 +1,11 @@
+ul.table-view.no-border[ng-if="subscribedSearches"]
+  li.table-view-divider Abonnierte Suchen
+  li.table-view-cell ng-repeat='search in subscribedSearches'
+    | Suche: {{search.params.q}}
+    a.btn ng-click="remove_search(search)" X
+
+
+
 ul.table-view.no-border
   li.table-view-divider Standort
   li.table-view-cell ng-if='coordinates.name'
@@ -39,4 +47,5 @@ ul.table-view.no-border
 
   li.table-view-cell
     small: a href='#/impressum' Impressum &amp; Datenschutzerklärung
+
 

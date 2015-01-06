@@ -1,4 +1,5 @@
 //= require _index
+//= require PushNotification.js
 //= require jquery/dist/jquery.min.js
 //= require jquery.throttle/src/jquery-throttle.min.js
 //= require ratchet/dist/js/ratchet.js

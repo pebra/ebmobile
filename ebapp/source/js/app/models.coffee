@@ -63,5 +63,13 @@ App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
         callback: 'JSON_CALLBACK'
         api_key: App.eb_push_key
         key: PushService.getRegId()
+    unsubscribeSearch:
+      method: 'JSONP'
+      url: App.eb_push_url + '/searches/delete.jsonp'
+      params:
+        callback: 'JSON_CALLBACK'
+        api_key: App.eb_push_key
+        key: PushService.getRegId()
+      
 
 ]

@@ -22,9 +22,9 @@ platforms/android/CordovaLib/ant-build/
 platforms/android/out
 
 # iOS
-platforms/ios/build/
-platforms/ios/CordovaLib/build/
-platforms/ios/www
+platforms/*/build/
+platforms/*/CordovaLib/build/
+platforms/*/www
 platforms/ios/MyPace/config.xml
 platforms/ios/.staging
 
