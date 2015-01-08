@@ -3,8 +3,6 @@ ul.table-view.no-border[ng-if="subscribedSearches"]
   li.table-view-cell ng-repeat='search in subscribedSearches'
     a ng-href='#/searches/show?id={{search.id}}'
       | Suche: {{search.params.q}}
-    a.btn ng-click="remove_search(search)" X
-
 
 
 ul.table-view.no-border

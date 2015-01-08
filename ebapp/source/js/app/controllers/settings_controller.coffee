@@ -11,11 +11,6 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     $rootScope.merkliste = {}
     notification.info "Einstellungen gelöscht!"
 
-  $scope.remove_search = (search)->
-    SubscribedSearches.unsubscribe search, ->
-      notification.info "Suche gelöscht"
-  $scope.active = (what)-> $scope.filter_fid[what]
-
   $scope.activePortalType = (what)->
     $scope.portal_types[what]
 

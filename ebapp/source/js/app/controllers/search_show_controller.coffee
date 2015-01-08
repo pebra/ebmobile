@@ -1,18 +1,21 @@
-App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location', '$routeParams', 'PushApi', ($scope, Job, settings, $location, $routeParams, PushApi )->
+App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location', '$routeParams', 'PushApi', 'SubscribedSearches', 'notification', ($scope, Job, settings, $location, $routeParams, PushApi, SubscribedSearches, notification )->
   settings.bind($scope)
   id = parseInt $routeParams.id
 
-  # TODO Fake Reg raus
-  fakeRegID = 'APA91bFiDLIUcWdEB7nZiNuCI7cryD1b-l1_UbnhIVF93ls4wFhJXjv8m4pDKZ1WDmpZnaNhzqBz9OVd2OmmTvlmWsHfDx2odulnqxfrT1AtxOJr1ojZAaZAIL3zbyebiPvKPaPfr12mxrEiVijH8rIveRleYH5NyhYQZR2T9s3eBY7iwL1Grq4'
-  # PushApi.allSearches { key: fakeRegID }, (searches)->
+  $scope.remove_search = (search)->
+    SubscribedSearches.unsubscribe search, ->
+      $location.path('/')
+      notification.info "Suche gelöscht"
+  $scope.active = (what)-> $scope.filter_fid[what]
+
   PushApi.allSearches (searches)->
 
     for search in searches
       if search.id == id
-        $scope.search = found[0]
+        console.log(search)
+        $scope.search = search #found[0]
         return
 
-    # TODO redirect Startseite, Toast
     true
 
 ]

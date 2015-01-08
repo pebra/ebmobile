@@ -68,6 +68,7 @@ App.factory 'PushService', ($rootScope, $http, $location) ->
       successHandler = (r)-> true
       errorHandler = (r)->
         # TODO notification
+        notification.info("Es gab einen Fehler beim registrieren, Suchen können daher im Moment nicht abonniert werden")
         console.log 'ERROR HANDLER CALLED'
         console.log r
 
@@ -87,10 +88,18 @@ App.factory 'PushService', ($rootScope, $http, $location) ->
             $rootScope.regId = e.regid
             last_success_callback(e.regid)
         when "message"
-          search_id = e.payload.search_id
-          $location.path('/searches/show').search('id', search_id)
+          if e.foreground
+            notification.info e.message
+          else
+            if e.coldstart
+              search_id = e.payload.search_id
+              $location.path('/searches/show').search('id', search_id)
+            else
+              search_id = e.payload.search_id
+              window.location = "#/searches/show?id="+search_id
 
         else
           # TODO? Notification?
+          notification.info "Es gab einen Fehler beim verarbeiten der Nachricht: Unbekanntes Ereigniss"
           $rootScope.pushMessages.push "Event Unknown: #{e.event} - #{e.msg}"
   }

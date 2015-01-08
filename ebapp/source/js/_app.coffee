@@ -9,7 +9,7 @@ App.api = 'https://www.empfehlungsbund.de/api/v2/'
 App.run  ($rootScope,  $location, trackingId, SubscribedSearches, PushService, phonegapReady) ->
   console.log "App.run called"
   $rootScope.cordova = true # TODO ???
-  $rootScope.cordova_type = 'android' # TODO ???
+  #$rootScope.cordova_type = 'android' # TODO ???
 
   document.addEventListener "deviceready", ->
     PushService.register( (regid)->
