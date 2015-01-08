@@ -29,7 +29,7 @@ App.factory "Device", ($rootScope)->
 
 
 # Managed alle abonnierten Suchen
-App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope)->
+App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope, notification)->
   {
     getAll: (cb)->
       regid = PushService.getRegId()
@@ -56,7 +56,7 @@ App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope)->
 
 
 # Managed Key Austausch mit Android GCM
-App.factory 'PushService', ($rootScope, $http, $location) ->
+App.factory 'PushService', ($rootScope, $http, $location, notification) ->
   $rootScope.pushMessages = []
   last_success_callback = null
 
