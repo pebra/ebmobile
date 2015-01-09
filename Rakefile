@@ -1,6 +1,8 @@
 SDK_LOCATIONS = [
   ENV["HOME"] + '/ADT-SDK/sdk/',
-  '/usr/local/Cellar/android-sdk/23.0.2/'
+  '/Applications/adt-bundle/sdk',
+  '/usr/local/Cellar/android-sdk/23.0.2/',
+  '/usr/local/Cellar/android-sdk/24.0.1/'
 ]
 
 def find_java_home
@@ -17,7 +19,7 @@ namespace :build do
   end
 
   desc 'Middleman build'
-  task :development do
+  task :development => ['android:set_env'] do
     sh '
       cd ./ebapp
       bundle exec middleman build
