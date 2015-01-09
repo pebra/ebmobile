@@ -2,7 +2,7 @@
 
 ## Development
 
-###Install and deploy to phone
+### Install and deploy to phone
 
 This App uses [Apache Cordova](http://cordova.apache.org/).
 See the [Cordova Documentation](http://cordova.apache.org/docs/en/3.1.0/) for information about the usage.
@@ -19,7 +19,7 @@ In order to deploy the app to your android phone run the following commands in t
 ```bash
 rake android:usb
 ```
-###Emulator
+### Emulator
 
 You can use the AndroidSDK to debug and test the App, if you want to start the App in the Android emulator run
 
