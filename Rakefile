@@ -60,13 +60,15 @@ namespace :debug do
 end
 
 namespace :android do
+  task :prepare =>[:set_env, 'build:prepare_android', 'build:development']
 
-  task :build => [:set_env, 'build:prepare_android', 'build:development']  do
+  task :build => [:prepare]  do
     sh ' cordova build android '
   end
 
   task :set_production do
     ENV['BUILD_ENV'] = 'production'
+    ENV['BUILD_VERSION'] = File.read('config.xml')[/version="([^"]+)"/, 1]
     mkdir_p 'releases'
   end
 
@@ -77,16 +79,16 @@ namespace :android do
 
   desc 'Bauen + Emulator starten'
   task :emulator => [:build] do
-    sh ' cordova run --emulator android '
+    sh 'cordova run --emulator android '
   end
 
   desc 'Release einer neuen Version'
-  task :release => [:set_production, :build] do
-    sh '
-      cd platforms/android/ && ant release
-      mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-`date +%Y-%m-%d`.apk
-    '
-
+  task :release => [:set_production, :prepare] do
+    puts "====== Releasing #{ENV['BUILD_VERSION']} ====== "
+    sh "cordova build android --release "
+    puts "===== Build Complete: Signing + Archiving ===== "
+    sh "cd platforms/android/ && ant release "
+    sh "mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-#{ENV['BUILD_VERSION']}.apk "
   end
 
   task :set_env do
@@ -105,21 +107,21 @@ namespace :install do
   desc 'install all dependencies besides the ones from install:app'
   task :brew do
     sh '
-  brew install java
-  brew install ant
-  brew install android-sdk
-  brew install node
-  npm install -g cordova bower
+      brew install java
+      brew install ant
+      brew install android-sdk
+      brew install node
+      npm install -g cordova bower
     '
   end
 
   desc 'install middleman + bower abh.'
   task :app do
     sh '
-	cd ebapp/
-	bundle
-	bower install
-  '
+      cd ebapp/
+      bundle
+      bower install
+    '
 
   end
 
