@@ -12,7 +12,6 @@ App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location',
 
     for search in searches
       if search.id == id
-        console.log(search)
         $scope.search = search #found[0]
         return
 

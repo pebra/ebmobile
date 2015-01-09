@@ -107,5 +107,5 @@ App.factory 'notification', ->
       if window.plugins?.toast
         window.plugins.toast.showShortBottom(msg)
       else
-        console.log(msg)
+        #console.log(msg)
   }

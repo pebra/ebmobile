@@ -10,11 +10,10 @@ App.controller 'GcmCtrl', ['$scope','Device','PushService', '$http','PushApi','S
     extra_params = $scope.$parent.query_params
     params = {}
     angular.extend(params, default_params, extra_params)
-    console.log device.model
     PushApi.addDeviceKey {key: regId, device: device.model}, (response)->
-      console.log "Device key angelegt"
+      #console.log "Device key angelegt"
       PushApi.addSearch { search: params }, (response) ->
-        console.log "Suche angelegt"
+       # console.log "Suche angelegt"
         SubscribedSearches.getAll()
 ]
 App.factory "Device", ($rootScope)->
@@ -54,8 +53,7 @@ App.factory 'PushService', ($rootScope, $http, $location, notification, storage)
       successHandler = (r)-> true
       errorHandler = (r)->
         notification.info("Es gab einen Fehler beim registrieren, Suchen können daher im Moment nicht abonniert werden")
-        console.log 'ERROR HANDLER CALLED'
-        console.log r
+        # console.log 'ERROR HANDLER CALLED'
       last_success_callback = success_callback
       pushNotification = window.plugins.pushNotification
       if device.platform == "android" || device.platform == "Android"
