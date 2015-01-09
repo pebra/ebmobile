@@ -61,27 +61,28 @@ end
 
 namespace :android do
 
+  task :build => [:set_env, 'build:prepare_android', 'build:development']  do
+    sh ' cordova build android '
+  end
+
+  task :set_production do
+    ENV['BUILD_ENV'] = 'production'
+    mkdir_p 'releases'
+  end
+
   desc 'Bauen + Auf angeschlossenem Device starten'
-  task :usb => [:set_env, 'build:development'] do
-    sh '
-      cordova build android
-      cordova run android
-    '
+  task :usb => [:build] do
+    sh ' cordova run android '
   end
 
   desc 'Bauen + Emulator starten'
-  task :emulator => [:set_env, 'build:development'] do
-    sh '
-      cordova build android
-      cordova run --emulator android
-    '
+  task :emulator => [:build] do
+    sh ' cordova run --emulator android '
   end
 
   desc 'Release einer neuen Version'
-  task :release => [:set_env, 'build:development'] do
+  task :release => [:set_production, :build] do
     sh '
-      mkdir -p releases
-      cordova prepare && cordova compile
       cd platforms/android/ && ant release
       mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-`date +%Y-%m-%d`.apk
     '

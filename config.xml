@@ -36,12 +36,6 @@
     <feature name="Device">
         <param name="id" value="org.apache.cordova.device" />
     </feature>
-    <feature name="Geolocation">
-        <param name="id" value="org.apache.cordova.geolocation" />
-    </feature>
-    <feature name="Social Message">
-        <param name="id" value="uk.co.ilee.socialmessage" />
-    </feature>
     <cdv:engine id="android" />
     <cdv:engine id="firefoxos" />
     <cdv:engine id="ios" />
