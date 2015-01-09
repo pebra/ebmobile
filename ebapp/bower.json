@@ -27,5 +27,8 @@
     "jquery.throttle": "~1.0.0",
     "angulartics": "~0.15.17",
     "angular-phonegap-ready": "~0.0.1"
+  },
+  "resolutions": {
+    "angular": "~1.x"
   }
 }

@@ -1,6 +1,8 @@
 SDK_LOCATIONS = [
   ENV["HOME"] + '/ADT-SDK/sdk/',
-  '/usr/local/Cellar/android-sdk/23.0.2/'
+  '/Applications/adt-bundle/sdk',
+  '/usr/local/Cellar/android-sdk/23.0.2/',
+  '/usr/local/Cellar/android-sdk/24.0.1/'
 ]
 
 def find_java_home
@@ -8,6 +10,19 @@ def find_java_home
 end
 
 namespace :build do
+  desc 'Ratched Style Android'
+  task :prepare_android do
+    sh "
+      sed -i -E 's/ratchet\-theme\-ios\.min\.css/ratchet-theme-android\.min\.css/' ebapp/source/css/all.css
+    "
+  end
+
+  desc 'Ratched Style iOS'
+  task :prepare_ios do
+    sh "
+      sed -i -E 's/ratchet\-theme\-android\.min\.css/ratchet\-theme\-ios\.min\.css/' ebapp/source/css/all.css
+    "
+  end
 
   desc 'Start Middleman auf Port 3500'
   task :server do
@@ -17,7 +32,7 @@ namespace :build do
   end
 
   desc 'Middleman build'
-  task :development do
+  task :development => ['android:set_env'] do
     sh '
       cd ./ebapp
       bundle exec middleman build
