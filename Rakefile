@@ -86,6 +86,7 @@ end
 
 
 namespace :install do
+  desc 'install all dependencies besides the ones from install:app'
   task :brew do
     sh '
   brew install java

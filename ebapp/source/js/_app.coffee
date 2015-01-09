@@ -12,6 +12,7 @@ App.run  ($rootScope,  $location, trackingId, SubscribedSearches, PushService, p
   document.addEventListener "deviceready", ->
     PushService.register( (regid)->
       SubscribedSearches.getAll()
+      console.log "Saved RegId #{$rootScope.regId}"
       console.log "Push registered with #{regid}"
     )
   , false
