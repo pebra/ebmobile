@@ -1,6 +1,7 @@
 eb-loading-spinner[ng-if='!search']
 ul.table-view.no-border ng-if='search'
-  li.table-view-cell ng-bind='title()'
+  li.table-view-cell
+    | Neue Suchergebnisse für {{search | searchTitle}}
 
 
 eb-job-results[ng-if='search' query-params='search.params' query-function='newest' title='Neue Suchergebnisse seit dem {{search.params.since | dateFormat}}' result='result']

@@ -5,13 +5,6 @@ App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location',
 
   $scope.active = (what)-> $scope.filter_fid[what]
 
-  $scope.title = ->
-    params = $scope.search.params
-    t = "Neue Suchergebnisse für '#{params.q}'"
-    if params.location
-      t += " im Umkreis #{params.radius}km um #{params.location}"
-    t
-
   $scope.run_search = ->
     window.location = '#/search?q=' + encodeURIComponent($scope.search.params.q)
   $scope.change_search = -> $location.path("/searches/#{$scope.search.id}/edit")

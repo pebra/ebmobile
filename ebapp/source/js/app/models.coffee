@@ -43,31 +43,27 @@ App.factory 'Community', ['$resource', ($resource)->
 App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
   api = $resource App.eb_push_url, null,
     addDeviceKey:
-      method: 'JSONP'
-      url: App.eb_push_url + '/devices/create.jsonp'
+      method: 'POST'
+      url: App.eb_push_url + '/devices.json'
       params:
-        callback: 'JSON_CALLBACK'
         api_key: App.eb_push_key
     allSearches:
-      method: 'JSONP'
-      url: App.eb_push_url + '/searches/index.jsonp'
+      method: 'GET'
+      url: App.eb_push_url + '/searches.json'
       isArray: true
       params:
-        callback: 'JSON_CALLBACK'
         api_key: App.eb_push_key
         key: -> PushService.getRegId()
     addSearch:
-      method: 'JSONP'
-      url: App.eb_push_url + '/searches/create.jsonp'
+      method: 'POST'
+      url: App.eb_push_url + '/searches.json'
       params:
-        callback: 'JSON_CALLBACK'
         api_key: App.eb_push_key
         key: ->  PushService.getRegId()
     unsubscribeSearch:
-      method: 'JSONP'
-      url: App.eb_push_url + '/searches/delete.jsonp'
+      method: 'DELETE'
+      url: App.eb_push_url + '/searches/:id.json'
       params:
-        callback: 'JSON_CALLBACK'
         api_key: App.eb_push_key
         key: -> PushService.getRegId()
 

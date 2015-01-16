@@ -2,7 +2,7 @@ ul.table-view.no-border[ng-if="subscribedSearches"]
   li.table-view-divider Abonnierte Suchen
   li.table-view-cell ng-repeat='search in subscribedSearches'
     a ng-href='#/searches/{{search.id}}'
-      | Suche: {{search.params.q}}
+      | Suche: {{search | searchTitle}}
 
 
 ul.table-view.no-border
