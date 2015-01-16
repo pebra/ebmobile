@@ -41,7 +41,7 @@ App.factory 'Community', ['$resource', ($resource)->
 ]
 
 App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
-  $resource App.eb_push_url, null,
+  api = $resource App.eb_push_url, null,
     addDeviceKey:
       method: 'JSONP'
       url: App.eb_push_url + '/devices/create.jsonp'
@@ -71,5 +71,16 @@ App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
         api_key: App.eb_push_key
         key: -> PushService.getRegId()
 
+  api.findSearch = (searchId, callback)->
+    api.allSearches (searches)->
+      for search in searches
+        if search.id == searchId
+          if search.last_last_push
+            search.params.since = search.last_last_push
+          else
+            search.params.since = search.last_push
+          search.params.since = search.params.since.split('T')[0]
+          callback(search)
+  api
 
 ]

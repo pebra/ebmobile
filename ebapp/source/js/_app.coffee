@@ -7,12 +7,14 @@ App.config(
 
 App.api = 'https://www.empfehlungsbund.de/api/v2/'
 App.run  ($rootScope,  $location, trackingId, SubscribedSearches, PushService, phonegapReady) ->
-
   document.addEventListener "deviceready", ->
     PushService.register( (regid)->
       SubscribedSearches.getAll()
     )
   , false
+  if App.test_device_id?
+    SubscribedSearches.getAll()
+
 
 
 App.constant('trackingId', 'UA-6810907-13')

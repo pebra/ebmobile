@@ -1,7 +1,7 @@
 ul.table-view.no-border[ng-if="subscribedSearches"]
   li.table-view-divider Abonnierte Suchen
   li.table-view-cell ng-repeat='search in subscribedSearches'
-    a ng-href='#/searches/show?id={{search.id}}'
+    a ng-href='#/searches/{{search.id}}'
       | Suche: {{search.params.q}}
 
 
@@ -25,11 +25,11 @@ ul.no-border.table-view
   li.table-view-divider Stellenfilter
   li.table-view-cell.toggles
     p Jobs für Fach- und Führungskräfte
-    .toggle[ng-class='{active: active(4)}' ng-click='toggleFid(4)']
+    .toggle[ng-class='{active: activeFid(4)}' ng-click='toggleFid(4)']
       .toggle-handle
   li.table-view-cell.toggles
     p Praktika, Ausbildungen, Werkstudenten
-    .toggle[ng-class='{active: active(5)}' ng-click='toggleFid(5)']
+    .toggle[ng-class='{active: activeFid(5)}' ng-click='toggleFid(5)']
       .toggle-handle
 
   li.table-view-divider Berufe

@@ -1,11 +1,19 @@
 eb-loading-spinner[ng-if='!search']
-ul.table-view ng-if='search'
-  li.table-view-cell
-    | Neue Suchergebnisse für '{{search.params.q}}'
+ul.table-view.no-border ng-if='search'
+  li.table-view-cell ng-bind='title()'
 
-eb-job-results[ng-if='search' query-params='search.params' query-function='newest' title='']
-ul.table-view ng-if='search'
+
+eb-job-results[ng-if='search' query-params='search.params' query-function='newest' title='Neue Suchergebnisse seit dem {{search.params.since | dateFormat}}' result='result']
+ul.table-view.no-border[ng-if='result && result.length == 0']
+  li.table-view-cell: p
+    | Aktuell sind keine neuen Suchergebnisse vorhanden. Sie werden über neue Suchergebnisse informiert.
+
+
+ul.table-view.no-border ng-if='search'
   li.table-view-cell
     p
       button.btn-block.btn.btn-small> ng-click='remove_search(search)'
         span Suche abbestellen
+    p
+      button.btn-block.btn.btn-small> ng-click='run_search(search)'
+        span Suche ausführen

@@ -46,6 +46,8 @@ App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope, notification
 App.factory 'PushService', ($rootScope, $http, $location, notification, storage) ->
   $rootScope.pushMessages = []
   last_success_callback = null
+  if App.test_device_id?
+    $rootScope.regId = App.test_device_id
   {
     getMessages: -> $rootScope.pushMessages
     getRegId: -> $rootScope.regId
@@ -75,11 +77,11 @@ App.factory 'PushService', ($rootScope, $http, $location, notification, storage)
           else
             if e.coldstart
               search_id = e.payload.search_id
-              $location.path('/searches/show').search('id', search_id)
+              $location.path("/searches/#{search_id}")
               notification.info e.message
             else
               search_id = e.payload.search_id
-              window.location = "#/searches/show?id="+search_id
+              window.location = "#/searches/#{search_id}"
               notification.info e.message
         else
           notification.info "Es gab einen Fehler beim verarbeiten der Nachricht"

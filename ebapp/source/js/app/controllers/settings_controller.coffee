@@ -14,6 +14,9 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
   $scope.activePortalType = (what)->
     $scope.portal_types[what]
 
+  $scope.activeFid = (what)->
+    $scope.filter_fid[what]
+
   $scope.toggleFid = (what)->
     $scope.filter_fid[what] = !$scope.filter_fid[what]
 
