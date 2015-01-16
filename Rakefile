@@ -38,6 +38,13 @@ namespace :build do
       bundle exec middleman build
     '
   end
+
+  desc "TMP Files loeschen"
+  task :clear do
+    rm_rf './ebapp/.cache'
+    rm_rf './www/'
+  end
+
 end
 
 namespace :debug do
@@ -91,7 +98,7 @@ namespace :android do
     sh "mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-#{ENV['BUILD_VERSION']}.apk "
   end
 
-  task :set_env do
+  task :set_env => ['build:clear'] do
     sdk = find_java_home
     if !sdk
       raise 'Android SDK nich gefunden, habe gesucht in: ' + SDK_LOCATIONS.join("\n")
