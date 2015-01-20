@@ -1,4 +1,11 @@
-eb-loading-spinner[ng-if='!search']
+eb-loading-spinner[ng-if='!search && !error']
+ul.table-view.no-border ng-if='error'
+  li.table-view-cell
+    p Leider ist ein Fehler beim Abrufen der Suche aufgetreten. Bitte prüfen Sie Ihre Internetverbindung
+    br
+    p
+      a.btn.btn-block.btn-small ng-click='tryAgain()' Erneut versuchen
+
 ul.table-view.no-border ng-if='search'
   li.table-view-cell
     | Neue Suchergebnisse für {{search | searchTitle}}

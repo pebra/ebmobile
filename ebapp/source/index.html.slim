@@ -10,11 +10,12 @@ html
     == stylesheet_link_tag "all"
     -#script src="http://192.168.2.125:8080/target/target-script-min.js"
     title Empfehlungsbund-App
-  body ng-app='ebmobile'
-    eb-navbar
-    .content
-      .content-padded[ng-view]
-        .spinner
+  body
+    div ng-app='ebmobile'
+      eb-navbar
+      .content
+        .content-padded[ng-view]
+          .spinner
 
     == javascript_include_tag  "all"
 

@@ -1,5 +1,3 @@
-
-
 App.directive 'ebStaticMap', ->
   map = null
   radiusCircle = null

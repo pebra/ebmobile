@@ -1,1 +1,1 @@
-set wildignore+=,*/www/*,*/bower_components/*
+set wildignore+=*/www/*,*/bower_components/*

@@ -1,7 +1,7 @@
 App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location', '$routeParams', 'PushApi', 'SubscribedSearches', 'notification', ($scope, Job, settings, $location, $routeParams, PushApi, SubscribedSearches, notification )->
 
   settings.bind($scope)
-  id = parseInt $routeParams.id
+  id = parseInt($routeParams.id)
 
   $scope.active = (what)-> $scope.filter_fid[what]
 
@@ -13,8 +13,12 @@ App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location',
       $location.path('/')
       notification.info "Suche gelöscht"
 
+  $scope.tryAgain = ->
+    $scope.error = null
+    PushApi.findSearch id, (search)->
+      $scope.search = search
+    , (error) ->
+      $scope.error = true
 
-  PushApi.findSearch id, (search)->
-    $scope.search = search
-
+  $scope.tryAgain()
 ]

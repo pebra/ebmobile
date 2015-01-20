@@ -10,7 +10,14 @@ ul.table-view.no-border
         p
           |{{job.company_name}} - {{job.location}}
   eb-loading-spinner[ng-if='loading']
+  li.table-view-cell ng-if='error'
+    p Leider ist ein Fehler beim Abruf der Stellen aufgetreten. Bitte prüfen Sie Ihre Internetverbindung.
+    br
+    p
+      a.btn.btn-block ng-click='tryAgain()' Erneut versuchen
+
   li.table-view-cell[ng-if='paginationEnabled && jobs.next_page']
     p: a.btn.btn-block ng-click='showMore()' Mehr
+
 
 

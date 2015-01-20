@@ -1,5 +1,5 @@
 //= require PushNotification.js
-//= require jquery/dist/jquery.min.js
+//= require jquery/dist/jquery.js
 //= require jquery.throttle/src/jquery-throttle.min.js
 //= require ratchet/dist/js/ratchet.js
 //= require angular/angular
@@ -13,8 +13,7 @@
 //= require angulartics/dist/angulartics-ga.min.js
 //= require angulartics/dist/angulartics-ga-cordova.min.js
 //= require angulartics/dist/angulartics-ga.min.js
-//= require angular-phonegap-ready/ready.js
-//= require _app
 //= require credentials
 //= require credentials_dev
+//= require _app
 //= require_tree ./app/

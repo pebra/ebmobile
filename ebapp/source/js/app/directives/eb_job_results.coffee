@@ -26,6 +26,7 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
 
       $scope.search =  (params) ->
         $scope.loading = true
+        $scope.error = null
         extra_params = $scope.queryParams
 
         angular.extend(params, default_params, extra_params)
@@ -40,8 +41,13 @@ App.directive 'ebJobResults', (settings, Job, merkliste)->
             current_page: response.current_page
             next_page: if response.current_page < response.total_pages then response.current_page + 1 else null
           $scope.$parent.$parent[attr.result] =  $scope.jobs
+        , (error)->
+          $scope.loading = false
+          $scope.error = error
 
       $scope.$watch 'queryParams', ->
+        $scope.search({})
+      $scope.tryAgain = ->
         $scope.search({})
 
       $scope.showMore = ->

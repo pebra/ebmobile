@@ -25,7 +25,7 @@ namespace :build do
   end
 
   desc 'Start Middleman auf Port 3500'
-  task :server do
+  task :server => [:clear] do
     sh '
       cd ebapp/source && bundle exec middleman server -p 3500
     '
