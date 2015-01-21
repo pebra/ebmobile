@@ -1,9 +1,8 @@
-App.controller 'GcmCtrl', ['$scope','Device','PushService', '$http','PushApi','SubscribedSearches', '$rootScope', 'settings', ($scope,Device,PushService,$http,PushApi,SubscribedSearches, $rootScope, settings) ->
-  regId = PushService.getRegId()
+App.controller 'GcmCtrl', ($scope,DeviceKey,PushApi,SubscribedSearches, settings) ->
+  regId = DeviceKey.get()
   if regId == null
-    notification.info "Es gab einen Fehler bei der Kommunikation mit Google, das abonnieren der Suchen ist daher deaktiviert"
+    notification.info "Es gab einen Fehler bei der Kommunikation mit Google, das Abonnieren der Suchen ist daher deaktiviert."
   $scope.showSubscribeButton = ->
-    # Device.isAndroid() &&
     $scope.query_params? && SubscribedSearches.is_subscribed($scope.query) && regId?
   settings.bind($scope)
 
@@ -19,4 +18,3 @@ App.controller 'GcmCtrl', ['$scope','Device','PushService', '$http','PushApi','S
     else
       PushApi.addSearch { search: params }, (response) ->
         SubscribedSearches.getAll()
-]

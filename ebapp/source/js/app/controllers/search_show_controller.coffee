@@ -19,6 +19,5 @@ App.controller 'SearchShowController', ['$scope','Job', 'settings', '$location',
       $scope.search = search
     , (error) ->
       $scope.error = true
-
   $scope.tryAgain()
 ]

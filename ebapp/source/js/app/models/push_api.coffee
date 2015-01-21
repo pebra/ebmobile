@@ -1,4 +1,4 @@
-App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
+App.factory 'PushApi', ($resource, DeviceKey) ->
   api = $resource Config.eb_push_url, null,
     addDeviceKey:
       method: 'POST'
@@ -11,19 +11,19 @@ App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
       isArray: true
       params:
         api_key: Config.eb_push_key
-        key: -> PushService.getRegId()
+        key: -> DeviceKey.get()
     addSearch:
       method: 'POST'
       url: Config.eb_push_url + '/searches.json'
       params:
         api_key: Config.eb_push_key
-        key: ->  PushService.getRegId()
+        key: ->  DeviceKey.get()
     unsubscribeSearch:
       method: 'DELETE'
       url: Config.eb_push_url + '/searches/:id.json'
       params:
         api_key: Config.eb_push_key
-        key: -> PushService.getRegId()
+        key: -> DeviceKey.get()
 
   api.findSearch = (searchId, callback,error)->
     api.allSearches (searches)->
@@ -38,4 +38,3 @@ App.factory "PushApi", ["$resource", "PushService", ($resource, PushService) ->
     , error
   api
 
-]

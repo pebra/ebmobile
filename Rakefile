@@ -1,5 +1,5 @@
-SDK_LOCATIONS = [
-  ENV["HOME"] + '/ADT-SDK/sdk/',
+  SDK_LOCATIONS = [
+    ENV["HOME"] + '/ADT-SDK/sdk/',
   '/Applications/adt-bundle/sdk',
   '/usr/local/Cellar/android-sdk/23.0.2/',
   '/usr/local/Cellar/android-sdk/24.0.1/'
@@ -8,6 +8,16 @@ SDK_LOCATIONS = [
 def find_java_home
   SDK_LOCATIONS.find{|f| File.exists? f }
 end
+
+desc 'Set production credentials'
+task :production do
+  ENV['BUILD_ENV'] = 'production'
+end
+desc 'Set development credentials'
+task :development do
+  ENV['BUILD_ENV'] = 'development'
+end
+
 
 namespace :build do
   desc 'Ratched Style Android'
@@ -38,6 +48,9 @@ namespace :build do
       bundle exec middleman build
     '
   end
+
+  desc 'Middleman production'
+  task :production => ['android:set_production', :development]
 
   desc "TMP Files loeschen"
   task :clear do

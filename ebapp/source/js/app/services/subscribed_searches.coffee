@@ -1,7 +1,7 @@
-App.factory 'SubscribedSearches', (PushService,PushApi, $rootScope, notification)->
+App.factory 'SubscribedSearches', (DeviceKey, PushApi, $rootScope, notification)->
   {
     getAll: (cb)->
-      regid = PushService.getRegId()
+      regid = DeviceKey.get()
       if regid?
         PushApi.allSearches (searches)->
           $rootScope.subscribedSearches = searches

@@ -33,6 +33,8 @@ configure :build do
   set :build_dir, '../www'
   activate :minify_css
   ignore 'js/credentials_dev.coffee.erb'
+  ignore 'js/app/**/*'
+  ignore 'js/credentials.example'
   #activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
   # Enable cache buster
   # activate :cache_buster

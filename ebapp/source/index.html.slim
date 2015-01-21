@@ -17,6 +17,10 @@ html
         .content-padded[ng-view]
           .spinner
 
+    == javascript_include_tag "credentials"
+    - unless ENV['BUILD_ENV'] == 'production'
+      - puts "BUILDING DEVELOPMENT"
+      == javascript_include_tag "credentials_dev"
     == javascript_include_tag  "all"
 
     script type="text/javascript" src="cordova.js"

@@ -33,7 +33,7 @@ App.directive 'ebLocationForm', ($rootScope, $http, notification, geolocation, $
 
           $scope.geolocationInProgress = false
           $scope.geolocationError = false
-          $http.jsonp(Config.api + 'utilities/reverse_geocomplete.jsonp', {params: { lat: data.coords.latitude, lon: data.coords.longitude, callback: 'JSON_CALLBACK', api_key: App.eb_api_key}})
+          $http.jsonp(Config.api + 'utilities/reverse_geocomplete.jsonp', {params: { lat: data.coords.latitude, lon: data.coords.longitude, callback: 'JSON_CALLBACK', api_key: Config.eb_api_key}})
             .success (data)->
               $scope.coordinates.name = "#{data.city}, #{data.state}, #{data.country}"
               notification.info "Position wurde ermittelt: #{$scope.coordinates.name}"

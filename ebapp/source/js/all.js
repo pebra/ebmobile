@@ -1,4 +1,3 @@
-//= require PushNotification.js
 //= require jquery/dist/jquery.js
 //= require jquery.throttle/src/jquery-throttle.min.js
 //= require ratchet/dist/js/ratchet.js
@@ -9,11 +8,5 @@
 //= require angularjs-geolocation/dist/angularjs-geolocation.min.js
 //= require angularLocalStorage/src/angularLocalStorage
 //= require leaflet/dist/leaflet-src.js
-//= require angulartics/dist/angulartics.min.js
-//= require angulartics/dist/angulartics-ga.min.js
-//= require angulartics/dist/angulartics-ga-cordova.min.js
-//= require angulartics/dist/angulartics-ga.min.js
-//= require credentials
-//= require credentials_dev
 //= require _app
 //= require_tree ./app/
