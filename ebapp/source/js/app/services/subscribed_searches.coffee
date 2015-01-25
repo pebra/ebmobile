@@ -6,6 +6,14 @@ App.factory 'SubscribedSearches', (DeviceKey, PushApi, $rootScope, notification)
         PushApi.allSearches (searches)->
           $rootScope.subscribedSearches = searches
           cb(searches) if cb?
+        , (error)->
+          notification.info("Fehler beim Abrufen der abonnierten Suchen")
+          console.log 'error'
+          console.log error
+          console.log error.status
+          console.log error.code
+          console.log error.body
+          false
     unsubscribe: (search, cb)->
       that = this
       PushApi.unsubscribeSearch { id: search.id}, (result)->
