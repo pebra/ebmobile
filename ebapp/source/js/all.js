@@ -10,3 +10,4 @@
 //= require leaflet/dist/leaflet-src.js
 //= require _app
 //= require_tree ./app/
+//= require _initializer

@@ -24,6 +24,11 @@ App.factory 'PushApi', ($resource, DeviceKey) ->
       params:
         api_key: Config.eb_push_key
         key: -> DeviceKey.get()
+    updateKey:
+      method: 'PATCH'
+      url: Config.eb_push_url + '/devices.json'
+      params:
+        api_key: Config.eb_push_key
 
   api.findSearch = (searchId, callback,error)->
     api.allSearches (searches)->

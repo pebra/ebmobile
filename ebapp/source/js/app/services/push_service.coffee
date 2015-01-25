@@ -20,7 +20,7 @@ App.factory 'PushService', ($rootScope, $http, $location, notification, DeviceKe
           ecb: "onNotificationGCM"
         })
     onNotification: (e)->
-      console.log 'GCM back'
+      console.log "GCM event: #{e.event}"
       window.last_event = e
       switch e.event
         when "registered"
