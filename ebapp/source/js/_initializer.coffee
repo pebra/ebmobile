@@ -1,16 +1,28 @@
 console.log '======= STARTING APP ======'
 
-App.run ($rootScope,  $location, trackingId, SubscribedSearches, PushService) ->
+App.run ($rootScope,  $location, SubscribedSearches, PushService, Analytics) ->
   document.addEventListener "deviceready", ->
     console.log 'device-ready'
     PushService.register( (regid)->
       console.log 'registered'
       SubscribedSearches.getAll()
     )
+    Analytics.init()
   , false
 
+  $rootScope.$on "$routeChangeStart", (event, next, current)->
+    Analytics.trackView($location.path())
 
-App.constant('trackingId', 'UA-6810907-13')
+App.service 'Analytics', ->
+  {
+    init: ->
+      if window.analytics
+        window.analytics.startTrackerWithId('UA-6810907-16')
+        window.analytics.trackView('Start')
+    trackView: (view) ->
+      if window.analytics
+        window.analytics.trackView(view)
+  }
 
 window.onNotificationGCM = (e)->
   console.log 'onNotificationGCM'
@@ -18,3 +30,5 @@ window.onNotificationGCM = (e)->
   injector.invoke  ["PushService", (PushService) ->
     PushService.onNotification(e)
   ]
+
+

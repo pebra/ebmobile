@@ -39,6 +39,9 @@
         },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },
     "dependent_plugins": {}

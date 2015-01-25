@@ -10,13 +10,13 @@
                     "CoreData.framework": [
                         {
                             "xml": "false",
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "SystemConfiguration.framework": [
                         {
                             "xml": "false",
-                            "count": 1
+                            "count": 2
                         }
                     ],
                     "QuartzCore.framework": [
@@ -26,6 +26,18 @@
                         }
                     ],
                     "Social.framework": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "libz.dylib": [
+                        {
+                            "xml": "false",
+                            "count": 1
+                        }
+                    ],
+                    "libsqlite3.0.dylib": [
                         {
                             "xml": "false",
                             "count": 1
@@ -55,6 +67,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"UniversalAnalytics\"><param name=\"ios-package\" value=\"UniversalAnalyticsPlugin\" /></feature>",
+                            "count": 1
                         }
                     ],
                     "/widget": []
@@ -79,6 +95,9 @@
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
         "org.apache.cordova.device": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },
