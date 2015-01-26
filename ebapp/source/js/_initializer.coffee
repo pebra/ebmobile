@@ -11,6 +11,7 @@ App.run ($rootScope,  $location, SubscribedSearches, PushService, Analytics) ->
   , false
 
   $rootScope.$on "$routeChangeStart", (event, next, current)->
+    console.log "Tracking: #{$location.path()}"
     Analytics.trackView($location.path())
 
 App.service 'Analytics', ->
