@@ -2,7 +2,7 @@ App.controller 'MerklisteController', ['$scope', 'Job', 'merkliste', 'sharing', 
   $scope.jobs = merkliste.all()
 
   $scope.share = ->
-    text = "Folgende Stellenanzeigen haben haben Sie in der Empfehlungsbund-App gefunden: \n\n"
+    text = "Folgende Stellenanzeigen habe ich in der Empfehlungsbund-App gefunden: \n\n"
     for job in $scope.jobs
       text += """
       #{job.title}
