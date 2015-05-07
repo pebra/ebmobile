@@ -3,7 +3,7 @@ ul.table-view.no-border
     | {{title}}
   li.table-view-cell.media[ng-repeat='job in jobs.jobs']
     a.media-object.pull-left ng-href="#/job/{{job.id}}"
-      img ng-src="https:{{job.company_logo}}"
+      img ng-src="{{job.company_logo}}"
     .media-body
       a.navigate-right ng-href="#/job/{{job.id}}"
         | {{job.title}}
