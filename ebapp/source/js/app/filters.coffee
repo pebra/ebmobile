@@ -7,6 +7,15 @@ App.filter 'dateFormat', ->
       parts.reverse().join('.')
 App.filter 'unsafe', ($sce)->
   (val)-> return $sce.trustAsHtml(val)
+
+App.filter 'searchTitle', ->
+  (search)->
+    params = search.params
+    t = "\"#{params.q}\""
+    if params.location
+      t += " im Umkreis #{params.radius}km um #{params.location}"
+    t
+
 App.filter 'objectLength', ->
   (val)->
     count = 0

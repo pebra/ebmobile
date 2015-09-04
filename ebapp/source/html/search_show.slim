@@ -1,0 +1,27 @@
+eb-loading-spinner[ng-if='!search && !error']
+ul.table-view.no-border ng-if='error'
+  li.table-view-cell
+    p Leider ist ein Fehler beim Abrufen der Suche aufgetreten. Bitte prüfen Sie Ihre Internetverbindung
+    br
+    p
+      a.btn.btn-block.btn-small ng-click='tryAgain()' Erneut versuchen
+
+ul.table-view.no-border ng-if='search'
+  li.table-view-cell
+    | Neue Suchergebnisse für {{search | searchTitle}}
+
+
+eb-job-results[ng-if='search' query-params='search.params' query-function='newest' title='Neue Suchergebnisse seit dem {{search.params.since | dateFormat}}' result='result']
+ul.table-view.no-border[ng-if='result && result.length == 0']
+  li.table-view-cell: p
+    | Aktuell sind keine neuen Suchergebnisse vorhanden. Sie werden über neue Suchergebnisse informiert.
+
+
+ul.table-view.no-border ng-if='search'
+  li.table-view-cell
+    p
+      button.btn-block.btn.btn-small> ng-click='remove_search(search)'
+        span Suche abbestellen
+    p
+      button.btn-block.btn.btn-small> ng-click='run_search(search)'
+        span Suche ausführen

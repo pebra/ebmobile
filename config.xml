@@ -1,31 +1,42 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.pludoni.empfehlungsbundmobile" version="2.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Empfehlungsbund</name>
-  <description>
+<widget id="de.pludoni.empfehlungsbundmobile" version="2.1.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Empfehlungsbund</name>
+    <description>
     Stellen des Empfehlungsbundes.
   </description>
-  <author email="app@pludoni.de" href="http://empfehlungsbund.de">pludoni GmbH</author>
-  <content src="index.html" />
-  <access origin="*" />
-  <preference name="fullscreen" value="true" />
-  <preference name="webviewbounce" value="true" />
-
-  <feature name="SocialSharing">
-    <param name="android-package" value="n1.xservices.plugins.SocialSharing"/>
-  </feature>
-  <feature name="Geolocation">
-    <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
-  </feature>
-  <feature name="Toast">
-    <param name="android-package" value="nl.xservices.plugins.Toast" />
-  </feature>
-
-  <feature name="Diagnostic">
-    <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic"/>
-  </feature>
-
-  <feature name="GAPlugin" >
-    <param name="android-package" value="com.adobe.plugins.GAPlugin"/>
-  </feature>
+    <author email="app@pludoni.de" href="http://www.empfehlungsbund.de">pludoni GmbH</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="fullscreen" value="false" />
+    <preference name="webviewbounce" value="true" />
+    <feature name="SocialSharing">
+        <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.GeoBroker" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <feature name="Diagnostic">
+        <param name="android-package" value="com.neton.cordova.diagnostic.Diagnostic" />
+    </feature>
+    <feature name="GAPlugin">
+        <param name="android-package" value="com.adobe.plugins.GAPlugin" />
+    </feature>
+    <feature name="Diagnostic">
+        <param name="id" value="com.neton.cordova.diagnostic" />
+    </feature>
+    <feature name="PushPlugin">
+        <param name="id" value="com.phonegap.plugins.PushPlugin" />
+    </feature>
+    <feature name="Toast">
+        <param name="id" value="nl.x-services.plugins.toast" />
+    </feature>
+    <feature name="Device">
+        <param name="id" value="org.apache.cordova.device" />
+    </feature>
+    <cdv:engine id="android" />
+    <cdv:engine id="firefoxos" />
+    <cdv:engine id="ios" />
 </widget>
-

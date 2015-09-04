@@ -1,4 +1,4 @@
-App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope', 'notification', ($scope, settings, $http, $rootScope, notification)->
+App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope', 'notification', 'SubscribedSearches', ($scope, settings, $http, $rootScope, notification, SubscribedSearches)->
   settings.bind($scope)
 
   $scope.clear = ->
@@ -11,11 +11,19 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     $rootScope.merkliste = {}
     notification.info "Einstellungen gelöscht!"
 
-  $scope.active = (what)-> $scope.filter_fid[what]
-  $scope.activePortalType = (what)-> $scope.portal_types[what]
-  $scope.toggleFid = (what)-> $scope.filter_fid[what] = !$scope.filter_fid[what]
-  $scope.togglePt = (what)-> $scope.portal_types[what] = !$scope.portal_types[what]
+  $scope.activePortalType = (what)->
+    $scope.portal_types[what]
 
+  $scope.activeFid = (what)->
+    $scope.filter_fid[what]
+
+  $scope.toggleFid = (what)->
+    $scope.filter_fid[what] = !$scope.filter_fid[what]
+
+  $scope.togglePt = (what)->
+    $scope.portal_types[what] = !$scope.portal_types[what]
+
+  $scope.geoButtonText = "Ort automatisch ermitteln"
   $scope.portal_type_list = [
     {
       title: 'IT - Softwareentwickler und ITler'
@@ -32,7 +40,7 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     el = document.getElementsByTagName('input')[0]
     el.focus()
     el.blur()
-    $http.jsonp(App.api + 'utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK', api_key: App.eb_api_key}})
+    $http.jsonp(Config.api + 'utilities/geocomplete.jsonp', {params: { q: term, callback: 'JSON_CALLBACK', api_key: Config.eb_api_key}})
       .success (data)->
         $scope.coordinates = { lat: data.lat, lng: data.lng}
         $scope.coordinates.name = data.name

@@ -1,4 +1,3 @@
-
 App.directive 'searchForm', ($location, tags) ->
   autocomplete_tags = []
   tags.get (data)->

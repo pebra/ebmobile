@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>185B5D4B-A6DE-4207-A503-5754A5AD0DAA</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Empfehlungsbund</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>78E6DB4E-A491-46F4-A0D1-8D0A7B73418C</key>
+		<string>hds:pebra/ebmobile.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>platforms/ios/Empfehlungsbund.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>78E6DB4E-A491-46F4-A0D1-8D0A7B73418C</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>hds:pebra/ebmobile.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>78E6DB4E-A491-46F4-A0D1-8D0A7B73418C</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>78E6DB4E-A491-46F4-A0D1-8D0A7B73418C</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ebmobile</string>
+		</dict>
+	</array>
+</dict>
+</plist>

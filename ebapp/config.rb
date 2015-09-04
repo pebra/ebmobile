@@ -32,7 +32,12 @@ set :images_dir, 'images'
 configure :build do
   set :build_dir, '../www'
   activate :minify_css
-  activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
+  ignore 'js/credentials_dev.coffee.erb'
+  ignore 'js/app/**/*'
+  ignore 'ignore/**/*'
+  ignore 'ignore'
+  ignore 'js/credentials.example'
+  #activate :minify_javascript, compressor:  Uglifier.new( mangle: false), ignore: ['js/app', 'bower_components']
   # Enable cache buster
   # activate :cache_buster
   # Compress PNGs after build
@@ -47,6 +52,6 @@ end
 
 activate :relative_assets
 
-ready do
+after_configuration do
   sprockets.append_path File.join(root, 'bower_components')
 end

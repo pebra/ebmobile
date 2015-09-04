@@ -2,11 +2,11 @@ eb-loading-spinner[ng-if='!company']
 div ng-if='company != undefined'
   ul.table-view.no-border
     li.table-view-cell
-      img ng-src="https:{{company.logo.resized}}"
+      img ng-src="{{company.logo.resized}}"
       p
         |{{company.name}}
       /* p */
-        button.btn.btn-small ng-if='cordova' ng-click="share()"
+        button.btn.btn-small ng-click="share()"
           span.icon-share.icon>
           span Teilen
     li.table-view-cell ng-if='company.description'
@@ -47,7 +47,7 @@ div ng-if='company != undefined'
     li.table-view-divider  Ansprechpartner
   ul.table-view.margin ng-repeat='person in company.people'
     li.table-view-cell.media.person
-      img.media-object.pull-left[ng-src='https:{{person.photo}}' style='width: 50px;']
+      img.media-object.pull-left[ng-src='{{person.photo}}' ng-src-fallback="http://img2.wikia.nocookie.net/__cb20130623142745/elderscrolls2/de/images/f/f5/Pedob%C3%A4r.jpg" style='width: 50px;']
       .media-body
         | {{person.anrede}} {{person.title}} {{person.name}},<br/> <small>{{person.position}}</small>
 

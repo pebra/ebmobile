@@ -2,7 +2,7 @@ eb-loading-spinner[ng-if='!community']
 div ng-if='community'
   ul.table-view
     li.table-view-cell
-      img ng-src="https:{{community.logo.medium}}"
+      img ng-src="{{community.logo.medium}}"
     li.table-view-cell
       | Beschreibung
       p[ng-bind-html='community.description | unsafe']

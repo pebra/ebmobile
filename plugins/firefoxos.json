@@ -1,0 +1,48 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<permission description=\"Required for accessing user location.\" name=\"geolocation\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"firefoxos-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.neton.cordova.diagnostic": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "nl.x-services.plugins.toast": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "uk.co.ilee.socialmessage": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        }
+    },
+    "dependent_plugins": {}
+}
