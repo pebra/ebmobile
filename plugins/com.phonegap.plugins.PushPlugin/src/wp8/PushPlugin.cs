@@ -29,10 +29,15 @@ namespace WPCordovaClassLib.Cordova.Commands
             if (pushChannel == null)
             {
                 pushChannel = new HttpNotificationChannel(this.pushOptions.ChannelName);
-
+                SubscribePushChannelEvents(pushChannel);
                 try
                 {
-                    pushChannel.Open();
+                    var count = 0;
+                    while(count < 3 && pushChannel.ChannelUri == null)
+                    {
+                        pushChannel.Open();
+                        count++;
+                    }
                 }
                 catch (InvalidOperationException)
                 {
@@ -43,8 +48,10 @@ namespace WPCordovaClassLib.Cordova.Commands
                 pushChannel.BindToShellToast();
                 pushChannel.BindToShellTile();
             }
-
-            SubscribePushChannelEvents(pushChannel);
+            else
+            {
+                SubscribePushChannelEvents(pushChannel);
+            }
             var result = new RegisterResult
             {
                 ChannelName = this.pushOptions.ChannelName,

@@ -5,6 +5,7 @@ App.run ($rootScope,  $location, SubscribedSearches, PushService, Analytics) ->
     console.log 'device-ready'
     PushService.register( (regid)->
       console.log 'registered'
+      console.log(window)
       SubscribedSearches.getAll()
     )
     Analytics.init()

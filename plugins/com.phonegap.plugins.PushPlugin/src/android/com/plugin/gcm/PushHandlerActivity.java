@@ -22,9 +22,8 @@ public class PushHandlerActivity extends Activity
 	public void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-                
 		Log.v(TAG, "onCreate");
-               
+
 		boolean isPushPluginActive = PushPlugin.isActive();
 		processPushBundle(isPushPluginActive);
 
