@@ -1,4 +1,4 @@
-# Android App for empfehlungsbund.de
+#Android App for empfehlungsbund.de
 
 ## Development
 

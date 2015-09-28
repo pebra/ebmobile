@@ -28,9 +28,6 @@
     <feature name="Geolocation">
         <param name="ios-package" value="CDVLocation" />
     </feature>
-    <feature name="PushPlugin">
-        <param name="ios-package" value="PushPlugin" />
-    </feature>
     <feature name="Device">
         <param name="ios-package" value="CDVDevice" />
     </feature>
@@ -48,5 +45,8 @@
     <cdv:engine id="ios" />
     <feature name="UniversalAnalytics">
         <param name="ios-package" value="UniversalAnalyticsPlugin" />
+    </feature>
+    <feature name="PushPlugin">
+        <param name="ios-package" value="PushPlugin" />
     </feature>
 </widget>

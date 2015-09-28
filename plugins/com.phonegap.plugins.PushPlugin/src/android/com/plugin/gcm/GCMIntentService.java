@@ -81,13 +81,12 @@ public class GCMIntentService extends GCMBaseIntentService {
 
 	public void createNotification(Context context, Bundle extras)
 	{
-                String exe = "test"
 		NotificationManager mNotificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		String appName = getAppName(this);
 
 		Intent notificationIntent = new Intent(this, PushHandlerActivity.class);
 		notificationIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP | Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		notificationIntent.putExtra("pushBundle", exe, extras);
+		notificationIntent.putExtra("pushBundle", extras);
 
 		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 		
