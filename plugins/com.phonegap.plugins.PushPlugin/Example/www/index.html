@@ -24,15 +24,6 @@ NOTE:
             var pushNotification;
             
             function onDeviceReady() {
-                $("#app-status-ul").append('<li>registering ' + device.platform + '</li>');
-                if ( device.platform == 'android' || device.platform == 'Android' || device.platform == "amazon-fireos" ){
-                     pushNotification.register(
-                     successHandler,
-                     errorHandler,
-                     {
-                      "senderID":"655476376860",
-                      "ecb":"onNotification"
-                     });
                 $("#app-status-ul").append('<li>deviceready event received</li>');
                 
 				document.addEventListener("backbutton", function(e)

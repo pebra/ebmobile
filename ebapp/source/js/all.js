@@ -9,5 +9,6 @@
 //= require angularLocalStorage/src/angularLocalStorage
 //= require leaflet/dist/leaflet-src.js
 //= require _app
+//= require credentials_dev
 //= require_tree ./app/
 //= require _initializer

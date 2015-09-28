@@ -7,6 +7,7 @@ App.factory 'settings', (storage, Community)->
       storage.bind($scope,'lastUsage')
       storage.bind($scope,'filter_fid', defaultValue: { '4': true, '5':true})
       storage.bind($scope,'portal_types', defaultValue: { 'it': true, 'office':true, 'mint':true})
+      storage.bind($scope,'min_score', default_value: 3.0)
       storage.bind($scope,'lastQueries', defaultValue: [])
       # $scope.$watch('lastQuery', this.addQuery)
       $scope.default_params = ->
@@ -14,6 +15,7 @@ App.factory 'settings', (storage, Community)->
           lat: $scope.coordinates.lat
           lon: $scope.coordinates.lng
           radius: $scope.radius
+          min_score: 3.0
 
         true_vals = (ar)->
           values = []
@@ -27,6 +29,7 @@ App.factory 'settings', (storage, Community)->
 
         add('fid', $scope.filter_fid)
         add('portal_types', $scope.portal_types)
+        add('min_score', $scope.min_score)
         default_params
 
     storage: storage
@@ -42,7 +45,6 @@ App.factory 'settings', (storage, Community)->
       if !found
         today = window.today()
         scope.lastQueries.unshift { q: newVal, date: today }
-
       scope.lastQueries = scope.lastQueries[-20..]
 
     clear: -> storage.clearAll()

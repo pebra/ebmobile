@@ -1,4 +1,8 @@
-# Cordova Push Notifications Plugin for Android, iOS, WP8, Windows8, BlackBerry 10 and Amazon Fire OS
+# [DEPRECATED] Cordova Push Notifications Plugin for Android, iOS, WP8, Windows8, BlackBerry 10 and Amazon Fire OS
+
+
+### _This plugin is deprecated, i.e. it is no longer maintained. Going forward additional features and bug fixes will be added to the new [phonegap-plugin-push](https://github.com/phonegap/phonegap-plugin-push) repository._
+
 
 ## DESCRIPTION
 
@@ -545,14 +549,15 @@ if(device.platform == "Win32NT"){
         channelHandler,
         errorHandler,
         {
-            "channelName": channelName,
-            "ecb": "onNotificationWP8",
-            "uccb": "channelHandler",
-            "errcb": "jsonErrorHandler"
+            "channelName": "channelName",
+            "ecb": onNotificationWP8,
+            "uccb": channelHandler,
+            "errcb": jsonErrorHandler
         });
 }
 
 ```
+Make sure that date and time settings are correct for your device/emulator before registering for push notifications.
 
 #### channelHandler (WP8 only)
 Called after a push notification channel is opened and push notification URI is returned. [The application is now set to receive notifications.](http://msdn.microsoft.com/en-us/library/windowsphone/develop/hh202940(v=vs.105).aspx)
@@ -674,8 +679,9 @@ For the above to work, make sure the content for your home page is wrapped in an
 </div>
 ```
 
-### windows8
-Sample usage is showed below. **Note**. To be able to receive toast notifications additional [toastCapable=’true’](http://msdn.microsoft.com/en-us/library/windows/apps/hh781238.aspx) attribute is required in manifest file.
+### windows
+Sample usage is showed below. **Note**. To be able to receive toast notifications additional [toastCapable=’true’](http://msdn.microsoft.com/en-us/library/windows/apps/hh781238.aspx) attribute is required in manifest file. Cordova-windows 4.0.0 release adds this property to config.xml. You can use:
+`<preference name="WindowsToastCapable" value="true" />` in config.xml. However, you will need Cordova 5.1.1 which pins Cordova-windows 4.0.0.
 
 ```js
 // fired when push notification is received

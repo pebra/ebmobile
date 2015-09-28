@@ -34,13 +34,16 @@
         "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
-        },
         "org.apache.cordova.device": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
         "com.danielcwilson.plugins.googleanalytics": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },
