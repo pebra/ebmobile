@@ -1,5 +1,5 @@
   SDK_LOCATIONS = [
-    ENV["HOME"] + '/ADT-SDK/sdk/',
+    ENV["HOME"] + '/.linuxbrew/Cellar/android-sdk/24.3.3',
   '/Applications/adt-bundle/sdk',
   '/usr/local/Cellar/android-sdk/23.0.2/',
   '/usr/local/Cellar/android-sdk/24.0.1/'

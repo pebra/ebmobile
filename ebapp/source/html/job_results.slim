@@ -1,9 +1,13 @@
 ul.table-view.no-border
   li.table-view-divider[ng-if='title']
     | {{title}}
-  li.table-view-cell.media[ng-repeat='job in jobs.jobs']
+  /* p */
+  /*   | {{jobs.jobs}} */
+  li.table-view-cell.media[ng-repeat="job in jobs.jobs | orderBy: '-pubDate'"]
     a.media-object.pull-left ng-href="#/job/{{job.id}}"
       img ng-src="{{job.company_logo}}"
+      p
+        | {{job.pubDate.split('T')[0] | dateFormat}}
     .media-body
       a.navigate-right ng-href="#/job/{{job.id}}"
         | {{job.title}}
@@ -11,6 +15,8 @@ ul.table-view.no-border
           |{{job.company_name}} - {{job.location}}
   eb-loading-spinner[ng-if='loading']
   li.table-view-cell ng-if='error'
+    p
+      | {{error}}
     p Leider ist ein Fehler beim Abruf der Stellen aufgetreten. Bitte prüfen Sie Ihre Internetverbindung.
     br
     p

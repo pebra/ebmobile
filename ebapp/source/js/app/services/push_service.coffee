@@ -32,12 +32,10 @@ App.factory 'PushService', ($rootScope, $http, $location, notification, DeviceKe
             notification.info e.message
           else
             if e.coldstart
-              search_id = e.payload.search_id
-              $location.path("/searches/#{search_id}")
+              $location.path("/")
               notification.info e.message
             else
-              search_id = e.payload.search_id
-              window.location = "#/searches/#{search_id}"
+              window.location = "#/"
               notification.info e.message
         else
           notification.info "Es gab einen Fehler beim verarbeiten der Nachricht"
