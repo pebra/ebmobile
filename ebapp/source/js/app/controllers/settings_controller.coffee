@@ -6,6 +6,7 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
     $scope.radius = 50
     $scope.filter_fid = { 4: true, 5: true}
     $scope.portal_types = { it: true, office: true, mint: true}
+    $scope.min_score = 3.0
     settings.clear()
     localStorage.clear()
     $rootScope.merkliste = {}
@@ -17,11 +18,17 @@ App.controller 'SettingsController', ['$scope', 'settings', '$http', '$rootScope
   $scope.activeFid = (what)->
     $scope.filter_fid[what]
 
+  $scope.activeMinScore = (what)->
+    $scope.filter_min_score[what]
+
   $scope.toggleFid = (what)->
     $scope.filter_fid[what] = !$scope.filter_fid[what]
 
   $scope.togglePt = (what)->
     $scope.portal_types[what] = !$scope.portal_types[what]
+
+  $scope.toggleMs = (what)->
+    $scope.min_score[what] = !$scope.min_score[what]
 
   $scope.geoButtonText = "Ort automatisch ermitteln"
   $scope.portal_type_list = [
