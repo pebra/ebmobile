@@ -104,6 +104,8 @@ namespace :android do
 
   desc 'Release einer neuen Version'
   task :release => [:set_production, :prepare] do
+    puts "====== Generating Icons ======"
+    sh "cordova-icon"
     puts "====== Releasing #{ENV['BUILD_VERSION']} ====== "
     sh "cordova build android --release "
     puts "===== Build Complete: Archiving ===== "
