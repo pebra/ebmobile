@@ -22,6 +22,7 @@ platforms/android/CordovaLib/
 platforms/android/out
 platforms/android/.gradle
 platforms/android/release-signing.properties
+platforms/android/res/
 
 # iOS
 platforms/*/build/
