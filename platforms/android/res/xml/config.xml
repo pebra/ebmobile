@@ -23,6 +23,11 @@
     <feature name="SocialMessage">
         <param name="android-package" value="uk.co.ilee.socialmessage.SocialMessage" />
     </feature>
+    <icon density="mdpi" src="res/icon-mdpi.png" />
+    <icon density="hdpi" src="res/icon-hdpi.png" />
+    <icon density="xhdpi" src="res/icon-xhdpi.png" />
+    <icon density="xxhdpi" src="res/icon-xxhdpi.png" />
+    <icon density="xxxhdpi" src="res/icon-xxxhdpi.png" />
     <name>Empfehlungsbund</name>
     <description>
     Stellen des Empfehlungsbundes.
@@ -32,6 +37,7 @@
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
+    <preference name="permissions" value="none" />
     <cdv:engine id="android" />
     <cdv:engine id="firefoxos" />
     <cdv:engine id="ios" />

@@ -9,6 +9,7 @@
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
+    <preference name="permissions" value="none"/>
     <feature name="SocialSharing">
         <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
     </feature>
@@ -39,4 +40,13 @@
     <cdv:engine id="android" />
     <cdv:engine id="firefoxos" />
     <cdv:engine id="ios" />
+    <platform name="android">
+      <!-- <icon src="res/icon-ldpi.png" density="ldpi" /> -->
+      <icon src="res/icon-mdpi.png" density="mdpi" />
+      <icon src="res/icon-hdpi.png" density="hdpi" />
+      <icon src="res/icon-xhdpi.png" density="xhdpi" />
+      <icon src="res/icon-xxhdpi.png" density="xxhdpi" />
+      <icon src="res/icon-xxxhdpi.png" density="xxxhdpi" />
+    </platform>
+
 </widget>
