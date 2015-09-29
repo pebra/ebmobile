@@ -17,19 +17,19 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"PushPlugin\"><param name=\"android-package\" value=\"com.plugin.gcm.PushPlugin\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Toast\"><param name=\"android-package\" value=\"nl.xservices.plugins.Toast\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -124,6 +124,12 @@
         "com.neton.cordova.diagnostic": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
+        "com.phonegap.plugins.PushPlugin": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
         "nl.x-services.plugins.toast": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
@@ -134,12 +140,6 @@
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         },
         "uk.co.ilee.socialmessage": {
-            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
-        },
-        "com.phonegap.plugins.PushPlugin": {
-            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
-        },
-        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },

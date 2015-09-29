@@ -106,9 +106,8 @@ namespace :android do
   task :release => [:set_production, :prepare] do
     puts "====== Releasing #{ENV['BUILD_VERSION']} ====== "
     sh "cordova build android --release "
-    puts "===== Build Complete: Signing + Archiving ===== "
-    sh "cd platforms/android/ && ant release "
-    sh "mv platforms/android/bin/Empfehlungsbund-release.apk releases/empfehlungsbund-#{ENV['BUILD_VERSION']}.apk "
+    puts "===== Build Complete: Archiving ===== "
+    sh "mv platforms/android/build/outputs/apk/android-release.apk releases/empfehlungsbund-#{ENV['BUILD_VERSION']}.apk "
   end
 
   task :set_env => ['build:clear'] do
