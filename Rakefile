@@ -133,6 +133,7 @@ namespace :install do
       brew install android-sdk
       brew install node
       npm install -g cordova bower
+      npm install -g cordova-icon
     '
   end
 
