@@ -45,6 +45,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
+        },
+        "org.apache.cordova.splashscreen": {
+            "PACKAGE_NAME": "de.pludoni.empfehlungsbundmobile"
         }
     },
     "dependent_plugins": {}

@@ -55,6 +55,7 @@
 		8E6D0A501F6943E9AB489A27 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B6D1A87F324EF994D9B395 /* libsqlite3.0.dylib */; };
 		5EF61730FAA14960A68E5CC9 /* AppDelegate+notification.m in Sources */ = {isa = PBXBuildFile; fileRef = 807A47A2EAD246E0A615B3A1 /* AppDelegate+notification.m */; };
 		8F89F1A27B1A4F7FBF5815A8 /* PushPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = 803D004E196C4CCC861E84ED /* PushPlugin.m */; };
+		A2782D90FAED44B5ABAD8051 /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 7212CB42533B4F089668180B /* CDVSplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +161,8 @@
 		803D004E196C4CCC861E84ED /* PushPlugin.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "PushPlugin.m"; path = "com.phonegap.plugins.PushPlugin/PushPlugin.m"; sourceTree = "<group>"; fileEncoding = 4; };
 		C755543D09BB49D693977727 /* AppDelegate+notification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "AppDelegate+notification.h"; path = "com.phonegap.plugins.PushPlugin/AppDelegate+notification.h"; sourceTree = "<group>"; fileEncoding = 4; };
 		38F3D3598E54474A9AB52147 /* PushPlugin.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "PushPlugin.h"; path = "com.phonegap.plugins.PushPlugin/PushPlugin.h"; sourceTree = "<group>"; fileEncoding = 4; };
+		7212CB42533B4F089668180B /* CDVSplashScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "CDVSplashScreen.m"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; };
+		BA79751315734728A9BA65CC /* CDVSplashScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "CDVSplashScreen.h"; path = "org.apache.cordova.splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -329,6 +332,8 @@
 				803D004E196C4CCC861E84ED /* PushPlugin.m */,
 				C755543D09BB49D693977727 /* AppDelegate+notification.h */,
 				38F3D3598E54474A9AB52147 /* PushPlugin.h */,
+				7212CB42533B4F089668180B /* CDVSplashScreen.m */,
+				BA79751315734728A9BA65CC /* CDVSplashScreen.h */,
 			);
 			name = Plugins;
 			path = "Empfehlungsbund/Plugins";
@@ -532,6 +537,7 @@
 				E62E7E975B9048F28904F40D /* UniversalAnalyticsPlugin.m in Sources */,
 				5EF61730FAA14960A68E5CC9 /* AppDelegate+notification.m in Sources */,
 				8F89F1A27B1A4F7FBF5815A8 /* PushPlugin.m in Sources */,
+				A2782D90FAED44B5ABAD8051 /* CDVSplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

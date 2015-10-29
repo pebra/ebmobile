@@ -106,6 +106,8 @@ namespace :android do
   task :release => [:set_production, :prepare] do
     puts "====== Generating Icons ======"
     sh "cordova-icon"
+    puts "====== Generating Splash ======"
+    sh "cordova-splash"
     puts "====== Releasing #{ENV['BUILD_VERSION']} ====== "
     sh "cordova build android --release "
     puts "===== Build Complete: Archiving ===== "
@@ -134,6 +136,7 @@ namespace :install do
       brew install node
       npm install -g cordova bower
       npm install -g cordova-icon
+      npm install -g cordova-splash
     '
   end
 
@@ -144,7 +147,6 @@ namespace :install do
       bundle
       bower install
     '
-
   end
 
   desc 'initialize cordova'

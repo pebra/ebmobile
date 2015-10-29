@@ -10,6 +10,8 @@
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
     <preference name="permissions" value="none"/>
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="SplashScreen" value="screen" />
     <feature name="SocialSharing">
         <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
     </feature>
@@ -42,11 +44,11 @@
     <cdv:engine id="ios" />
     <platform name="android">
       <!-- <icon src="res/icon-ldpi.png" density="ldpi" /> -->
-      <icon src="res/icon-mdpi.png" density="mdpi" />
-      <icon src="res/icon-hdpi.png" density="hdpi" />
-      <icon src="res/icon-xhdpi.png" density="xhdpi" />
-      <icon src="res/icon-xxhdpi.png" density="xxhdpi" />
-      <icon src="res/icon-xxxhdpi.png" density="xxxhdpi" />
+      <icon src="platforms/android/res/drawable-mdpi/icon.png" density="mdpi" />
+      <icon src="platforms/android/res/drawable-hdpi/icon.png" density="hdpi" />
+      <icon src="platforms/android/res/drawable-xhdpi/icon.png" density="xhdpi" />
+      <icon src="platforms/android/res/drawable-xxhpi/icon.png" density="xxhdpi" />
+      <icon src="platforms/android/res/drawable-xxxhdpi/icon.png" density="xxxhdpi" />
     </platform>
 
 </widget>

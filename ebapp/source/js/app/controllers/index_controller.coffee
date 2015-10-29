@@ -14,7 +14,7 @@ App.controller 'IndexController', ($scope, settings, $location, Job, $q)->
   angular.forEach $scope.lastQueries, (q) ->
     if q.date < $scope.today
       params={}
-      angular.extend(params, $scope.default_params(), { q: q.q, since: q.date, per: 1})
+      angular.extend(params, $scope.default_params(), { q: q.q, since: q.date, per: 1, min_score: 3.0})
       Job.newest(params).$promise.then (response)->
         if response.length > 0
           $scope.searchCounts[q.q] = response.length

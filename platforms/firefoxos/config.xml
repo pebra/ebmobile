@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="de.pludoni.empfehlungsbundmobile" version="2.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="de.pludoni.empfehlungsbundmobile" version="2.1.5" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <permission description="Required for accessing user location." name="geolocation" />
     <feature name="Device">
         <param name="firefoxos-package" value="Device" />
@@ -13,7 +13,12 @@
     <access origin="*" />
     <preference name="fullscreen" value="false" />
     <preference name="webviewbounce" value="true" />
+    <preference name="permissions" value="none" />
+    <preference name="AutoHideSplashScreen" value="false" />
+    <preference name="SplashScreenDelay" value="100000" />
+    <preference name="SplashScreen" value="splash.png" />
     <cdv:engine id="android" />
     <cdv:engine id="firefoxos" />
     <cdv:engine id="ios" />
+    <hook src="cordova_splash.sh" type="before_run" />
 </widget>

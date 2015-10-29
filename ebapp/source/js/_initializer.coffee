@@ -2,6 +2,7 @@ console.log '======= STARTING APP ======'
 
 App.run ($rootScope,  $location, SubscribedSearches, PushService, Analytics) ->
   document.addEventListener "deviceready", ->
+    navigator.splashscreen.hide();
     console.log 'device-ready'
     PushService.register( (regid)->
       console.log 'registered'
