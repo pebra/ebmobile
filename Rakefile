@@ -102,8 +102,15 @@ namespace :android do
     sh 'cordova run --emulator android '
   end
 
+  desc "Regenerate Icons"
+  task :icons do
+    mkdir_p 'platforms/android/res/drawable'
+    mkdir_p 'platforms/android/res/drawable-xxhdpi'
+    sh 'cordova-icon'
+  end
+
   desc 'Release einer neuen Version'
-  task :release => [:set_production, :prepare] do
+  task :release => [:set_production, :prepare, :icons] do
     puts "====== Generating Icons ======"
     sh "cordova-icon"
     puts "====== Generating Splash ======"
