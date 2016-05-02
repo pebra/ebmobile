@@ -12,6 +12,13 @@
     <preference name="permissions" value="none"/>
     <preference name="SplashScreenDelay" value="10000" />
     <preference name="SplashScreen" value="screen" />
+    <access origin="tel:*" launch-external="yes" />
+    <access origin="geo:*" launch-external="yes"/>
+    <access origin="mailto:*" launch-external="yes"/>
+    <access origin="sms:*" launch-external="yes"/>
+    <access origin="market:*" launch-external="yes"/>
+    <access origin="*" launch-external="yes"/>
+
     <feature name="SocialSharing">
         <param name="android-package" value="n1.xservices.plugins.SocialSharing" />
     </feature>

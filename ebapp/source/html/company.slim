@@ -52,7 +52,7 @@ div ng-if='company != undefined'
         | {{person.anrede}} {{person.title}} {{person.name}},<br/> <small>{{person.position}}</small>
 
     li.table-view-cell.media[ng-if='person.profile_url']
-      a.navigate-right[ng-href='person.profile_url' target='_system']
+      a.navigate-right[ng-href='{{person.profile_url}}' target='_system']
         span.icon.icon-xing.media-object.pull-left>
         | XING-Profil
     li.table-view-cell.media[ng-if='person.telefon']
