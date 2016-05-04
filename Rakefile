@@ -1,9 +1,7 @@
   SDK_LOCATIONS = [
     ENV["HOME"] + '/.linuxbrew/Cellar/android-sdk/24.3.3',
-  '/Applications/adt-bundle/sdk',
-  '/usr/local/Cellar/android-sdk/23.0.2/',
-  '/usr/local/Cellar/android-sdk/24.0.1/'
-]
+    '/Applications/adt-bundle/sdk',
+  ] + Dir['/usr/local/Cellar/android-sdk/*/']
 
 def find_java_home
   SDK_LOCATIONS.find{|f| File.exists? f }
@@ -124,7 +122,9 @@ namespace :android do
   task :set_env => ['build:clear'] do
     sdk = find_java_home
     if !sdk
-      raise 'Android SDK nich gefunden, habe gesucht in: ' + SDK_LOCATIONS.join("\n")
+      raise 'Android SDK nicht gefunden, habe gesucht in: ' + SDK_LOCATIONS.join("\n")
+    else
+      puts "Android SDK found in #{sdk}"
     end
     require 'pry'
     ENV['ANDROID_HOME'] = sdk
